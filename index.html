@@ -1,0 +1,312 @@
+﻿
+<!doctype html>
+<html lang="ckb" dir="rtl" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Hewtûjmêr — Kurdish calendar with week, month, and year views."
+  >
+  <meta name="theme-color" content="#f4f6f8">
+
+  <title>Hewtûjmêr — کوردی</title>
+
+  <!-- Main application styles -->
+<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="/static/style-calendar.css">
+
+  <!-- Keep scripts in dependency order -->
+  <script src="/static/translations.js" defer></script>
+  <script src="/static/calendar-core.js" defer></script>
+  <script src="/static/calendar-view.js" defer></script>
+  <script src="/static/calendar-navigation.js" defer></script>
+  <script src="/static/calendar-events.js" defer></script>
+  <script src="/static/app.js" defer></script>
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <header class="topbar">
+      <a class="brand" href="#week" aria-label="Hewtûjmêr home">
+        <span class="brand-mark" aria-hidden="true">7</span> 
+        <span class="brand-name">Hewtûjmêr</span>
+      </a>
+
+      <div class="topbar-actions">
+        <label class="language-control">
+          <span class="visually-hidden" data-i18n="languageLabel">
+            زمان
+          </span>
+
+          <select id="language-select" aria-label="Language">
+            <optgroup label="کوردی">
+              <option value="ckb" selected>سۆرانی</option>
+              <option value="kmr">Kurmanji</option>
+            </optgroup>
+            <option value="en">English</option>
+          </select>
+        </label>
+
+        <button
+          class="button button-theme"
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle theme"
+          title="Toggle theme"
+        >
+          <span class="theme-icon" aria-hidden="true">☾</span>
+          <span class="theme-label" data-i18n="theme">ڕووکار</span>
+        </button>
+
+        <button
+          class="button button-print"
+          id="print-button"
+          type="button"
+          aria-label="Print or save as PDF"
+          title="Print or save as PDF"
+        >
+          <span aria-hidden="true">⎙</span>
+          <span data-i18n="print">چاپ / PDF</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="app-layout">
+
+      <aside class="sidebar" aria-label="Calendar navigation">
+        <p class="sidebar-label" data-i18n="views">
+          بینینەکان
+        </p>
+
+        <nav class="view-nav" aria-label="Calendar views">
+          <a class="nav-link" href="#week" data-view-link="week">
+            <span class="nav-icon" aria-hidden="true">▤</span>
+            <span data-i18n="week">هەفتە</span>
+          </a>
+
+          <a class="nav-link" href="#month" data-view-link="month">
+            <span class="nav-icon" aria-hidden="true">▦</span>
+            <span data-i18n="month">مانگ</span>
+          </a>
+
+          <a class="nav-link" href="#calendar" data-view-link="calendar">
+            <span class="nav-icon" aria-hidden="true">▧</span>
+            <span data-i18n="calendar">ساڵنامە</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-note">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-i18n="calendarNote">ساڵنامەی کوردی</span>
+        </div>
+      </aside>
+
+      <main class="workspace">
+
+        <!-- Search appears first for faster access -->
+        <section class="week-search" aria-label="Search calendar">
+          <form
+            id="week-search-form"
+            class="week-search-form"
+            role="search"
+          >
+            <label
+              class="visually-hidden"
+              for="week-search-input"
+              data-i18n="searchLabel"
+            >
+              Search for a week or date
+            </label>
+
+            <span class="week-search-icon" aria-hidden="true">⌕</span>
+
+            <input
+              id="week-search-input"
+              class="week-search-input"
+              name="week"
+              type="search"
+              autocomplete="off"
+              spellcheck="false"
+              placeholder="44 2026 or 2026-11-09"
+              aria-describedby="week-search-hint week-search-error"
+            >
+
+            <button
+              class="week-search-submit"
+              id="week-search-button"
+              type="submit"
+              aria-label="Search"
+              title="Search"
+            >
+              <span aria-hidden="true">➜</span>
+            </button>
+          </form>
+
+          <p
+            class="week-search-hint"
+            id="week-search-hint"
+            data-i18n="searchHint"
+          >
+            Search by ISO week number, week and year, or date.
+          </p>
+
+          <p
+            class="search-error"
+            id="week-search-error"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            hidden
+          ></p>
+        </section>
+
+        <!-- Current-week overview -->
+        <section class="hero-card" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow" data-i18n="currentIsoWeek">
+              هەفتەی ئایسۆی ئێستا
+            </p>
+
+            <h1 id="hero-title">
+              <span class="week-prefix" data-i18n="weekPrefix">
+                هەفتە
+              </span>
+              <span class="week-number" id="iso-week-number">—</span>
+            </h1>
+
+            <p class="hero-subtitle" id="hero-subtitle">—</p>
+          </div>
+
+          <div class="hero-badge">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span data-i18n="newrozStarts">
+              نەورۆز: ٢١ی ئازار
+            </span>
+          </div>
+        </section>
+
+        <!-- Current date information -->
+        <section class="date-strip" aria-label="Today's dates">
+          <article class="date-card">
+            <span class="date-card-label" data-i18n="kurdishDate">
+              بەرواری کوردی
+            </span>
+            <strong id="kurdish-date">—</strong>
+          </article>
+
+          <article class="date-card">
+            <span class="date-card-label" data-i18n="gregorianDate">
+              بەرواری زایینی
+            </span>
+            <strong id="gregorian-date">—</strong>
+          </article>
+
+          <article class="date-card">
+            <span class="date-card-label" data-i18n="solarHijriDate">
+              بەرواری هەتاوی
+            </span>
+            <strong id="solar-hijri-date">—</strong>
+          </article>
+
+          <article class="date-card countdown-card" aria-live="polite">
+            <strong id="newroz-countdown">—</strong>
+            <span
+              class="date-card-label sorani-text"
+              id="newroz-countdown-label"
+              lang="ckb"
+              dir="rtl"
+            >
+              رۆژی ماوە بۆ نەورۆز
+            </span>
+          </article>
+        </section>
+
+        <!-- Mobile navigation; desktop navigation is in the sidebar -->
+        <nav class="mobile-view-nav" aria-label="Calendar views">
+          <a class="nav-link" href="#week" data-view-link="week">
+            <span data-i18n="week">هەفتە</span>
+          </a>
+
+          <a class="nav-link" href="#month" data-view-link="month">
+            <span data-i18n="month">مانگ</span>
+          </a>
+
+          <a class="nav-link" href="#calendar" data-view-link="calendar">
+            <span data-i18n="calendar">ساڵنامە</span>
+          </a>
+        </nav>
+
+        <!-- Main calendar -->
+        <section
+          class="calendar-panel"
+          aria-labelledby="calendar-heading"
+        >
+          <div class="panel-toolbar">
+            <div class="panel-heading">
+              <p
+                class="eyebrow"
+                id="view-eyebrow"
+                data-i18n="weekView"
+              >
+                بینینی هەفتە
+              </p>
+
+              <h2 id="calendar-heading">—</h2>
+            </div>
+
+            <div class="toolbar-actions">
+              <button
+                class="button button-today"
+                id="today-button"
+                type="button"
+                data-i18n="today"
+              >
+                ئەمڕۆ
+              </button>
+
+              <div class="step-controls" role="group" aria-label="Navigate calendar">
+                <button
+                  class="button icon-button"
+                  id="previous-button"
+                  type="button"
+                  aria-label="Previous"
+                  title="Previous"
+                >
+                  <span aria-hidden="true">‹</span>
+                </button>
+
+                <button
+                  class="button icon-button"
+                  id="next-button"
+                  type="button"
+                  aria-label="Next"
+                  title="Next"
+                >
+                  <span aria-hidden="true">›</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="calendar-content"
+            id="calendar-content"
+            aria-live="polite"
+            aria-atomic="false"
+            tabindex="0"
+            aria-label="Calendar dates"
+          ></div>
+        </section>
+
+        <footer class="workspace-footer" data-i18n="footer">
+          ساڵنامەی کوردی · دەستپێکی ساڵ: ٢١ی ئازار
+        </footer>
+
+      </main>
+    </div>
+  </div>
+</body>
+</html>
