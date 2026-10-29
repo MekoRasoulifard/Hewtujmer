@@ -170,11 +170,11 @@ function navigateToView(view) {
         state.selectedDate = date;
 
         if (state.view === "calendar") {
-          navigateToView("month");
-        } else {
-          render();
+          window.CalendarNavigation.setView(state, "month");
+          window.CalendarNavigation.syncHash("month");
         }
 
+        render();
         return;
       }
 
@@ -210,7 +210,7 @@ function navigateToView(view) {
     window.addEventListener("hashchange", () => {
       state.view =
         window.CalendarNavigation.readViewFromHash();
-Z
+
       render();
     });
   }

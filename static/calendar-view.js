@@ -51,7 +51,7 @@
   }
 
   function renderWeek(state) {
-    const { content, heading, eyebrow } = getElements();
+    const { content, heading, eyebrow, weekNumber } = getElements();
     const t = window.HewtujmerTranslations[state.language];
     const selectedParts = Core.kurdishDateParts(state.selectedDate);
     const monday = Core.startOfWeek(state.selectedDate);
@@ -67,8 +67,6 @@
 
     const grid = document.createElement("div");
     grid.className = "week-grid";
-    grid.lang = state.language;
-    grid.dir = state.language === "ckb" ? "rtl" : "ltr";
 
     for (let index = 0; index < 7; index += 1) {
       const date = Core.addDays(monday, index);
@@ -128,8 +126,6 @@
 
     content.replaceChildren(grid);
 
-    const weekNumber = getElements().weekNumber;
-
     if (weekNumber) {
       weekNumber.textContent = Core.localizeDigits(
         info.week,
@@ -163,8 +159,6 @@
 
     const grid = document.createElement("div");
     grid.className = "month-grid";
-    grid.lang = state.language;
-    grid.dir = state.language === "ckb" ? "rtl" : "ltr";
 
     t.weekdaysShort.forEach(label => {
       const cell = document.createElement("div");
@@ -228,12 +222,11 @@
     const { content, heading, eyebrow } = getElements();
     const t = window.HewtujmerTranslations[state.language];
 
-    const selectedParts = Core.kurdishDateParts(state.selectedDate);
     const today = Core.startOfDay(new Date());
     const todayParts = Core.kurdishDateParts(today);
+    const selectedParts = Core.kurdishDateParts(state.selectedDate);
     const year = selectedParts.year;
     const todayKey = Core.dateKey(today);
-    const isCurrentYear = year === todayParts.year;
 
     eyebrow.textContent = t.calendarView;
 
@@ -244,8 +237,6 @@
 
     const grid = document.createElement("div");
     grid.className = "year-grid";
-    grid.lang = state.language;
-    grid.dir = state.language === "ckb" ? "rtl" : "ltr";
 
     for (let month = 0; month < 12; month += 1) {
       const firstDay = Core.kurdishMonthStart(year, month);
@@ -259,10 +250,12 @@
       button.dataset.year = String(year);
 
       const isCurrentMonth =
-        isCurrentYear && month === todayParts.month;
+        year === todayParts.year && month === todayParts.month;
+      const isSelectedMonth = month === selectedParts.month;
+      const localizedYear = Core.localizeDigits(year, state.language);
 
       button.classList.toggle("current-month", isCurrentMonth);
-      button.classList.toggle("selected", isCurrentMonth);
+      button.classList.toggle("selected", isSelectedMonth);
 
       if (isCurrentMonth) {
         button.dataset.currentMonth = "true";
@@ -271,8 +264,9 @@
 
       button.setAttribute(
         "aria-label",
-        `${t.months[month]} ${year}` +
-          (isCurrentMonth ? " (current month)" : "")
+        `${t.months[month]} ${localizedYear}` +
+          (isCurrentMonth ? " (current month)" : "") +
+          (isSelectedMonth ? " (selected month)" : "")
       );
 
       const title = document.createElement("span");
@@ -349,6 +343,8 @@
         return;
       }
 
+      if (year !== todayParts.year) return;
+
       const currentMonth = content.querySelector(
         '.mini-month[data-current-month="true"]'
       );
@@ -376,9 +372,6 @@
 
     if (!elements.content) return;
 
-    elements.content.lang = state.language;
-    elements.content.dir = state.language === "ckb" ? "rtl" : "ltr";
-
     const t = window.HewtujmerTranslations?.[state.language];
 
     if (!t) {
@@ -403,7 +396,6 @@
         state.language
       );
 
-      elements.subtitle.lang = state.language;
       elements.subtitle.dir =
         state.language === "ckb" ? "rtl" : "ltr";
     }

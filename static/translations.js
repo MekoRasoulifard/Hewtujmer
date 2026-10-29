@@ -27,6 +27,7 @@
       next: "دواتر",
       footer: "ساڵنامەی کوردی · دەستپێکی ساڵ: ٢١ی ئازار",
       searchLabel: "گەڕان بۆ هەفتە یان بەروار",
+      searchPlaceholder: "ژمارەی هەفتە١-٥٣ ، ساڵ و هەفتە، یان بەروار بنووسە",
       searchHint: "ژمارەی هەفتە، ساڵ و هەفتە، یان بەروار بنووسە.",
       searchError: "تکایە بەروارێک یان ژمارەی هەفتەیەکی دروست بنووسە.",
       weekdays: [
@@ -66,6 +67,7 @@
       next: "Pêş",
       footer: "Salnameya Kurdî · Destpêka salê: 21ê Adarê",
       searchLabel: "Li hefteyekê an dîrokekê bigere",
+      searchPlaceholder: "Hejmareke hefteyê, sal û hefte, an dîrokê binivîse",
       searchHint: "Hejmareke hefteyê, sal û hefte, an dîrokê binivîse.",
       searchError: "Ji kerema xwe dîrokek an hejmareke hefteyê ya rast binivîse.",
       weekdays: [
@@ -105,6 +107,7 @@
       next: "Next",
       footer: "Kurdish calendar · New year begins March 21",
       searchLabel: "Search for a week or date",
+      searchPlaceholder: "Enter a week number, week and year, or date",
       searchHint: "Enter a week number, week and year, or date.",
       searchError: "Please enter a valid date or ISO week number.",
       weekdays: [
