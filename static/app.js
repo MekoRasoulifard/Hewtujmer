@@ -40,7 +40,9 @@
       ? "Switch to light mode"
       : "Switch to dark mode";
 
-    if (icon) icon.textContent = isDark ? "☀" : "☾";
+    if (icon) {
+      icon.textContent = isDark ? "☀" : "☾";
+    }
 
     if (button) {
       button.setAttribute("aria-label", label);
@@ -56,9 +58,21 @@
   function updateTranslations() {
     const t = translations[state.language];
 
+    const isSorani = state.language === "ckb";
+    const direction = isSorani ? "rtl" : "ltr";
+
     document.documentElement.lang = state.language;
-    document.documentElement.dir =
-      state.language === "en" ? "ltr" : "rtl";
+    document.documentElement.dir = direction;
+    document.documentElement.dataset.language = state.language;
+    document.body.lang = state.language;
+    document.body.dir = direction;
+
+    const titles = {
+      ckb: "Hewtûjmêr — کوردی",
+      kmr: "Hewtûjmêr — Kurdî",
+      en: "Hewtûjmêr — Kurdish Calendar"
+    };
+    document.title = titles[state.language] || titles.ckb;
 
     const languageSelect =
       document.querySelector("#language-select");
@@ -82,8 +96,7 @@
     if (countdownLabel) {
       countdownLabel.textContent = t.newrozCountdown;
       countdownLabel.lang = state.language;
-      countdownLabel.dir =
-        state.language === "en" ? "ltr" : "rtl";
+      countdownLabel.dir = direction;
 
       countdownLabel.classList.toggle(
         "sorani-text",
@@ -177,61 +190,10 @@
         state.language
       );
     }
-
-    const subtitle = document.querySelector("#hero-subtitle");
-
-    if (subtitle) {
-      subtitle.textContent = Core.formatWeekRange(
-        state.selectedDate,
-        state.language
-      );
-    }
-  }
-
-  function updateNavigation() {
-    document.querySelectorAll("[data-view-link]").forEach(link => {
-      const active = link.dataset.viewLink === state.view;
-
-      link.classList.toggle("active", active);
-
-      if (active) {
-        link.setAttribute("aria-current", "page");
-      } else {
-        link.removeAttribute("aria-current");
-      }
-    });
-  }
-
-  // FIX: Refresh the Today button every time the calendar renders.
-  function updateTodayButton() {
-    const todayButton =
-      document.querySelector("#today-button");
-
-    if (!todayButton) return;
-
-    const today = Core.startOfDay(new Date());
-
-    const currentWeek = Core.isoWeekInfo(today);
-    const displayedWeek = Core.isoWeekInfo(
-      Core.startOfDay(state.selectedDate)
-    );
-
-    const isCurrentWeek =
-      currentWeek.week === displayedWeek.week &&
-      currentWeek.year === displayedWeek.year;
-
-    todayButton.classList.toggle("active", isCurrentWeek);
-
-    todayButton.setAttribute(
-      "aria-pressed",
-      String(isCurrentWeek)
-    );
   }
 
   function render() {
     updateTodayCards();
-    updateNavigation();
-    updateTodayButton();
     View.render(state);
   }
 
@@ -265,4 +227,50 @@
   } else {
     initialize();
   }
-})();
+})();// Draw 21 pointed rays for the Kurdish national sun emblem.
+function drawNewrozSun() {
+  document.querySelectorAll(".newroz-rays").forEach((container) => {
+    // Prevent generating the rays more than once.
+    if (container.dataset.generated === "true") return;
+
+    // Clear old generated rays if necessary.
+    container.replaceChildren();
+
+    // Generate the 21 rays.
+    for (let i = 0; i < 21; i++) {
+      const ray = document.createElement("span");
+
+      ray.className = "newroz-ray";
+      ray.setAttribute("aria-hidden", "true");
+
+      // Evenly distribute all 21 rays around the sun.
+      ray.style.setProperty(
+        "--ray-angle",
+        `${(i * 360) / 21}deg`
+      );
+
+      container.appendChild(ray);
+    }
+
+    // Mark this container as generated.
+    container.dataset.generated = "true";
+  });
+}
+
+// Run after the HTML has loaded.
+if (document.readyState === "loading") {
+  document.addEventListener(
+    "DOMContentLoaded",
+    drawNewrozSun,
+    { once: true }
+  );
+} else {
+  drawNewrozSun();
+}
+/* 
+// Disable the browser context menu.
+document.addEventListener("contextmenu", event => {
+  event.preventDefault();
+});
+
+ */

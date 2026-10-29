@@ -35,15 +35,21 @@
       render();
     }
 
-    function navigateToView(view) {
-      if (!VALID_VIEWS.has(view)) {
-        return;
-      }
+    
+function navigateToView(view) {
+  if (!VALID_VIEWS.has(view)) return;
 
-      window.CalendarNavigation.setView(state, view);
-      window.CalendarNavigation.syncHash(view);
-      render();
-    }
+  if (view === "calendar") {
+    // Reset to today's date before rendering the year.
+    state.selectedDate =
+      window.CalendarCore.startOfDay(new Date());
+  }
+
+  window.CalendarNavigation.setView(state, view);
+  window.CalendarNavigation.syncHash(view);
+  render();
+}
+
 
     function clearSearchError() {
       if (searchError) {
@@ -162,7 +168,13 @@
         }
 
         state.selectedDate = date;
-        render();
+
+        if (state.view === "calendar") {
+          navigateToView("month");
+        } else {
+          render();
+        }
+
         return;
       }
 
@@ -198,7 +210,7 @@
     window.addEventListener("hashchange", () => {
       state.view =
         window.CalendarNavigation.readViewFromHash();
-
+Z
       render();
     });
   }

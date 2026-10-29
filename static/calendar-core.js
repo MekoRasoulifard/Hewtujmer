@@ -1,4 +1,3 @@
-
 "use strict";
 
 (function () {
@@ -24,8 +23,38 @@
     }
   };
 
+  const ARABIC_INDIC_DIGITS = "٠١٢٣٤٥٦٧٨٩";
+  const PERSIAN_DIGITS = "۰۱۲۳۴۵۶۷۸۹";
+
+  function isValidDate(value) {
+    return value instanceof Date && !Number.isNaN(value.getTime());
+  }
+
+  /*
+   * JavaScript treats years 0–99 specially in Date constructors.
+   * setFullYear/setUTCFullYear avoid the implicit 1900-year offset.
+   */
+  function createLocalDate(year, monthIndex, day) {
+    const date = new Date(0);
+    date.setHours(0, 0, 0, 0);
+    date.setFullYear(year, monthIndex, day);
+    date.setHours(0, 0, 0, 0);
+    return date;
+  }
+
+  function createUtcDate(year, monthIndex, day) {
+    const date = new Date(0);
+    date.setUTCHours(0, 0, 0, 0);
+    date.setUTCFullYear(year, monthIndex, day);
+    return date;
+  }
+
   function startOfDay(date) {
-    return new Date(
+    if (!isValidDate(date)) {
+      return new Date(Number.NaN);
+    }
+
+    return createLocalDate(
       date.getFullYear(),
       date.getMonth(),
       date.getDate()
@@ -33,25 +62,31 @@
   }
 
   function dateKey(date) {
+    if (!isValidDate(date)) {
+      return "";
+    }
+
     return [
-      date.getFullYear(),
+      String(date.getFullYear()).padStart(4, "0"),
       String(date.getMonth() + 1).padStart(2, "0"),
       String(date.getDate()).padStart(2, "0")
     ].join("-");
   }
 
   function dateFromKey(key) {
-    const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(key);
+    const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(key));
 
-    if (!match) return null;
+    if (!match) {
+      return null;
+    }
 
     const year = Number(match[1]);
     const month = Number(match[2]);
     const day = Number(match[3]);
-
-    const date = new Date(year, month - 1, day);
+    const date = createLocalDate(year, month - 1, day);
 
     if (
+      !isValidDate(date) ||
       date.getFullYear() !== year ||
       date.getMonth() !== month - 1 ||
       date.getDate() !== day
@@ -59,59 +94,76 @@
       return null;
     }
 
-    return startOfDay(date);
+    return date;
   }
 
   function addDays(date, amount) {
-    const result = new Date(date);
+    if (!isValidDate(date) || !Number.isInteger(amount)) {
+      return new Date(Number.NaN);
+    }
+
+    const result = new Date(date.getTime());
     result.setDate(result.getDate() + amount);
     return startOfDay(result);
   }
 
   function daysBetween(first, second) {
-    const firstUtc = Date.UTC(
+    if (!isValidDate(first) || !isValidDate(second)) {
+      return Number.NaN;
+    }
+
+    const firstUtc = createUtcDate(
       first.getFullYear(),
       first.getMonth(),
       first.getDate()
-    );
+    ).getTime();
 
-    const secondUtc = Date.UTC(
+    const secondUtc = createUtcDate(
       second.getFullYear(),
       second.getMonth(),
       second.getDate()
-    );
+    ).getTime();
 
     return Math.round((secondUtc - firstUtc) / DAY_MS);
   }
 
   function mondayIndex(date) {
+    if (!isValidDate(date)) {
+      return Number.NaN;
+    }
+
     return (date.getDay() + 6) % 7;
   }
 
   function startOfWeek(date) {
+    if (!isValidDate(date)) {
+      return new Date(Number.NaN);
+    }
+
     return addDays(date, -mondayIndex(date));
   }
 
   function isoWeekInfo(date) {
-    const utcDate = new Date(Date.UTC(
+    if (!isValidDate(date)) {
+      return { week: Number.NaN, year: Number.NaN };
+    }
+
+    const utcDate = createUtcDate(
       date.getFullYear(),
       date.getMonth(),
       date.getDate()
-    ));
-
+    );
     const weekday = utcDate.getUTCDay() || 7;
 
     utcDate.setUTCDate(utcDate.getUTCDate() + 4 - weekday);
 
     const year = utcDate.getUTCFullYear();
-    const yearStart = new Date(Date.UTC(year, 0, 1));
+    const yearStart = createUtcDate(year, 0, 1);
+    const week = Math.ceil(
+      ((utcDate.getTime() - yearStart.getTime()) / DAY_MS + 1) / 7
+    );
 
-    return {
-      week: Math.ceil(
-        ((utcDate - yearStart) / DAY_MS + 1) / 7
-      ),
-      year
-    };
+    return { week, year };
   }
 
   function isoWeekNumber(date) {
@@ -134,22 +186,32 @@
       return null;
     }
 
-    const januaryFourth = new Date(year, 0, 4);
+    const januaryFourth = createLocalDate(year, 0, 4);
     const firstMonday = startOfWeek(januaryFourth);
     const result = addDays(firstMonday, (week - 1) * 7);
     const actual = isoWeekInfo(result);
 
-    return actual.year === year && actual.week === week
-      ? result
-      : null;
+    if (actual.year !== year || actual.week !== week) {
+      return null;
+    }
+
+    return result;
   }
 
-  // Kurdish calendar year starts on March 21.
+  // The application's Kurdish calendar year starts on March 21.
   function kurdishYearStart(year) {
-    return new Date(year - 700, 2, 21);
+    if (!Number.isInteger(year)) {
+      return new Date(Number.NaN);
+    }
+
+    return createLocalDate(year - 700, 2, 21);
   }
 
   function daysInKurdishYear(year) {
+    if (!Number.isInteger(year)) {
+      return 0;
+    }
+
     return daysBetween(
       kurdishYearStart(year),
       kurdishYearStart(year + 1)
@@ -157,30 +219,46 @@
   }
 
   function kurdishYearForDate(date) {
-    const march21 = new Date(date.getFullYear(), 2, 21);
+    if (!isValidDate(date)) {
+      return Number.NaN;
+    }
 
-    return (
-      date >= march21
-        ? date.getFullYear()
-        : date.getFullYear() - 1
-    ) + 700;
+    const march21 = createLocalDate(date.getFullYear(), 2, 21);
+    const gregorianYear = date >= march21
+      ? date.getFullYear()
+      : date.getFullYear() - 1;
+
+    return gregorianYear + 700;
   }
 
   function kurdishMonthLength(year, month) {
-    if (!Number.isInteger(month) || month < 0 || month > 11) {
+    if (
+      !Number.isInteger(year) ||
+      !Number.isInteger(month) ||
+      month < 0 ||
+      month > 11
+    ) {
       return 0;
     }
 
-    if (month < 6) return 31;
-    if (month < 11) return 30;
+    if (month < 6) {
+      return 31;
+    }
+
+    if (month < 11) {
+      return 30;
+    }
 
     return daysInKurdishYear(year) - 336;
   }
 
   function kurdishMonthStart(year, month) {
+    if (!Number.isInteger(year) || !Number.isInteger(month)) {
+      return new Date(Number.NaN);
+    }
+
     const normalizedYear = year + Math.floor(month / 12);
     const normalizedMonth = ((month % 12) + 12) % 12;
-
     let offset = 0;
 
     for (let index = 0; index < normalizedMonth; index += 1) {
@@ -191,6 +269,10 @@
   }
 
   function kurdishDateParts(date) {
+    if (!isValidDate(date)) {
+      return null;
+    }
+
     const year = kurdishYearForDate(date);
     let remaining = daysBetween(kurdishYearStart(year), date);
 
@@ -198,55 +280,83 @@
       const length = kurdishMonthLength(year, month);
 
       if (remaining < length) {
-        return { year, month, day: remaining + 1 };
+        return {
+          year,
+          month,
+          day: remaining + 1
+        };
       }
 
       remaining -= length;
     }
 
-    return { year, month: 11, day: 1 };
+    return null;
+  }
+
+  function normalizeDigits(value) {
+    return String(value)
+      .replace(/[٠-٩]/g, digit =>
+        String(ARABIC_INDIC_DIGITS.indexOf(digit))
+      )
+      .replace(/[۰-۹]/g, digit =>
+        String(PERSIAN_DIGITS.indexOf(digit))
+      )
+      .replace(/[\u061c\u200e\u200f]/g, "");
   }
 
   function localizeDigits(value, language = "en") {
-    const digits = language === "ckb" || language === "kmr"
-      ? "٠١٢٣٤٥٦٧٨٩"
-      : "0123456789";
+    // Normalize both Arabic-Indic and Persian digits before formatting.
+    const normalized = normalizeDigits(value);
 
-    return String(value).replace(
-      /\d/g,
-      digit => digits[Number(digit)]
+    if (language !== "ckb") {
+      return normalized;
+    }
+
+    return normalized.replace(/\d/g, digit =>
+      ARABIC_INDIC_DIGITS[Number(digit)]
     );
   }
 
+  function getLocale(language) {
+    if (language === "ckb") {
+      return "ckb";
+    }
+
+    if (language === "kmr") {
+      return "ku";
+    }
+
+    return "en-GB";
+  }
+
   function formatGregorian(date, language = "en") {
-    const locale = language === "ckb"
-      ? "ckb"
-      : language === "kmr"
-        ? "ku"
-        : "en-GB";
+    if (!isValidDate(date)) {
+      return "—";
+    }
+
+    const options = {
+      day: "numeric",
+      month: "short",
+      year: "numeric"
+    };
 
     try {
-      return new Intl.DateTimeFormat(locale, {
-        day: "numeric",
-        month: "short",
-        year: "numeric"
-      }).format(date);
+      return new Intl.DateTimeFormat(getLocale(language), options).format(date);
     } catch {
-      return new Intl.DateTimeFormat("en-GB", {
-        day: "numeric",
-        month: "short",
-        year: "numeric"
-      }).format(date);
+      return new Intl.DateTimeFormat("en-GB", options).format(date);
     }
   }
 
   function formatKurdishDate(date, language = "en") {
     const parts = kurdishDateParts(date);
 
+    if (!parts) {
+      return "—";
+    }
+
     const month = language === "ckb"
       ? MONTHS_CKB[parts.month]
       : MONTHS[parts.month];
-
     const day = localizeDigits(parts.day, language);
     const year = localizeDigits(parts.year, language);
 
@@ -262,11 +372,16 @@
   }
 
   function formatNorwegianWeekRange(date) {
+    if (!isValidDate(date)) {
+      return "—";
+    }
+
     const monday = startOfWeek(date);
     const sunday = addDays(monday, 6);
 
-    const format = (value, options) =>
-      new Intl.DateTimeFormat("nb-NO", options).format(value);
+    function format(value, options) {
+      return new Intl.DateTimeFormat("nb-NO", options).format(value);
+    }
 
     const mondayDay = format(monday, { day: "numeric" });
     const sundayDay = format(sunday, { day: "numeric" });
@@ -285,6 +400,10 @@
   }
 
   function formatWeekRange(date, language = "en") {
+    if (!isValidDate(date)) {
+      return "—";
+    }
+
     if (language === "no") {
       return formatNorwegianWeekRange(date);
     }
@@ -296,24 +415,32 @@
   }
 
   function getHoliday(date, language = "en") {
+    if (!isValidDate(date)) {
+      return null;
+    }
+
     const key = [
       String(date.getMonth() + 1).padStart(2, "0"),
       String(date.getDate()).padStart(2, "0")
     ].join("-");
-
     const holiday = HOLIDAYS[key];
 
     return holiday ? holiday[language] || holiday.en : null;
   }
 
   function parseSearch(input, referenceDate = new Date()) {
-    const value = String(input || "").trim();
+    const value = normalizeDigits(input || "").trim();
 
-    if (!value) return null;
+    if (!value) {
+      return null;
+    }
 
+    const reference = isValidDate(referenceDate)
+      ? referenceDate
+      : new Date();
     let match;
 
-    // Week/year: 46 2026, 46-2026, week 46 2026, uke 46 2026.
+    // Week/year formats: 46 2026, 46-2026, week 46 2026, or uke 46 2026.
     match = /^(?:(?:week|weeks|uke|hefte|heftujmer|هەفتە)\s*)?(\d{1,2})[\s,/-]+(\d{4})$/i.exec(value);
 
     if (match) {
@@ -325,12 +452,12 @@
       return date ? { date, type: "week" } : null;
     }
 
-    // Week number in the current ISO week-year.
+    // A week number alone uses the reference date's ISO week-year.
     match = /^(?:(?:week|weeks|uke|hefte|heftujmer|هەفتە)\s*)?(\d{1,2})$/i.exec(value);
 
     if (match) {
       const date = isoWeekStart(
-        isoWeekYear(referenceDate),
+        isoWeekYear(reference),
         Number(match[1])
       );
 
@@ -359,17 +486,16 @@
       return date ? { date, type: "date" } : null;
     }
 
-    // A year alone opens ISO week 1.
+    // A year alone opens ISO week 1 for that year.
     if (/^\d{4}$/.test(value)) {
       const date = isoWeekStart(Number(value), 1);
-
       return date ? { date, type: "week" } : null;
     }
 
-    // Fall back to browser-supported date strings.
+    // Keep support for browser-recognized date strings.
     const parsed = new Date(value);
 
-    if (!Number.isNaN(parsed.getTime())) {
+    if (isValidDate(parsed)) {
       return { date: startOfDay(parsed), type: "date" };
     }
 

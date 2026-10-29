@@ -1,7 +1,8 @@
 
 /* =========================================================
    HEWTÛJMÊR — MAIN STYLES
-   Flat UI, shared theme, accessibility and application shell
+   Part 1 of 3
+   Theme, reset, application shell, header, sidebar, search
    ========================================================= */
 
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap");
@@ -152,8 +153,9 @@ a {
   color: var(--navy);
 }
 
-/* Keep ordinary pointer interaction clean without hiding
-   keyboard focus indicators. */
+/* ---------------------------------------------------------
+   ACCESSIBILITY AND FOCUS
+   --------------------------------------------------------- */
 
 :focus:not(:focus-visible) {
   outline: none;
@@ -180,6 +182,20 @@ a {
   z-index: 2;
   outline: var(--focus-outline);
   outline-offset: 2px;
+}
+
+/* Utility class used by accessible labels. */
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
 /* ---------------------------------------------------------
@@ -703,6 +719,13 @@ a {
   color: var(--text);
 }
 
+
+/* =========================================================
+   HEWTÛJMÊR — MAIN STYLES
+   Part 2 of 3
+   Date summary, language direction, Newroz sun and motion
+   ========================================================= */
+
 /* ---------------------------------------------------------
    DATE SUMMARY
    --------------------------------------------------------- */
@@ -753,8 +776,10 @@ a {
    LANGUAGE AND TEXT DIRECTION
    --------------------------------------------------------- */
 
-.sorani-text,
-[lang="ckb"] {
+/* Sorani uses Arabic-script typography. */
+
+[lang="ckb"],
+.sorani-text {
   font-family: "Noto Sans Arabic", Tahoma, Arial, sans-serif;
 }
 
@@ -763,18 +788,183 @@ a {
   unicode-bidi: isolate;
 }
 
+/* Kurmanji and English use Latin-script typography. */
+
+html[lang="kmr"],
+html[lang="kmr"] body,
+html[lang="kmr"] body *,
+html[lang="en"],
+html[lang="en"] body,
+html[lang="en"] body * {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 [lang="kmr"],
 [lang="en"] {
   direction: ltr;
   unicode-bidi: isolate;
 }
 
-[dir="rtl"] {
-  direction: rtl;
+/* Ensure form controls follow the selected language. */
+
+html[lang="kmr"] button,
+html[lang="kmr"] input,
+html[lang="kmr"] select,
+html[lang="kmr"] textarea,
+html[lang="en"] button,
+html[lang="en"] input,
+html[lang="en"] select,
+html[lang="en"] textarea {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-[dir="ltr"] {
-  direction: ltr;
+/* Ensure Kurmanji calendar numbers use Latin-script fonts. */
+
+html[lang="kmr"] .day-number,
+html[lang="kmr"] .day-cell,
+html[lang="kmr"] .weekday-heading,
+html[lang="kmr"] .mini-month-title,
+html[lang="kmr"] .mini-days,
+html[lang="kmr"] .mini-days span,
+html[lang="kmr"] .week-number,
+html[lang="kmr"] .date-card strong,
+html[lang="kmr"] #calendar-heading,
+html[lang="kmr"] #iso-week-number {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-variant-numeric: lining-nums;
+}
+
+/* ---------------------------------------------------------
+   NEWROZ SUN — SLOW ROTATION AND RADIO-WAVE PULSE
+   --------------------------------------------------------- */
+
+.newroz-sun {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  isolation: isolate;
+  animation: newroz-sun-rotation 50s linear infinite;
+}
+
+/* The 21 rays are positioned by JavaScript using --ray-angle. */
+
+.newroz-rays {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.newroz-ray {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 11px;
+  background: #ffcc00;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--ray-angle))
+    translateY(-14px);
+  transform-origin: center;
+}
+
+/* Yellow center with a subtle white outline pulse. */
+
+.newroz-sun::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  width: 54%;
+  height: 54%;
+  box-sizing: border-box;
+  border: 0.75px solid rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
+  background: #ffcc00d7;
+  transform: translate(-50%, -50%) scale(0.9);
+  transform-origin: center;
+  pointer-events: none;
+  animation: newroz-center-pulse 4s ease-in-out infinite;
+}
+
+/* Solid yellow center disk. */
+
+.newroz-sun-disk {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  width: 36%;
+  height: 36%;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 50%;
+  background: #ffcc00;
+  pointer-events: none;
+}
+
+/* Expanding white radio wave. */
+
+.newroz-sun::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  width: 54%;
+  height: 54%;
+  box-sizing: border-box;
+  border: 0.75px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  transform-origin: center;
+  pointer-events: none;
+  animation: newroz-radio-wave 4s ease-out infinite;
+}
+
+/* Keep the sun yellow in both themes. */
+
+.newroz-ray,
+.newroz-sun-disk {
+  background-color: #ffcc009b;
+}
+
+/* ---------------------------------------------------------
+   NEWROZ ANIMATIONS
+   --------------------------------------------------------- */
+
+@keyframes newroz-sun-rotation {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes newroz-center-pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+@keyframes newroz-radio-wave {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1.65);
+    opacity: 0;
+  }
 }
 
 /* ---------------------------------------------------------
@@ -794,7 +984,973 @@ a {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+
+  .newroz-sun,
+  .newroz-sun::before,
+  .newroz-sun::after {
+    animation: none !important;
+  }
 }
 
-/* Calendar-specific layout and responsive rules are in
-   style-calendar.css. */
+
+/* =========================================================
+   HEWTÛJMÊR — MAIN STYLES
+   Part 3 of 3
+   Calendar shell, scrolling, responsive design and fixes
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   CALENDAR PANEL
+   --------------------------------------------------------- */
+
+.calendar-panel {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  overflow: hidden;
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+  color: var(--text);
+}
+
+.panel-toolbar {
+  display: flex;
+  flex: 0 0 auto;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-bottom: var(--border-width) solid var(--border);
+  background: var(--panel);
+}
+
+.panel-heading {
+  min-width: 0;
+}
+
+.panel-heading h2 {
+  margin: 3px 0 0;
+  color: var(--text);
+  font-size: 1.15rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.toolbar-actions {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.step-controls {
+  gap: 5px;
+}
+
+.icon-button {
+  min-width: 40px;
+  padding-inline: 10px;
+  font-size: 1.3rem;
+}
+
+.calendar-content {
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) var(--panel);
+}
+
+.calendar-content::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.calendar-content::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: var(--border-strong);
+}
+
+.calendar-content::-webkit-scrollbar-track {
+  background: var(--panel);
+}
+
+/* ---------------------------------------------------------
+   WEEK VIEW
+   --------------------------------------------------------- */
+
+.week-grid {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+  padding: 12px;
+}
+
+.day-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 150px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 14px 6px;
+  overflow-wrap: anywhere;
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+  color: var(--text);
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease;
+}
+
+.day-card:hover {
+  border-color: var(--border-strong);
+  background: var(--panel-raised);
+}
+
+.day-card.selected {
+  border-color: var(--navy);
+  background: var(--cream);
+  color: var(--navy);
+}
+
+:root[data-theme="dark"] .day-card.selected {
+  border-color: var(--cream);
+  background: var(--cream);
+  color: var(--navy);
+}
+
+.day-card.today {
+  box-shadow: inset 0 0 0 2px var(--border-strong);
+}
+
+.day-card.selected.today {
+  box-shadow: inset 0 0 0 2px var(--navy);
+}
+
+.day-name {
+  color: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.day-number {
+  color: inherit;
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  font-weight: 600;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+
+.day-month {
+  color: inherit;
+  font-size: 0.8rem;
+}
+
+.day-card.holiday {
+  border-color: var(--border-strong);
+}
+
+.holiday-name {
+  max-width: 100%;
+  margin-top: auto;
+  color: var(--holiday-text);
+  font-size: 0.72rem;
+  overflow-wrap: anywhere;
+}
+
+/* ---------------------------------------------------------
+   MONTH VIEW
+   --------------------------------------------------------- */
+
+.month-grid {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 5px;
+  padding: 12px;
+}
+
+.weekday-heading {
+  display: grid;
+  min-width: 0;
+  min-height: 34px;
+  place-items: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.day-cell {
+  display: grid;
+  min-width: 0;
+  min-height: 48px;
+  place-items: center;
+  padding: 5px;
+  border: var(--border-width) solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease;
+}
+
+.day-cell:hover {
+  border-color: var(--border);
+  background: var(--panel-raised);
+}
+
+.day-cell.outside-month {
+  color: var(--muted);
+  opacity: 0.55;
+}
+
+.day-cell.today {
+  border-color: var(--border-strong);
+  font-weight: 700;
+}
+
+.day-cell.selected {
+  border-color: var(--navy);
+  background: var(--cream);
+  color: var(--navy);
+  font-weight: 700;
+}
+
+:root[data-theme="dark"] .day-cell.selected {
+  border-color: var(--cream);
+  background: var(--cream);
+  color: var(--navy);
+}
+
+.day-cell.holiday {
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* ---------------------------------------------------------
+   YEAR VIEW
+   --------------------------------------------------------- */
+
+.year-grid {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-content: start;
+  gap: 10px;
+  padding: 12px;
+}
+
+.mini-month {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+  color: var(--text);
+  text-align: start;
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease;
+}
+
+.mini-month:hover {
+  border-color: var(--border-strong);
+  background: var(--panel-raised);
+}
+
+.mini-month.selected,
+.mini-month.current-month {
+  border-color: var(--border-strong);
+  background: var(--panel-raised);
+}
+
+.mini-month.current-month {
+  box-shadow: inset 0 0 0 1px var(--border-strong);
+}
+
+.mini-month-title {
+  display: block;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.mini-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 2px;
+  color: var(--text);
+  font-size: 0.72rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.mini-days > span {
+  display: grid;
+  min-width: 0;
+  min-height: 22px;
+  place-items: center;
+  border-radius: 2px;
+  overflow-wrap: anywhere;
+}
+
+.mini-days > span[aria-hidden="true"] {
+  pointer-events: none;
+}
+
+.mini-days > span.today {
+  background: var(--cream);
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.mini-days > span.holiday-day {
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 2px;
+}
+
+/* ---------------------------------------------------------
+   MOBILE NAVIGATION AND FOOTER
+   --------------------------------------------------------- */
+
+.mobile-view-nav {
+  display: none;
+}
+
+.workspace-footer {
+  flex: 0 0 auto;
+  padding: 6px 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE LAYOUT
+   --------------------------------------------------------- */
+
+@media (max-width: 1100px) {
+  .app-layout {
+    grid-template-columns: 190px minmax(0, 1fr);
+  }
+
+  .workspace {
+    padding-inline: 12px;
+  }
+
+  .year-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .day-card {
+    min-height: 125px;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-layout {
+    grid-template-columns: 175px minmax(0, 1fr);
+  }
+
+  .topbar {
+    gap: 10px;
+    padding-inline: 14px;
+  }
+
+  .workspace {
+    padding: 12px;
+  }
+
+  .hero-card {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .hero-badge {
+    max-width: 50%;
+  }
+
+  .week-grid {
+    gap: 5px;
+    padding: 8px;
+  }
+
+  .day-card {
+    min-height: 115px;
+    padding: 10px 4px;
+  }
+
+  .year-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---------------------------------------------------------
+   SMALL SCREENS
+   --------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  html,
+  body {
+    width: 100%;
+    min-width: 0;
+  }
+
+  body {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+  }
+
+  .app-shell {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+  }
+
+  .topbar {
+    flex: 0 0 auto;
+    min-height: 60px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .brand {
+    gap: 7px;
+  }
+
+  .brand-name {
+    font-size: 0.95rem;
+  }
+
+  .brand-mark {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+
+  .topbar-actions {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .language-control select,
+  .button {
+    min-height: 36px;
+    padding: 6px 8px;
+    font-size: 0.85rem;
+  }
+
+  .app-layout {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .workspace {
+    width: 100%;
+    min-height: 0;
+    flex: 1 1 0;
+    gap: 10px;
+    padding: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+  }
+
+  .hero-card {
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .hero-copy h1 {
+    gap: 6px;
+  }
+
+  .week-prefix {
+    font-size: 1.15rem;
+  }
+
+  .week-number {
+    font-size: clamp(2.4rem, 12vw, 4rem);
+  }
+
+  .hero-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .hero-badge {
+    max-width: 48%;
+    gap: 5px;
+    padding: 6px;
+    font-size: 0.75rem;
+  }
+
+  .newroz-sun {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+
+  .date-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .date-card {
+    min-height: 54px;
+    padding: 7px 9px;
+  }
+
+  .mobile-view-nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .mobile-view-nav .nav-link {
+    justify-content: center;
+    min-height: 38px;
+    padding: 6px;
+    font-size: 0.85rem;
+  }
+
+  .calendar-panel {
+    min-height: 350px;
+    flex: 0 0 auto;
+  }
+
+  .panel-toolbar {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .panel-heading {
+    flex: 1 1 100%;
+  }
+
+  .panel-heading h2 {
+    font-size: 1rem;
+  }
+
+  .toolbar-actions {
+    width: 100%;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .calendar-content {
+    min-height: 260px;
+    flex: 1 1 auto;
+    overflow: auto;
+  }
+
+  .week-search {
+    width: 100%;
+  }
+
+  .week-search-hint {
+    font-size: 0.72rem;
+  }
+
+  .week-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    padding: 8px;
+  }
+
+  .day-card {
+    min-height: 110px;
+    padding: 10px 6px;
+  }
+
+  .day-number {
+    font-size: 1.8rem;
+  }
+
+  .month-grid {
+    gap: 3px;
+    padding: 7px;
+  }
+
+  .weekday-heading {
+    min-height: 30px;
+    font-size: 0.72rem;
+  }
+
+  .day-cell {
+    min-height: 40px;
+    padding: 3px;
+    font-size: 0.85rem;
+  }
+
+  .year-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    padding: 8px;
+  }
+
+  .mini-month {
+    gap: 5px;
+    padding: 7px;
+  }
+
+  .mini-month-title {
+    font-size: 0.8rem;
+  }
+
+  .mini-days {
+    gap: 1px;
+    font-size: 0.65rem;
+  }
+
+  .mini-days > span {
+    min-height: 19px;
+  }
+
+  .workspace-footer {
+    font-size: 0.72rem;
+  }
+}
+
+/* ---------------------------------------------------------
+   EXTRA SMALL SCREENS
+   --------------------------------------------------------- */
+
+@media (max-width: 380px) {
+  .topbar {
+    align-items: flex-start;
+  }
+
+  .topbar-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .hero-card {
+    flex-wrap: wrap;
+  }
+
+  .hero-badge {
+    max-width: 100%;
+  }
+
+  .week-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .year-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .date-card strong {
+    font-size: 0.8rem;
+  }
+}
+
+/* ---------------------------------------------------------
+   PRINT AND SAVE AS PDF
+   --------------------------------------------------------- */
+
+@media print {
+  :root {
+    color-scheme: light;
+
+    --page: #ffffff;
+    --topbar: #ffffff;
+    --sidebar: #ffffff;
+    --panel: #ffffff;
+    --panel-raised: #f4f4f4;
+    --panel-soft: #ffffff;
+
+    --text: #000000;
+    --muted: #444444;
+    --border: #cccccc;
+    --border-strong: #999999;
+  }
+
+  html,
+  body {
+    width: auto;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .app-shell {
+    display: block;
+    width: auto;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .app-layout {
+    display: block;
+    overflow: visible;
+  }
+
+  .topbar {
+    position: static;
+    border: 0;
+  }
+
+  .sidebar,
+  .mobile-view-nav,
+  .week-search,
+  .toolbar-actions,
+  .workspace-footer {
+    display: none !important;
+  }
+
+  .workspace {
+    display: block;
+    width: auto;
+    height: auto;
+    min-height: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .hero-card,
+  .date-strip,
+  .calendar-panel {
+    margin-bottom: 12px;
+    break-inside: avoid;
+  }
+
+  .calendar-panel {
+    display: block;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    border: 1px solid #cccccc;
+  }
+
+  .calendar-content {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .week-grid,
+  .month-grid,
+  .year-grid {
+    break-inside: avoid;
+  }
+
+  .newroz-sun,
+  .newroz-sun::before,
+  .newroz-sun::after {
+    animation: none !important;
+  }
+
+  * {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+/* ---------------------------------------------------------
+   FINAL LAYOUT SAFETY FIXES
+   --------------------------------------------------------- */
+
+/* Prevent grid and flex children from forcing horizontal overflow. */
+
+.app-layout > *,
+.workspace > *,
+.calendar-panel > *,
+.calendar-content > * {
+  min-width: 0;
+}
+
+/* Keep long translated text within its available space. */
+
+.hero-subtitle,
+.hero-badge,
+.date-card,
+.panel-heading,
+.mini-month-title {
+  overflow-wrap: anywhere;
+}
+
+/* Keep dropdown and autocomplete layers above calendar content. */
+
+.week-search {
+  z-index: 10;
+}
+
+.week-search-results {
+  z-index: 30;
+}
+
+/* Keep selected controls readable in both themes. */
+
+:root[data-theme="dark"] .nav-link.active,
+:root[data-theme="dark"] .day-card.selected,
+:root[data-theme="dark"] .day-cell.selected,
+:root[data-theme="dark"] .mini-days > span.today {
+  background: var(--cream);
+  color: var(--navy);
+}
+
+/* Keep the focus ring visible against light and dark surfaces. */
+
+:root[data-theme="dark"] {
+  --focus-outline: 3px solid var(--focus);
+}
+
+:where(
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  [tabindex]:not([tabindex="-1"])
+):focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 3px;
+}
+
+
+/* Use a Latin / English-style font for Kurmanji. */
+html[lang="kmr"],
+html[lang="kmr"] body,
+html[lang="kmr"] button,
+html[lang="kmr"] input,
+html[lang="kmr"] select,
+html[lang="kmr"] textarea {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Today's date in the year calendar. */
+.mini-days [data-date].today {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 1.8em;
+  height: 1.8em;
+  border: 2px solid #000305 !important;
+  border-radius: 50% !important;
+  color: inherit;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Today's date in the month calendar. */
+.day-cell.today {
+  border: 2px solid #000305 !important;
+  border-radius: 100% !important;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+
+}
+
+/* Today's date in the week view. */
+.day-card.today .day-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 2em;
+  min-height: 2em;
+  border: 2px solid #000305 !important;
+  border-radius: 50% !important;
+}
+
+/* Keep today's outline visible in dark mode too. */
+[data-theme="dark"] .mini-days [data-date].today,
+[data-theme="dark"] .day-cell.today,
+[data-theme="dark"] .day-card.today .day-number,
+.dark .mini-days [data-date].today,
+.dark .day-cell.today,
+.dark .day-card.today .day-number {
+  border-color: #000305 !important;
+}
+
+
+
+/* ---------------------------------------------------------
+   KURMANJI — SAME DIRECTION, FONT AND NUMBERS AS ENGLISH
+   --------------------------------------------------------- */
+
+html[lang="kmr"],
+html[lang="kmr"] body {
+  direction: ltr !important;
+  text-align: left;
+  unicode-bidi: isolate;
+}
+
+/* Force all Kurmanji elements to use left-to-right layout. */
+html[lang="kmr"] body *,
+html[lang="kmr"] body *::before,
+html[lang="kmr"] body *::after {
+  direction: ltr !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-variant-numeric: lining-nums tabular-nums;
+  text-align: inherit;
+}
+
+/* Keep numbers Latin and consistently aligned. */
+html[lang="kmr"] .day-number,
+html[lang="kmr"] .day-cell,
+html[lang="kmr"] .weekday-heading,
+html[lang="kmr"] .mini-month-title,
+html[lang="kmr"] .mini-days,
+html[lang="kmr"] .mini-days span,
+html[lang="kmr"] .week-number,
+html[lang="kmr"] .date-card strong,
+html[lang="kmr"] #calendar-heading,
+html[lang="kmr"] #iso-week-number {
+  direction: ltr !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-variant-numeric: lining-nums tabular-nums;
+  text-align: inherit;
+}
+
+/* Keep today's circle visible in both themes. */
+html[lang="kmr"] .day-cell.today,
+html[lang="kmr"] .mini-days [data-date].today,
+html[lang="kmr"] .day-card.today .day-number {
+  border-color: #000000 !important;
+}
