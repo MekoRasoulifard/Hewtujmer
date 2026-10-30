@@ -1,0 +1,31 @@
+
+{
+  "id": "./",
+  "name": "Hewtûjmêr — Kurdish Calendar",
+  "short_name": "Hewtûjmêr",
+  "description": "A multilingual Kurdish calendar with week, month and year views.",
+  "lang": "ckb",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
+  "background_color": "#ddf0ec",
+  "theme_color": "#ddf0ec",
+  "categories": [
+    "utilities",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "./icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

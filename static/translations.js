@@ -18,7 +18,18 @@
       kurdishDate: "بەرواری کوردی",
       gregorianDate: "بەرواری زایینی",
       solarHijriDate: "بەرواری هەتاوی",
-      newrozCountdown: "رۆژی ماوە بۆ نەورۆز",
+      newrozCountdown: "رۆژ ماوە بۆ نەورۆز",
+      installApp: "دامەزراندنی بەرنامە",
+      newrozSunLabel: "نیشانی خۆری نەورۆز",
+      movements: "جووڵەکان", movementsButton: "پیشاندانی ڕووداوەکانی ئەمڕۆ",
+      notes: "تێبینی", notesButton: "تێبینی و بیرخەرەوەکان", todayMovements: "ڕووداوەکانی ئەمڕۆ",
+      movementDismissHint: "بۆ داخستن، لە دەرەوە کلیک بکە یان Escape دابگرە.",
+      close: "داخستن", privateNotes: "تەنها لەم وێبگەڕەدا پارێزراوە", notesAndReminders: "تێبینی و بیرخەرەوەکان",
+      noteLabel: "تێبینی", reminderDate: "بەرواری بیرخەرەوە", reminderTime: "کات",
+      remindBefore: "پێش کاتەکە بیرم بخەرەوە", atTime: "لە هەمان کاتدا", custom: "کاتی تایبەت",
+      customMinutes: "چەند خولەک پێشتر؟", saveNote: "پاشەکەوتکردن", savedNotes: "تێبینییە پاشەکەوتکراوەکان",
+      noteSaved: "تێبینی پاشەکەوت کرا.", deleteNote: "سڕینەوە", noMovements: "هیچ ڕووداوێک بۆ ئەم ڕۆژە تۆمار نەکراوە.",
+      historicalEvent: "مێژوویی و کەلتووری", internationalDay: "ڕۆژی نێودەوڵەتی", anniversary: "یادی ساڵانە",
       weekView: "بینینی هەفتە",
       monthView: "بینینی مانگ",
       calendarView: "بینینی ساڵ",
@@ -59,6 +70,17 @@
       gregorianDate: "Dîroka Gregorî",
       solarHijriDate: "Dîroka Hicrî-Şemsî",
       newrozCountdown: "roj mane heta Newrozê",
+      installApp: "Sazkirina sepanê",
+      newrozSunLabel: "Nîşana rojê ya Newrozê",
+      movements: "Bûyer", movementsButton: "Bûyerên îro nîşan bide",
+      notes: "Têbînî", notesButton: "Têbînî û bîranîn", todayMovements: "Bûyerên îro",
+      movementDismissHint: "Ji bo girtinê li derveyî panelê bitikîne an Escape pêl bike.",
+      close: "Bigire", privateNotes: "Tenê di vê gerokê de têne hilanîn", notesAndReminders: "Têbînî û bîranîn",
+      noteLabel: "Têbînî", reminderDate: "Dîroka bîranînê", reminderTime: "Dem",
+      remindBefore: "Berî wê demê bîr bixe", atTime: "Di wê demê de", custom: "Taybet",
+      customMinutes: "Çend xulek berê?", saveNote: "Tomar bike", savedNotes: "Têbîniyên tomarkirî",
+      noteSaved: "Têbînî hate tomarkirin.", deleteNote: "Jê bibe", noMovements: "Ji bo vê rojê tu bûyer nehatiye tomarkirin.",
+      historicalEvent: "Dîrokî û çandî", internationalDay: "Roja navneteweyî", anniversary: "Salveger",
       weekView: "Dîtina hefteyê",
       monthView: "Dîtina mehê",
       calendarView: "Dîtina salê",
@@ -99,6 +121,15 @@
       gregorianDate: "Gregorian date",
       solarHijriDate: "Solar Hijri date",
       newrozCountdown: "days until Newroz",
+      installApp: "Install app",
+      newrozSunLabel: "Newroz sun emblem",
+      movements: "Events", movementsButton: "Show today's events", notes: "Notes", notesButton: "Notes and reminders",
+      todayMovements: "Today's events", movementDismissHint: "Click outside or press Escape to close.", close: "Close",
+      privateNotes: "Stored only in this browser", notesAndReminders: "Notes and reminders", noteLabel: "Note",
+      reminderDate: "Reminder date", reminderTime: "Time", remindBefore: "Remind me before", atTime: "At this time",
+      custom: "Custom", customMinutes: "Custom minutes before", saveNote: "Save note", savedNotes: "Saved notes",
+      noteSaved: "Your note has been saved.", deleteNote: "Delete", noMovements: "No events are recorded for this date.",
+      historicalEvent: "Historical and cultural", internationalDay: "International day", anniversary: "Anniversary",
       weekView: "Week view",
       monthView: "Month view",
       calendarView: "Year view",
@@ -123,6 +154,96 @@
       dateFormat: (day, month, year) => `${month} ${day}, ${year}`
     }
   };
+
+
+
+  // Solar Hijri display is localized here with the language dictionaries.
+function getSolarHijriParts(date) {
+    const formatter = new Intl.DateTimeFormat("en-u-ca-persian-nu-latn", {
+      day: "2-digit",
+      month: "numeric",
+      year: "numeric"
+    });
+    const formattedParts = formatter.formatToParts(date);
+    const values = {};
+
+    for (let i = 0; i < formattedParts.length; i++) {
+      const part = formattedParts[i];
+      if (part.type !== "literal") {
+        values[part.type] = part.value;
+      }
+    }
+
+    return values;
+  }
+
+  function showSoraniSolarHijriDate(element, parts) {
+    const months = [
+      "فەرڤەردین", "ئوردیبهێشت", "خۆرداد", "تیر", "مۆرداد", "شەهریوەر",
+      "مەهر", "ئابان", "ئازەر", "دەی", "بەهمەن", "ئێسفەند"
+    ];
+    const monthNumber = Number(parts.month);
+    const monthName = months[monthNumber - 1] || "";
+    const dateParts = [parts.day.padStart(2, "0"), monthName, parts.year];
+    const fragment = document.createDocumentFragment();
+
+    for (let i = 0; i < dateParts.length; i++) {
+      const part = document.createElement("span");
+      part.textContent = dateParts[i];
+      part.dir = "rtl";
+      part.lang = "ckb";
+      part.className = "solar-hijri-part";
+      fragment.appendChild(part);
+    }
+
+    element.replaceChildren(fragment);
+    element.dir = "rtl";
+    element.lang = "ckb";
+    element.classList.add("solar-hijri-sorani");
+  }
+
+  function updateSolarHijriDate(date, element, language) {
+    try {
+      const parts = getSolarHijriParts(date);
+
+      switch (language) {
+        case "ckb":
+          showSoraniSolarHijriDate(element, parts);
+          break;
+        case "kmr":
+          element.classList.remove("solar-hijri-sorani");
+          element.textContent = new Intl.DateTimeFormat("ku", {
+            calendar: "persian",
+            day: "numeric",
+            month: "short",
+            year: "numeric"
+          }).format(date);
+          element.dir = "ltr";
+          element.lang = "kmr";
+          break;
+        default:
+          element.classList.remove("solar-hijri-sorani");
+          element.textContent = new Intl.DateTimeFormat("en-GB", {
+            calendar: "persian",
+            day: "numeric",
+            month: "short",
+            year: "numeric"
+          }).format(date);
+          element.dir = "ltr";
+          element.lang = "en";
+          break;
+      }
+    } catch (error) {
+      element.textContent = "—";
+      element.dir = language === "ckb" ? "rtl" : "ltr";
+      element.lang = language;
+      element.classList.remove("solar-hijri-sorani");
+    }
+  }
+
+  window.CalendarSolarHijri = Object.freeze({
+    update: updateSolarHijriDate
+  });
 
   window.HewtujmerTranslations = Object.freeze(translations);
 })();

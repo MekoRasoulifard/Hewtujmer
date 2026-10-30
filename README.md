@@ -1,63 +1,77 @@
-Hewtûjmêr
+# Hewtûjmêr — Kurdish Calendar
 
-Hewtûjmêr is a multilingual Kurdish calendar application for viewing ISO week numbers, Kurdish and Gregorian dates, and important calendar information in a clean, responsive interface.
-Features
+A browser-based Kurdish calendar and Progressive Web App (PWA). The existing calendar calculations and navigation remain in place. The project uses plain HTML, CSS and JavaScript and can be deployed as a static site on Vercel.
 
-    Weekly calendar with ISO week numbers and Monday-to-Sunday date ranges
-    Kurdish and Gregorian date displays
-    Sorani Kurdish, Kurmanji Kurdish, and English language support
-    Week, month, and year calendar views
-    Navigation between dates, weeks, months, and years
-    Search for ISO weeks, years, and dates
-    Light and dark themes
-    Newroz countdown and holiday indicators
-    Responsive desktop and mobile layouts
-    Print-friendly calendar views
+## Project structure
 
-Technology
+```
+Hewtujmer
+├─ icons
+│  └─ icon-maskable-512.png
+├─ index.html
+├─ LICENSE
+├─ manifest.webmanifest
+├─ offline.html
+├─ README.md
+├─ service-worker.js
+├─ static
+│  ├─ app.js
+│  ├─ calendar-core.js
+│  ├─ calendar-events.js
+│  ├─ calendar-movements.json
+│  ├─ calendar-navigation.js
+│  ├─ calendar-view.js
+│  ├─ style-calendar.css
+│  ├─ style-print.css
+│  ├─ style-responsive.css
+│  ├─ style.css
+│  └─ translations.js
+└─ vercel.json
 
-    HTML5
-    CSS3
-    Vanilla JavaScript
-    Browser Intl.DateTimeFormat for localized date formatting
+```
 
-Hewtûjmêr runs in the browser and does not require a backend, database, or JavaScript framework.
-Project Structure
-text
+There are seven production JavaScript files, four CSS files and one JSON data file. The JavaScript and CSS file names are retained. Each production JavaScript file is below 400 lines. The uploaded source archive did not contain the `LICENSE` file shown in the folder tree, so I have not invented or replaced that legal file; copy your original `LICENSE` into the project root if you need it.
 
-Hewtujmer/
-├── index.html
-├── LICENSE
-├── vercel.json
-└── static/
-    ├── app.js
-    ├── calendar-core.js
-    ├── calendar-events.js
-    ├── calendar-navigation.js
-    ├── calendar-view.js
-    ├── README.md
-    ├── style-calendar.css
-    ├── style.css
-    └── translations.js
+## Calendar rules
 
-Requirements
+The original Kurdish calendar calculation is preserved. The Kurdish year starts on March 21 and uses the existing 700-year offset. ISO week calculations, localized digits, search formats, week/month/year views, language selection, theme selection, printing and date navigation remain available.
 
-    A modern web browser
-    Git, if you want to clone the repository
+## Newroz and header
 
-No build tools or package manager are required to run the application locally.
-Run Locally
+The Newroz countdown is calculated from the device's local date. The Newroz panel is shown in the same date-summary row as the Kurdish, Gregorian and Solar Hijri dates. The 21-ray sun rotates, while the central number 7 remains upright. The same sun mark appears before the Hewtûjmêr name in the header. Header alignment stays left-to-right when the language changes.
 
-Clone the repository:
-bash
+## Movements and international days
 
-git clone https://github.com/YOUR_USERNAME/Hewtujmer.git
-cd Hewtujmer
+`static/calendar-movements.json` contains the Sorani and Kurmanji movement entries prepared from the list supplied for this update. It includes Kurdish-calendar dates and separate Gregorian-date international observances. The app shows a short daily summary when the current date has entries. The information button opens the current day's list. Dates with entries are marked in the calendar.
 
-Open index.html in your browser.
-Deployment
+Some source entries had incomplete or unclear dates. Those entries were not assigned to a calendar day by guessing. The historical wording and dates should be reviewed before treating the list as a verified historical reference.
 
-The project includes a vercel.json configuration file for deployment with Vercel.
-License
+## Notes and reminders
 
-This project is licensed under the MIT License. See LICENSE for details.
+Notes and reminders are saved in the current browser using `localStorage`. No email address or account is needed for this local-only version. The reminder form supports 15 minutes, 30 minutes, one hour, or a custom number of minutes before the selected time. Browser notifications require permission. A reminder timer can run only while the app is open; it is not a reliable notification service after the browser or device is closed. Notes are not synced between devices and are not stored in Neon yet.
+
+For private cloud notes, cross-device sync or reliable reminders while the app is closed, add authentication and a protected backend with a database. Do not expose database credentials in browser code.
+
+## Offline and deployment
+
+The service worker caches each resource separately. A missing optional asset no longer causes the complete installation step to fail. The cache includes the manifest, icons, four stylesheets, six app modules and movement JSON data. The cache version is `hewtujmer-static-v4`.
+
+Run the app from the project root using a local web server. Do not open `index.html` as a `file://` URL. For local testing, use for example:
+
+```bash
+python -m http.server 5500
+```
+
+Open `http://127.0.0.1:5500/`. Deploy the project root to Vercel. Service workers require `localhost` or HTTPS.
+
+## Tests
+
+Run these commands from the project root:
+
+```bash
+node tests/calendar-core-smoke-test.js
+node tests/calendar-view-smoke-test.js
+node tests/movements-smoke-test.js
+node tests/pwa-assets-check.js
+node tests/service-worker-smoke-test.js
+```

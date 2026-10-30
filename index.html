@@ -1,4 +1,4 @@
-﻿
+
 <!doctype html>
 <html lang="ckb" dir="rtl" data-theme="light">
 <head>
@@ -9,22 +9,36 @@
     name="description"
     content="Hewtûjmêr — Kurdish calendar with week, month, and year views."
   >
-  <meta name="theme-color" content="#f4f6f8">
+  <meta name="theme-color" content="#ddf0ec">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./static/style.css">
+  <link rel="stylesheet" href="./static/style-calendar.css">
+  <link rel="stylesheet" href="./static/style-responsive.css">
+  <link rel="stylesheet" href="./static/style-print.css">
+
+  <!-- Use only one app icon -->
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="512x512"
+    href="./icons/icon-maskable-512.png"
+  >
+  <link
+    rel="apple-touch-icon"
+    href="./icons/icon-maskable-512.png"
+  >
 
   <title>Hewtûjmêr — کوردی</title>
 
-  <!-- Main application styles -->
-  <link rel="stylesheet" href="/static/style.css">
-  <link rel="stylesheet" href="/static/style-calendar.css">
-
-  <!-- Keep scripts in dependency order -->
-  <script src="/static/translations.js" defer></script>
-  <script src="/static/calendar-core.js" defer></script>
-  <script src="/static/calendar-view.js" defer></script>
-  <script src="/static/calendar-navigation.js" defer></script>
-  <script src="/static/calendar-events.js" defer></script>
-  <script src="/static/app.js" defer></script>
-
+  <script src="./static/translations.js" defer></script>
+  <script src="./static/calendar-core.js" defer></script>
+  <script src="./static/calendar-view.js" defer></script>
+  <script src="./static/calendar-navigation.js" defer></script>
+  <script src="./static/calendar-events.js" defer></script>
+  <script src="./static/app.js" defer></script>
 </head>
 
 <body>
@@ -32,7 +46,10 @@
 
     <header class="topbar">
       <a class="brand" href="#week" aria-label="Hewtûjmêr home">
-        <span class="brand-mark" aria-hidden="true">7</span>
+        <span class="brand-mark newroz-sun" aria-hidden="true">
+          <span class="newroz-rays"></span>
+          <span class="newroz-sun-disk">7</span>
+        </span>
         <span class="brand-name">Hewtûjmêr</span>
       </a>
 
@@ -41,7 +58,6 @@
           <span class="visually-hidden" data-i18n="languageLabel">
             زمان
           </span>
-
           <select id="language-select" aria-label="Language">
             <optgroup label="کوردی">
               <option value="ckb" selected>سۆرانی</option>
@@ -50,6 +66,16 @@
             <option value="en">English</option>
           </select>
         </label>
+
+        <button
+          class="button button-install"
+          id="install-app-button"
+          type="button"
+          data-i18n="installApp"
+          hidden
+        >
+          Install app
+        </button>
 
         <button
           class="button button-theme"
@@ -107,9 +133,12 @@
 
       <main class="workspace">
 
-          <h1 id="print-calendar-heading" class="print-calendar-heading" aria-hidden="true"></h1>
+        <h1
+          id="print-calendar-heading"
+          class="print-calendar-heading"
+          aria-hidden="true"
+        ></h1>
 
-        <!-- Search -->
         <section class="week-search" aria-label="Search calendar">
           <form
             id="week-search-form"
@@ -135,7 +164,7 @@
               spellcheck="false"
               placeholder="٤٤ ٢٠٢٦ یان ٢٠٢٦-١١-٠٩"
               data-i18n-placeholder="searchPlaceholder"
-              aria-describedby="week-search-hint week-search-error"
+              aria-describedby="week-search-error"
             >
 
             <button
@@ -149,14 +178,6 @@
             </button>
           </form>
 
-        <!--   <p
-            class="week-search-hint"
-            id="week-search-hint"
-            data-i18n="searchHint"
-          >
-            Search by ISO week number, week and year, or date.
-          </p> -->
-
           <p
             class="search-error"
             id="week-search-error"
@@ -167,13 +188,8 @@
           ></p>
         </section>
 
-        <!-- Current-week overview -->
         <section class="hero-card" aria-labelledby="hero-title">
           <div class="hero-copy">
-          <!--   <p class="eyebrow" data-i18n="currentIsoWeek">
-              هەفتەی ئایسۆی ئێستا
-            </p> -->
-
             <h1 id="hero-title">
               <span class="week-prefix" data-i18n="weekPrefix">
                 هەفتە
@@ -184,20 +200,25 @@
             <p class="hero-subtitle" id="hero-subtitle">—</p>
           </div>
 
-          <div class="hero-badge">
-            <span
-              class="newroz-sun"
-              aria-label="Kurdish sun with 21 rays"
-              role="img"
-            >
-              <span class="newroz-rays" aria-hidden="true"></span>
-              <span class="newroz-sun-disk" aria-hidden="true"></span>
+          <div class="hero-badge newroz-badge" aria-live="polite">
+            <span class="newroz-details">
+              <strong class="newroz-date" data-i18n="newrozStarts">
+                Newroz: March 21
+              </strong>
+              <span class="newroz-countdown-line">
+                <strong id="newroz-countdown">—</strong>
+                <span
+                  class="newroz-countdown-label"
+                  id="newroz-countdown-label"
+                  data-i18n="newrozCountdown"
+                >
+                  days until Newroz
+                </span>
+              </span>
             </span>
-            <span data-i18n="newrozStarts">Newroz: March 21</span>
           </div>
         </section>
 
-        <!-- Current date information -->
         <section class="date-strip" aria-label="Today's dates">
           <article class="date-card">
             <span class="date-card-label" data-i18n="kurdishDate">
@@ -219,36 +240,20 @@
             </span>
             <strong id="solar-hijri-date">—</strong>
           </article>
-
-          <article class="date-card countdown-card" aria-live="polite">
-            <strong id="newroz-countdown">—</strong>
-            <span
-              class="date-card-label sorani-text"
-              id="newroz-countdown-label"
-              lang="ckb"
-              dir="rtl"
-            >
-              رۆژی ماوە بۆ نەورۆز
-            </span>
-          </article>
         </section>
 
-        <!-- Mobile navigation -->
         <nav class="mobile-view-nav" aria-label="Calendar views">
           <a class="nav-link" href="#week" data-view-link="week">
             <span data-i18n="week">هەفتە</span>
           </a>
-
           <a class="nav-link" href="#month" data-view-link="month">
             <span data-i18n="month">مانگ</span>
           </a>
-
           <a class="nav-link" href="#calendar" data-view-link="calendar">
             <span data-i18n="calendar">ساڵنامە</span>
           </a>
         </nav>
 
-        <!-- Main calendar -->
         <section
           class="calendar-panel"
           aria-labelledby="calendar-heading"

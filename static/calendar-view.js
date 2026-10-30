@@ -1,54 +1,7 @@
-
 "use strict";
 
 (function () {
   const Core = window.CalendarCore;
-
-  function getElements() {
-    return {
-      content: document.querySelector("#calendar-content"),
-      heading: document.querySelector("#calendar-heading"),
-      eyebrow: document.querySelector("#view-eyebrow"),
-      weekNumber: document.querySelector("#iso-week-number"),
-      subtitle: document.querySelector("#hero-subtitle"),
-      todayButton: document.querySelector("#today-button")
-    };
-  }
-
-  function isTodayWeek(date, today = new Date()) {
-    const selectedWeek = Core.isoWeekInfo(date);
-    const currentWeek = Core.isoWeekInfo(today);
-
-    return (
-      selectedWeek.week === currentWeek.week &&
-      selectedWeek.year === currentWeek.year
-    );
-  }
-
-  function updateTodayButton(state, button) {
-    if (!button) return;
-
-    const active =
-      state.view === "week" &&
-      isTodayWeek(state.selectedDate);
-
-    button.classList.toggle("active", active);
-    button.setAttribute("aria-pressed", String(active));
-  }
-
-  function updateViewNavigation(state) {
-    document.querySelectorAll("[data-view-link]").forEach(link => {
-      const active = link.dataset.viewLink === state.view;
-
-      link.classList.toggle("active", active);
-
-      if (active) {
-        link.setAttribute("aria-current", "page");
-      } else {
-        link.removeAttribute("aria-current");
-      }
-    });
-  }
 
   function renderWeek(state) {
     const { content, heading, eyebrow, weekNumber } = getElements();
@@ -64,18 +17,18 @@
     heading.textContent =
       `${t.months[selectedParts.month]} ` +
       Core.localizeDigits(selectedParts.year, state.language);
-
     const grid = document.createElement("div");
     grid.className = "week-grid";
-
     for (let index = 0; index < 7; index += 1) {
       const date = Core.addDays(monday, index);
       const parts = Core.kurdishDateParts(date);
       const key = Core.dateKey(date);
       const holiday = Core.getHoliday(date, state.language);
+      const movements = window.CalendarMovements
+        ? window.CalendarMovements.getForDate(date, state.language)
+        : [];
       const selected = key === selectedKey;
       const today = key === todayKey;
-
       const card = document.createElement("button");
       card.type = "button";
       card.className = "day-card";
@@ -84,36 +37,40 @@
       card.classList.toggle("selected", selected);
       card.classList.toggle("today", today);
       card.classList.toggle("holiday", Boolean(holiday));
+      card.classList.toggle("has-movements", movements.length > 0);
 
       card.setAttribute("aria-pressed", String(selected));
       card.setAttribute(
         "aria-label",
         `${t.weekdays[index]}, ` +
           `${Core.formatKurdishDate(date, state.language)}` +
-          `${holiday ? `, ${holiday}` : ""}`
+          `${holiday ? `, ${holiday}` : ""}` +
+          `${movements.length ? ", " + movements.map(item => item.title).join("; ") : ""}`
       );
-
       if (today) {
         card.setAttribute("aria-current", "date");
       }
-
       const name = document.createElement("span");
       name.className = "day-name";
       name.textContent = t.weekdays[index];
-
       const number = document.createElement("span");
       number.className = "day-number";
       number.textContent = Core.localizeDigits(
         parts.day,
         state.language
       );
-
       const month = document.createElement("span");
       month.className = "day-month";
       month.textContent = t.months[parts.month];
 
       card.append(name, number, month);
-
+      if (movements.length) {
+        const movementMark = document.createElement("span");
+        movementMark.className = "movement-indicator";
+        movementMark.textContent = "ⓘ";
+        movementMark.setAttribute("aria-hidden", "true");
+        card.append(movementMark);
+      }
       if (holiday) {
         const holidayName = document.createElement("span");
         holidayName.className = "holiday-name";
@@ -125,7 +82,6 @@
     }
 
     content.replaceChildren(grid);
-
     if (weekNumber) {
       weekNumber.textContent = Core.localizeDigits(
         info.week,
@@ -138,17 +94,14 @@
     const { content, heading, eyebrow } = getElements();
     const t = window.HewtujmerTranslations[state.language];
     const parts = Core.kurdishDateParts(state.selectedDate);
-
     const firstDay = Core.kurdishMonthStart(
       parts.year,
       parts.month
     );
-
     const length = Core.kurdishMonthLength(
       parts.year,
       parts.month
     );
-
     const offset = Core.mondayIndex(firstDay);
 
     eyebrow.textContent = t.monthView;
@@ -156,30 +109,28 @@
     heading.textContent =
       `${t.months[parts.month]} ` +
       Core.localizeDigits(parts.year, state.language);
-
     const grid = document.createElement("div");
     grid.className = "month-grid";
-
-    t.weekdaysShort.forEach(label => {
+    for (let index = 0; index < t.weekdaysShort.length; index += 1) {
       const cell = document.createElement("div");
       cell.className = "weekday-heading";
-      cell.textContent = label;
+      cell.textContent = t.weekdaysShort[index];
       cell.setAttribute("aria-hidden", "true");
       grid.append(cell);
-    });
-
+    }
     const cellCount = Math.ceil((offset + length) / 7) * 7;
     const todayKey = Core.dateKey(new Date());
     const selectedKey = Core.dateKey(state.selectedDate);
-
     for (let index = 0; index < cellCount; index += 1) {
       const date = Core.addDays(firstDay, index - offset);
       const dateParts = Core.kurdishDateParts(date);
       const key = Core.dateKey(date);
       const holiday = Core.getHoliday(date, state.language);
+      const movements = window.CalendarMovements
+        ? window.CalendarMovements.getForDate(date, state.language)
+        : [];
       const selected = key === selectedKey;
       const today = key === todayKey;
-
       const cell = document.createElement("button");
       cell.type = "button";
       cell.className = "day-cell";
@@ -189,7 +140,6 @@
         dateParts.day,
         state.language
       );
-
       if (
         dateParts.month !== parts.month ||
         dateParts.year !== parts.year
@@ -200,14 +150,15 @@
       cell.classList.toggle("today", today);
       cell.classList.toggle("selected", selected);
       cell.classList.toggle("holiday", Boolean(holiday));
+      cell.classList.toggle("has-movements", movements.length > 0);
 
       cell.setAttribute("aria-pressed", String(selected));
       cell.setAttribute(
         "aria-label",
         `${Core.formatKurdishDate(date, state.language)}` +
-          `${holiday ? `, ${holiday}` : ""}`
+          `${holiday ? `, ${holiday}` : ""}` +
+          `${movements.length ? ", " + movements.map(item => item.title).join("; ") : ""}`
       );
-
       if (today) {
         cell.setAttribute("aria-current", "date");
       }
@@ -221,7 +172,6 @@
   function renderYear(state) {
     const { content, heading, eyebrow } = getElements();
     const t = window.HewtujmerTranslations[state.language];
-
     const today = Core.startOfDay(new Date());
     const todayParts = Core.kurdishDateParts(today);
     const selectedParts = Core.kurdishDateParts(state.selectedDate);
@@ -234,21 +184,17 @@
       year,
       state.language
     );
-
     const grid = document.createElement("div");
     grid.className = "year-grid";
-
     for (let month = 0; month < 12; month += 1) {
       const firstDay = Core.kurdishMonthStart(year, month);
       const length = Core.kurdishMonthLength(year, month);
       const offset = Core.mondayIndex(firstDay);
-
       const button = document.createElement("button");
       button.type = "button";
       button.className = "mini-month";
       button.dataset.month = String(month);
       button.dataset.year = String(year);
-
       const isCurrentMonth =
         year === todayParts.year && month === todayParts.month;
       const isSelectedMonth = month === selectedParts.month;
@@ -256,7 +202,6 @@
 
       button.classList.toggle("current-month", isCurrentMonth);
       button.classList.toggle("selected", isSelectedMonth);
-
       if (isCurrentMonth) {
         button.dataset.currentMonth = "true";
         button.setAttribute("aria-current", "date");
@@ -268,31 +213,28 @@
           (isCurrentMonth ? " (current month)" : "") +
           (isSelectedMonth ? " (selected month)" : "")
       );
-
       const title = document.createElement("span");
       title.className = "mini-month-title";
       title.textContent = t.months[month];
-
       const days = document.createElement("span");
       days.className = "mini-days";
-
-      t.weekdaysShort.forEach(label => {
+      for (let index = 0; index < t.weekdaysShort.length; index += 1) {
         const weekday = document.createElement("span");
-        weekday.textContent = label;
+        weekday.textContent = t.weekdaysShort[index];
         weekday.setAttribute("aria-hidden", "true");
         days.append(weekday);
-      });
-
+      }
       const count = Math.ceil((offset + length) / 7) * 7;
-
       for (let index = 0; index < count; index += 1) {
         const dayNumber = index - offset + 1;
         const day = document.createElement("span");
-
         if (dayNumber >= 1 && dayNumber <= length) {
           const date = Core.addDays(firstDay, dayNumber - 1);
           const key = Core.dateKey(date);
           const holiday = Core.getHoliday(date, state.language);
+          const movements = window.CalendarMovements
+            ? window.CalendarMovements.getForDate(date, state.language)
+            : [];
           const isToday = key === todayKey;
 
           day.textContent = Core.localizeDigits(
@@ -303,12 +245,13 @@
           // Keep the date available to your existing click handler.
           day.dataset.date = key;
           day.classList.toggle("today", isToday);
+          day.classList.toggle("has-movements", movements.length > 0);
 
           day.setAttribute(
             "aria-label",
-            Core.formatKurdishDate(date, state.language)
+            Core.formatKurdishDate(date, state.language) +
+              (movements.length ? ", " + movements.map(item => item.title).join("; ") : "")
           );
-
           if (isToday) {
             day.setAttribute("aria-current", "date");
             day.title = Core.formatKurdishDate(
@@ -316,7 +259,6 @@
               state.language
             );
           }
-
           if (holiday) {
             day.classList.add("holiday-day");
             day.title = holiday;
@@ -342,13 +284,10 @@
       if (!content.isConnected || !content.querySelector(".year-grid")) {
         return;
       }
-
       if (year !== todayParts.year) return;
-
       const currentMonth = content.querySelector(
         '.mini-month[data-current-month="true"]'
       );
-
       if (!currentMonth) return;
 
       currentMonth.scrollIntoView({
@@ -359,59 +298,77 @@
     });
   }
 
+  function getElements() {
+    return {
+      content: document.querySelector("#calendar-content"),
+      heading: document.querySelector("#calendar-heading"),
+      eyebrow: document.querySelector("#view-eyebrow"),
+      weekNumber: document.querySelector("#iso-week-number"),
+      subtitle: document.querySelector("#hero-subtitle"),
+      todayButton: document.querySelector("#today-button")
+    };
+  }
+
+  function isTodayWeek(date, today = new Date()) {
+    const selectedWeek = Core.isoWeekInfo(date);
+    const currentWeek = Core.isoWeekInfo(today);
+    return selectedWeek.week === currentWeek.week &&
+      selectedWeek.year === currentWeek.year;
+  }
+
+  function updateTodayButton(state, button) {
+    if (!button) return;
+    const active = state.view === "week" && isTodayWeek(state.selectedDate);
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  }
+
+  function updateViewNavigation(state) {
+    const links = document.querySelectorAll("[data-view-link]");
+    for (const link of links) {
+      const active = link.dataset.viewLink === state.view;
+      link.classList.toggle("active", active);
+      if (active) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    }
+  }
+
   function render(state) {
-    if (
-      !Core ||
-      !state ||
-      !(state.selectedDate instanceof Date)
-    ) {
-      return;
-    }
-
+    if (!Core || !state || !(state.selectedDate instanceof Date)) return;
     const elements = getElements();
-
-    if (!elements.content) return;
-
-    const t = window.HewtujmerTranslations?.[state.language];
-
-    if (!t) {
-      console.error(
-        `Missing translations for language: ${state.language}`
-      );
-      return;
-    }
-
-    const info = Core.isoWeekInfo(state.selectedDate);
-
+    const translations = window.HewtujmerTranslations[state.language];
+    if (!elements.content || !translations) return;
+    const week = Core.isoWeekInfo(state.selectedDate);
     if (elements.weekNumber) {
-      elements.weekNumber.textContent = Core.localizeDigits(
-        info.week,
-        state.language
-      );
+      elements.weekNumber.textContent = Core.localizeDigits(week.week, state.language);
     }
-
     if (elements.subtitle) {
-      elements.subtitle.textContent = Core.formatWeekRange(
-        state.selectedDate,
-        state.language
-      );
-
-      elements.subtitle.dir =
-        state.language === "ckb" ? "rtl" : "ltr";
+      elements.subtitle.textContent = Core.formatWeekRange(state.selectedDate, state.language);
+      elements.subtitle.dir = state.language === "ckb" ? "rtl" : "ltr";
     }
 
     updateTodayButton(state, elements.todayButton);
     updateViewNavigation(state);
 
-    if (state.view === "week") {
-      renderWeek(state);
-    } else if (state.view === "month") {
-      renderMonth(state);
-    } else if (state.view === "calendar") {
-      renderYear(state);
+    switch (state.view) {
+      case "week":
+        renderWeek(state);
+        break;
+      case "month":
+        renderMonth(state);
+        break;
+      case "calendar":
+        renderYear(state);
+        break;
+      default:
+        state.view = "week";
+        renderWeek(state);
+        break;
     }
   }
-
   window.CalendarView = Object.freeze({
     render,
     isTodayWeek,

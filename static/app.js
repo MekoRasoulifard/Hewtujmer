@@ -1,4 +1,4 @@
-﻿
+
 "use strict";
 
 (function () {
@@ -131,12 +131,26 @@
       element.dir = direction;
     }
 
+    const ariaLabelElements = document.querySelectorAll("[data-i18n-aria-label]");
+
+    for (const element of ariaLabelElements) {
+      const key = element.dataset.i18nAriaLabel;
+      if (typeof t[key] === "string") {
+        element.setAttribute("aria-label", t[key]);
+      }
+    }
+
+    const titleElements = document.querySelectorAll("[data-i18n-title]");
+    for (const element of titleElements) {
+      const key = element.dataset.i18nTitle;
+      if (typeof t[key] === "string") element.title = t[key];
+    }
+
     const countdownLabel = document.querySelector(
       "#newroz-countdown-label"
     );
 
     if (countdownLabel) {
-      countdownLabel.textContent = t.newrozCountdown;
       countdownLabel.lang = state.language;
       countdownLabel.dir = direction;
 
@@ -178,88 +192,7 @@
     render();
   }
 
-  function getSolarHijriParts(date) {
-    const formatter = new Intl.DateTimeFormat("en-u-ca-persian-nu-latn", {
-      day: "2-digit",
-      month: "numeric",
-      year: "numeric"
-    });
-    const formattedParts = formatter.formatToParts(date);
-    const values = {};
-
-    for (let i = 0; i < formattedParts.length; i++) {
-      const part = formattedParts[i];
-      if (part.type !== "literal") {
-        values[part.type] = part.value;
-      }
-    }
-
-    return values;
-  }
-
-  function showSoraniSolarHijriDate(element, parts) {
-    const months = [
-      "فەرڤەردین", "ئوردیبهێشت", "خۆرداد", "تیر", "مۆرداد", "شەهریوەر",
-      "مەهر", "ئابان", "ئازەر", "دەی", "بەهمەن", "ئێسفەند"
-    ];
-    const monthNumber = Number(parts.month);
-    const monthName = months[monthNumber - 1] || "";
-    const dateParts = [parts.day.padStart(2, "0"), monthName, parts.year];
-    const fragment = document.createDocumentFragment();
-
-    for (let i = 0; i < dateParts.length; i++) {
-      const part = document.createElement("span");
-      part.textContent = dateParts[i];
-      part.dir = "rtl";
-      part.lang = "ckb";
-      part.className = "solar-hijri-part";
-      fragment.appendChild(part);
-    }
-
-    element.replaceChildren(fragment);
-    element.dir = "rtl";
-    element.lang = "ckb";
-    element.classList.add("solar-hijri-sorani");
-  }
-
-  function updateSolarHijriDate(date, element) {
-    try {
-      const parts = getSolarHijriParts(date);
-
-      switch (state.language) {
-        case "ckb":
-          showSoraniSolarHijriDate(element, parts);
-          break;
-        case "kmr":
-          element.classList.remove("solar-hijri-sorani");
-          element.textContent = new Intl.DateTimeFormat("ku", {
-            calendar: "persian",
-            day: "numeric",
-            month: "short",
-            year: "numeric"
-          }).format(date);
-          element.dir = "ltr";
-          element.lang = "kmr";
-          break;
-        default:
-          element.classList.remove("solar-hijri-sorani");
-          element.textContent = new Intl.DateTimeFormat("en-GB", {
-            calendar: "persian",
-            day: "numeric",
-            month: "short",
-            year: "numeric"
-          }).format(date);
-          element.dir = "ltr";
-          element.lang = "en";
-          break;
-      }
-    } catch (error) {
-      element.textContent = "—";
-      element.dir = state.language === "ckb" ? "rtl" : "ltr";
-      element.lang = state.language;
-      element.classList.remove("solar-hijri-sorani");
-    }
-  }
+  
 
   function updateTodayCards() {
     const today = Core.startOfDay(new Date());
@@ -280,22 +213,12 @@
     }
 
     if (solarHijriDate) {
-      updateSolarHijriDate(today, solarHijriDate);
-    }
-
-    const newroz = new Date(
-      today.getFullYear(),
-      2,
-      21
-    );
-
-    if (today >= newroz) {
-      newroz.setFullYear(newroz.getFullYear() + 1);
+      window.CalendarSolarHijri.update(today, solarHijriDate, state.language);
     }
 
     if (countdown) {
       countdown.textContent = Core.localizeDigits(
-        Core.daysBetween(today, newroz),
+        Core.daysUntilNewroz(today),
         state.language
       );
     }
@@ -330,6 +253,59 @@
     heading.dir = state.language === "ckb" ? "rtl" : "ltr";
   }
 
+  function drawNewrozSun() {
+    const containers = document.querySelectorAll(".newroz-rays");
+
+    for (const container of containers) {
+      if (container.dataset.generated === "true") continue;
+      container.replaceChildren();
+
+      for (let index = 0; index < 21; index += 1) {
+        const ray = document.createElement("span");
+        ray.className = "newroz-ray";
+        ray.setAttribute("aria-hidden", "true");
+        ray.style.setProperty("--ray-angle", `${(index * 360) / 21}deg`);
+        container.append(ray);
+      }
+
+      container.dataset.generated = "true";
+    }
+  }
+
+  let deferredInstallPrompt = null;
+
+  function setupProgressiveWebApp() {
+    const installButton = document.querySelector("#install-app-button");
+
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register(new URL("service-worker.js", document.baseURI)).catch(error => {
+        console.warn("Hewtûjmêr offline support could not be registered.", error);
+      });
+    }
+
+    window.addEventListener("beforeinstallprompt", event => {
+      event.preventDefault();
+      deferredInstallPrompt = event;
+      if (installButton) installButton.hidden = false;
+    });
+
+    if (installButton) {
+      installButton.addEventListener("click", async () => {
+        if (!deferredInstallPrompt) return;
+
+        deferredInstallPrompt.prompt();
+        await deferredInstallPrompt.userChoice;
+        deferredInstallPrompt = null;
+        installButton.hidden = true;
+      });
+    }
+
+    window.addEventListener("appinstalled", () => {
+      deferredInstallPrompt = null;
+      if (installButton) installButton.hidden = true;
+    });
+  }
+
   function initialize() {
     let theme = "light";
 
@@ -341,6 +317,8 @@
 
     applyTheme(theme);
     updateTranslations();
+    drawNewrozSun();
+    setupProgressiveWebApp();
 
     window.CalendarEvents.bind(state, {
       render,
@@ -348,6 +326,7 @@
       toggleTheme
     });
 
+    window.addEventListener("calendar-movements-loaded", render);
     render();
   }
 
@@ -360,48 +339,4 @@
   } else {
     initialize();
   }
-})();// Draw 21 pointed rays for the Kurdish national sun emblem.
-function drawNewrozSun() {
-  const containers = document.querySelectorAll(".newroz-rays");
-
-  for (let containerIndex = 0; containerIndex < containers.length; containerIndex++) {
-    const container = containers[containerIndex];
-
-    // Prevent generating the rays more than once.
-    if (container.dataset.generated === "true") {
-      continue;
-    }
-
-    // Clear old generated rays if necessary.
-    container.replaceChildren();
-
-    // Generate the 21 rays.
-    for (let rayIndex = 0; rayIndex < 21; rayIndex++) {
-      const ray = document.createElement("span");
-      ray.className = "newroz-ray";
-      ray.setAttribute("aria-hidden", "true");
-      ray.style.setProperty("--ray-angle", `${(rayIndex * 360) / 21}deg`);
-      container.appendChild(ray);
-    }
-
-    // Mark this container as generated.
-    container.dataset.generated = "true";
-  }
-}
-
-// Run after the HTML has loaded.
-if (document.readyState === "loading") {
-  document.addEventListener(
-    "DOMContentLoaded",
-    drawNewrozSun,
-    { once: true }
-  );
-} else {
-  drawNewrozSun();
-}
-
-// Disable the browser context menu.
-document.addEventListener("contextmenu", event => {
-  event.preventDefault();
-});
-
+})();
