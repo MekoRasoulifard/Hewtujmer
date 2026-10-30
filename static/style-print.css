@@ -552,3 +552,12 @@ html[lang="ckb"] .week-search-input::placeholder {
     animation: none;
   }
 }
+
+
+@media print {
+  .install-overlay,
+  .reminder-toast,
+  .movement-overlay {
+    display: none !important;
+  }
+}

@@ -782,13 +782,6 @@ textarea:disabled {
   .note-form-row { grid-template-columns:1fr; }
 }
 
-.day-cell.has-movements::after {
-  content: ""; position: absolute; width: 5px; height: 5px; bottom: 3px; left: 50%;
-  border-radius: 50%; background: var(--focus); transform: translateX(-50%);
-}
-.day-cell { position: relative; }
-.mini-days .has-movements { text-decoration: underline; text-decoration-color: var(--focus); text-decoration-thickness: 2px; text-underline-offset: 2px; }
-.movement-indicator { display:inline-flex; align-items:center; justify-content:center; margin-inline-start:4px; color:var(--focus); font-size:.78rem; }
 
 .date-strip .newroz-badge {
   max-width: none; min-height: 58px; justify-content: flex-start;
@@ -800,3 +793,156 @@ textarea:disabled {
 
 [dir="rtl"] .topbar-actions .button { direction: rtl; }
 [dir="rtl"] .topbar-actions select { direction: rtl; }
+
+/* This Day view: public events and the user's date-specific notes. */
+.day-event-list {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 14px;
+}
+
+.day-event {
+  display: grid;
+  gap: 5px;
+  padding: 13px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+  color: var(--text);
+}
+
+.day-event strong {
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.day-event small {
+  color: var(--muted);
+}
+
+.day-empty {
+  margin: 0;
+  padding: 18px;
+  color: var(--muted);
+}
+
+.day-notes-heading {
+  margin: 12px 0 0;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.day-personal-note {
+  border-inline-start: 3px solid var(--focus);
+}
+
+/* First-open installation prompt and short-lived reminder notification. */
+.install-overlay[hidden] {
+  display: none;
+}
+
+.install-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(10, 18, 24, 0.48);
+}
+
+.install-dialog {
+  width: min(480px, 100%);
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--panel);
+  color: var(--text);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.22);
+}
+
+.install-dialog > p {
+  line-height: 1.6;
+}
+
+.install-instructions {
+  margin: 14px 0;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--topbar);
+  line-height: 1.6;
+}
+
+.install-instructions p {
+  margin: 0;
+}
+
+.install-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.install-actions button {
+  min-height: 40px;
+}
+
+.reminder-toast[hidden] {
+  display: none;
+}
+
+.reminder-toast {
+  position: fixed;
+  z-index: 1300;
+  inset-inline: 16px;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  display: flex;
+  width: min(480px, calc(100vw - 32px));
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-inline: auto;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--panel);
+  color: var(--text);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.reminder-toast-copy {
+  min-width: 0;
+}
+
+.reminder-toast-copy strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.reminder-toast-copy p {
+  margin: 0;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+#reminder-toast-close {
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.install-dialog :focus-visible,
+.reminder-toast :focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}

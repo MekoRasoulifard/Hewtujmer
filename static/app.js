@@ -30,7 +30,7 @@
   function readSavedView() {
     try {
       const savedView = localStorage.getItem("hewtujmer-view");
-      if (["week", "month", "calendar"].includes(savedView)) return savedView;
+      if (["week", "day", "month", "calendar"].includes(savedView)) return savedView;
     } catch (error) {
       // Continue with the URL's view when storage is unavailable.
     }
@@ -272,38 +272,8 @@
     }
   }
 
-  let deferredInstallPrompt = null;
-
   function setupProgressiveWebApp() {
-    const installButton = document.querySelector("#install-app-button");
-
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register(new URL("service-worker.js", document.baseURI)).catch(error => {
-        console.warn("Hewtûjmêr offline support could not be registered.", error);
-      });
-    }
-
-    window.addEventListener("beforeinstallprompt", event => {
-      event.preventDefault();
-      deferredInstallPrompt = event;
-      if (installButton) installButton.hidden = false;
-    });
-
-    if (installButton) {
-      installButton.addEventListener("click", async () => {
-        if (!deferredInstallPrompt) return;
-
-        deferredInstallPrompt.prompt();
-        await deferredInstallPrompt.userChoice;
-        deferredInstallPrompt = null;
-        installButton.hidden = true;
-      });
-    }
-
-    window.addEventListener("appinstalled", () => {
-      deferredInstallPrompt = null;
-      if (installButton) installButton.hidden = true;
-    });
+    window.CalendarNavigation.setupProgressiveWebApp();
   }
 
   function initialize() {
@@ -327,6 +297,7 @@
     });
 
     window.addEventListener("calendar-movements-loaded", render);
+    window.addEventListener("calendar-notes-updated", render);
     render();
   }
 

@@ -418,3 +418,9 @@
 /* -------------------------
    VERY SMALL PHONES
    ------------------------- */
+
+/* Keep the Newroz panel in the same date-summary grid column on mobile. */
+.date-strip > .newroz-badge {
+  width: 100%;
+  max-width: none;
+}

@@ -1,7 +1,7 @@
 "use strict";
 
 (function () {
-  const VALID_VIEWS = new Set(["week", "month", "calendar"]);
+  const VALID_VIEWS = new Set(["week", "day", "month", "calendar"]);
 
   function bind(state, actions) {
     const $ = selector => document.querySelector(selector);
@@ -28,22 +28,21 @@
     }
 
     function navigateToToday() {
+      const targetView = state.view === "day" ? "day" : "week";
       window.CalendarNavigation.setToday(state);
-      window.CalendarNavigation.syncHash("week");
+      window.CalendarNavigation.syncHash(targetView);
       render();
     }
 
-function navigateToView(view) {
-  if (!VALID_VIEWS.has(view)) return;
-  if (view === "calendar") {
-    // Reset to today's date before rendering the year.
-    state.selectedDate =
-      window.CalendarCore.startOfDay(new Date());
-  }
-  window.CalendarNavigation.setView(state, view);
-  window.CalendarNavigation.syncHash(view);
-  render();
-}
+    function navigateToView(view) {
+      if (!VALID_VIEWS.has(view)) return;
+      if (view === "calendar") {
+        state.selectedDate = window.CalendarCore.startOfDay(new Date());
+      }
+      window.CalendarNavigation.setView(state, view);
+      window.CalendarNavigation.syncHash(view);
+      render();
+    }
 
     function clearSearchError() {
       if (searchError) {
@@ -199,8 +198,6 @@ function navigateToView(view) {
   window.CalendarEvents = Object.freeze({ bind });
 })();
 
-"use strict";
-
 (function () {
   let movements = [];
   let gregorian = [];
@@ -272,6 +269,8 @@ function navigateToView(view) {
       if (!movementList || !movementTitle) return;
       const Core = window.CalendarCore;
       const t = window.HewtujmerTranslations[state.language];
+      clearTimeout(autoClose);
+      autoClose = null;
       const list = window.CalendarMovements.getForDate(date, state.language);
       movementTitle.textContent = Core.formatKurdishDate(date, state.language);
       movementList.replaceChildren();
@@ -289,11 +288,11 @@ function navigateToView(view) {
       openDialog(movementOverlay, movementDialog);
       if (auto) {
         clearTimeout(autoClose);
-        autoClose = setTimeout(() => closeDialog(movementOverlay), 5000);
+        autoClose = setTimeout(() => closeDialog(movementOverlay), 10000);
       }
     }
     document.querySelector("#movements-button")?.addEventListener("click", () => {
-      renderMovements(window.CalendarCore.startOfDay(new Date()), false);
+      renderMovements(state.selectedDate, false);
     });
     document.querySelector("#movement-close")?.addEventListener("click", () => closeDialog(movementOverlay));
     movementOverlay?.addEventListener("click", () => closeDialog(movementOverlay));
@@ -320,36 +319,25 @@ function navigateToView(view) {
         content.append(text, meta);
         const remove = document.createElement("button"); remove.type = "button"; remove.textContent = window.HewtujmerTranslations[state.language].deleteNote;
         remove.setAttribute("aria-label", window.HewtujmerTranslations[state.language].deleteNote + ": " + note.text.slice(0, 50));
-        remove.addEventListener("click", () => { writeNotes(readNotes().filter(item => item.id !== note.id)); renderNotes(); });
+        remove.addEventListener("click", () => {
+          writeNotes(readNotes().filter(item => item.id !== note.id));
+          renderNotes();
+          window.dispatchEvent(new Event("calendar-notes-updated"));
+        });
         li.append(content, remove); notesList.append(li);
       }
     }
 
-    function scheduleReminder(note, askPermission) {
-      const eventTime = new Date(note.date + "T" + note.time).getTime();
-      const reminderTime = eventTime - (note.remindBefore * 60000);
-      const delay = reminderTime - Date.now();
-      if (!Number.isFinite(delay) || delay <= 0 || delay > 2147480000) return;
-      if (askPermission && "Notification" in window && Notification.permission === "default") {
-        Notification.requestPermission().catch(() => {});
-      }
-      setTimeout(() => {
-        const title = "Hewtûjmêr";
-        if ("Notification" in window && Notification.permission === "granted") {
-          new Notification(title, { body: note.text });
-        } else {
-          window.alert(title + "\n\n" + note.text);
-        }
-      }, delay);
-    }
-    if ("Notification" in window && Notification.permission === "granted") {
-      for (const savedNote of readNotes()) scheduleReminder(savedNote, false);
+    for (const savedNote of readNotes()) {
+      window.CalendarNavigation.scheduleReminder(
+        savedNote, state.language, readNotes, writeNotes, false
+      );
     }
 
     document.querySelector("#notes-button")?.addEventListener("click", () => {
       const now = new Date();
-      if (dateInput && !dateInput.value) dateInput.value = window.CalendarCore.dateKey(now);
-      if (timeInput && !timeInput.value) timeInput.value = String(now.getHours()).padStart(2,"0") + ":" + String(now.getMinutes()).padStart(2,"0");
+      if (dateInput) dateInput.value = window.CalendarCore.dateKey(state.selectedDate || now);
+      if (timeInput) timeInput.value = "";
       renderNotes(); openDialog(notesOverlay, notesDialog);
       noteText?.focus();
     });
@@ -359,15 +347,32 @@ function navigateToView(view) {
     noteForm?.addEventListener("submit", event => {
       event.preventDefault();
       const text = noteText?.value.trim();
-      if (!text || !dateInput?.value || !timeInput?.value) return;
-      const minutes = preset.value === "custom" ? Number(customMinutes.value) : Number(preset.value);
-      if (!Number.isFinite(minutes) || minutes < 0 || minutes > 10080) return;
+      if (!text) return;
+      const date = dateInput?.value || window.CalendarCore.dateKey(state.selectedDate);
+      const time = timeInput?.value || "";
+      const minutes = time
+        ? (preset.value === "custom" ? Number(customMinutes.value) : Number(preset.value))
+        : 0;
+      if (time && (!Number.isFinite(minutes) || minutes < 0 || minutes > 10080)) return;
       const notes = readNotes();
-      const note = { id: Date.now().toString(36) + Math.random().toString(36).slice(2,7), text, date: dateInput.value, time: timeInput.value, remindBefore: minutes };
+      const note = {
+        id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
+        text,
+        date,
+        time,
+        remindBefore: minutes,
+        reminderShownAt: null
+      };
       notes.push(note);
-      if (!writeNotes(notes)) { noteStatus.textContent = "Storage is unavailable in this browser."; return; }
-      noteText.value = ""; noteStatus.textContent = window.HewtujmerTranslations[state.language].noteSaved; renderNotes();
-      scheduleReminder(note, true);
+      if (!writeNotes(notes)) {
+        noteStatus.textContent = "Storage is unavailable in this browser.";
+        return;
+      }
+      noteText.value = "";
+      noteStatus.textContent = window.HewtujmerTranslations[state.language].noteSaved;
+      renderNotes();
+      window.CalendarNavigation.scheduleReminder(note, state.language, readNotes, writeNotes, Boolean(time));
+      window.dispatchEvent(new Event("calendar-notes-updated"));
     });
     document.addEventListener("keydown", event => {
       if (event.key === "Escape") { closeDialog(movementOverlay); closeDialog(notesOverlay); }

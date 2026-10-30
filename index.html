@@ -11,34 +11,28 @@
   >
   <meta name="theme-color" content="#ddf0ec">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Hewtûjmêr">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-  <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="stylesheet" href="./static/style.css">
-  <link rel="stylesheet" href="./static/style-calendar.css">
-  <link rel="stylesheet" href="./static/style-responsive.css">
-  <link rel="stylesheet" href="./static/style-print.css">
-
-  <!-- Use only one app icon -->
-  <link
-    rel="icon"
-    type="image/png"
-    sizes="512x512"
-    href="./icons/icon-maskable-512.png"
-  >
-  <link
-    rel="apple-touch-icon"
-    href="./icons/icon-maskable-512.png"
-  >
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/style-calendar.css">
+  <link rel="stylesheet" href="/static/style-responsive.css">
+  <link rel="stylesheet" href="/static/style-print.css">
+  <link rel="icon" href="/icons/icon-maskable-512.png" type="image/png">
+  <link rel="apple-touch-icon" href="/icons/icon-maskable-512.png">
 
   <title>Hewtûjmêr — کوردی</title>
 
-  <script src="./static/translations.js" defer></script>
-  <script src="./static/calendar-core.js" defer></script>
-  <script src="./static/calendar-view.js" defer></script>
-  <script src="./static/calendar-navigation.js" defer></script>
-  <script src="./static/calendar-events.js" defer></script>
-  <script src="./static/app.js" defer></script>
+  <!-- Stylesheets are kept in cascade order and split by responsibility. -->
+
+  <!-- Classic scripts keep the browser architecture simple and dependency order clear. -->
+  <script src="/static/translations.js" defer></script>
+  <script src="/static/calendar-core.js" defer></script>
+  <script src="/static/calendar-view.js" defer></script>
+  <script src="/static/calendar-navigation.js" defer></script>
+  <script src="/static/calendar-events.js" defer></script>
+  <script src="/static/app.js" defer></script>
+
 </head>
 
 <body>
@@ -58,6 +52,7 @@
           <span class="visually-hidden" data-i18n="languageLabel">
             زمان
           </span>
+
           <select id="language-select" aria-label="Language">
             <optgroup label="کوردی">
               <option value="ckb" selected>سۆرانی</option>
@@ -75,6 +70,16 @@
           hidden
         >
           Install app
+        </button>
+
+        <button class="button header-tool-button" id="movements-button" type="button"
+          aria-label="Show today's movements" data-i18n-aria-label="movementsButton" data-i18n-title="movementsButton" title="Movements">
+          <span aria-hidden="true">ⓘ</span><span data-i18n="movements">Movements</span>
+        </button>
+
+        <button class="button header-tool-button" id="notes-button" type="button"
+          aria-label="Notes and reminders" data-i18n-aria-label="notesButton" data-i18n-title="notesButton" title="Notes and reminders">
+          <span aria-hidden="true">✎</span><span data-i18n="notes">Notes</span>
         </button>
 
         <button
@@ -114,6 +119,11 @@
             <span data-i18n="week">هەفتە</span>
           </a>
 
+          <a class="nav-link" href="#day" data-view-link="day">
+            <span class="nav-icon" aria-hidden="true">◷</span>
+            <span data-i18n="dayView">ئەمڕۆ</span>
+          </a>
+
           <a class="nav-link" href="#month" data-view-link="month">
             <span class="nav-icon" aria-hidden="true">▦</span>
             <span data-i18n="month">مانگ</span>
@@ -133,12 +143,9 @@
 
       <main class="workspace">
 
-        <h1
-          id="print-calendar-heading"
-          class="print-calendar-heading"
-          aria-hidden="true"
-        ></h1>
+          <h1 id="print-calendar-heading" class="print-calendar-heading" aria-hidden="true"></h1>
 
+        <!-- Search -->
         <section class="week-search" aria-label="Search calendar">
           <form
             id="week-search-form"
@@ -164,7 +171,7 @@
               spellcheck="false"
               placeholder="٤٤ ٢٠٢٦ یان ٢٠٢٦-١١-٠٩"
               data-i18n-placeholder="searchPlaceholder"
-              aria-describedby="week-search-error"
+              aria-describedby="week-search-hint week-search-error"
             >
 
             <button
@@ -178,6 +185,14 @@
             </button>
           </form>
 
+        <!--   <p
+            class="week-search-hint"
+            id="week-search-hint"
+            data-i18n="searchHint"
+          >
+            Search by ISO week number, week and year, or date.
+          </p> -->
+
           <p
             class="search-error"
             id="week-search-error"
@@ -188,8 +203,13 @@
           ></p>
         </section>
 
+        <!-- Current-week overview -->
         <section class="hero-card" aria-labelledby="hero-title">
           <div class="hero-copy">
+          <!--   <p class="eyebrow" data-i18n="currentIsoWeek">
+              هەفتەی ئایسۆی ئێستا
+            </p> -->
+
             <h1 id="hero-title">
               <span class="week-prefix" data-i18n="weekPrefix">
                 هەفتە
@@ -200,25 +220,9 @@
             <p class="hero-subtitle" id="hero-subtitle">—</p>
           </div>
 
-          <div class="hero-badge newroz-badge" aria-live="polite">
-            <span class="newroz-details">
-              <strong class="newroz-date" data-i18n="newrozStarts">
-                Newroz: March 21
-              </strong>
-              <span class="newroz-countdown-line">
-                <strong id="newroz-countdown">—</strong>
-                <span
-                  class="newroz-countdown-label"
-                  id="newroz-countdown-label"
-                  data-i18n="newrozCountdown"
-                >
-                  days until Newroz
-                </span>
-              </span>
-            </span>
-          </div>
         </section>
 
+        <!-- Current date information -->
         <section class="date-strip" aria-label="Today's dates">
           <article class="date-card">
             <span class="date-card-label" data-i18n="kurdishDate">
@@ -240,20 +244,42 @@
             </span>
             <strong id="solar-hijri-date">—</strong>
           </article>
+
+          <div class="hero-badge newroz-badge" aria-live="polite">
+            <span class="newroz-sun" role="img" data-i18n-aria-label="newrozSunLabel" aria-label="Newroz sun emblem">
+              <span class="newroz-rays" aria-hidden="true"></span>
+              <span class="newroz-sun-disk" aria-hidden="true">7</span>
+            </span>
+            <span class="newroz-details">
+              <strong class="newroz-date" data-i18n="newrozStarts">Newroz: March 21</strong>
+              <span class="newroz-countdown-line">
+                <strong id="newroz-countdown">—</strong>
+                <span class="newroz-countdown-label" id="newroz-countdown-label" data-i18n="newrozCountdown">days until Newroz</span>
+              </span>
+            </span>
+          </div>
         </section>
 
+        <!-- Mobile navigation -->
         <nav class="mobile-view-nav" aria-label="Calendar views">
           <a class="nav-link" href="#week" data-view-link="week">
             <span data-i18n="week">هەفتە</span>
           </a>
+
+          <a class="nav-link" href="#day" data-view-link="day">
+            <span data-i18n="dayView">ئەمڕۆ</span>
+          </a>
+
           <a class="nav-link" href="#month" data-view-link="month">
             <span data-i18n="month">مانگ</span>
           </a>
+
           <a class="nav-link" href="#calendar" data-view-link="calendar">
             <span data-i18n="calendar">ساڵنامە</span>
           </a>
         </nav>
 
+        <!-- Main calendar -->
         <section
           class="calendar-panel"
           aria-labelledby="calendar-heading"
@@ -326,5 +352,70 @@
       </main>
     </div>
   </div>
+
+  <section class="install-overlay" id="install-overlay" hidden aria-labelledby="install-title">
+    <div class="install-dialog" role="dialog" aria-modal="true" aria-labelledby="install-title" tabindex="-1">
+      <div class="dialog-heading">
+        <div>
+          <p class="dialog-eyebrow" data-i18n="installPromptEyebrow">Use Hewtûjmêr like an app</p>
+          <h2 id="install-title" data-i18n="installPromptTitle">Install Hewtûjmêr</h2>
+        </div>
+        <button class="dialog-close" id="install-close" type="button" aria-label="Close" data-i18n-aria-label="close">×</button>
+      </div>
+      <p id="install-prompt-message" data-i18n="installPromptMessage">Add the calendar to your mobile home screen for quick access.</p>
+      <div class="install-instructions" id="install-instructions" hidden>
+        <p id="install-instruction-text"></p>
+      </div>
+      <div class="install-actions">
+        <button class="button button-primary" id="install-confirm-button" type="button" data-i18n="installApp">Install app</button>
+        <button class="button" id="install-later-button" type="button" data-i18n="installLater">Not now</button>
+      </div>
+    </div>
+  </section>
+
+  <aside class="reminder-toast" id="reminder-toast" hidden role="status" aria-live="assertive" tabindex="0">
+    <div class="reminder-toast-copy">
+      <strong id="reminder-toast-title"></strong>
+      <p id="reminder-toast-message"></p>
+    </div>
+    <button id="reminder-toast-close" type="button" aria-label="Close" data-i18n-aria-label="close">×</button>
+  </aside>
+
+  <section class="movement-overlay" id="movement-overlay" hidden aria-labelledby="movement-title">
+    <div class="movement-dialog" role="dialog" aria-modal="true" aria-labelledby="movement-title" tabindex="-1">
+      <div class="dialog-heading">
+        <div><p class="dialog-eyebrow" data-i18n="todayMovements">Today’s movements</p><h2 id="movement-title">—</h2></div>
+        <button class="dialog-close" id="movement-close" type="button" aria-label="Close" data-i18n-aria-label="close">×</button>
+      </div>
+      <div class="movement-list" id="movement-list" aria-live="polite"></div>
+      <p class="dialog-hint" data-i18n="movementDismissHint">Click outside or press Escape to close.</p>
+    </div>
+  </section>
+
+  <section class="movement-overlay" id="notes-overlay" hidden aria-labelledby="notes-title">
+    <div class="movement-dialog notes-dialog" role="dialog" aria-modal="true" aria-labelledby="notes-title" tabindex="-1">
+      <div class="dialog-heading"><div><p class="dialog-eyebrow" data-i18n="privateNotes">Private to this browser</p><h2 id="notes-title" data-i18n="notesAndReminders">Notes and reminders</h2></div>
+        <button class="dialog-close" id="notes-close" type="button" aria-label="Close" data-i18n-aria-label="close">×</button></div>
+      <form id="note-form" class="note-form">
+        <label for="note-text" data-i18n="noteLabel">Note</label>
+        <textarea id="note-text" rows="3" maxlength="2000" required></textarea>
+        <div class="note-form-row">
+          <div><label for="reminder-date" data-i18n="reminderDate">Reminder date</label><input id="reminder-date" type="date"></div>
+          <div><label for="reminder-time" data-i18n="reminderTime">Time</label><input id="reminder-time" type="time"></div>
+        </div>
+        <label for="reminder-preset" data-i18n="remindBefore">Remind me before</label>
+        <select id="reminder-preset">
+          <option value="0" data-i18n="atTime">At this time</option>
+          <option value="15" selected>15 minutes</option>
+          <option value="30">30 minutes</option>
+          <option value="60">1 hour</option>
+          <option value="custom" data-i18n="custom">Custom</option>
+        </select>
+        <div id="custom-reminder-wrap" hidden><label for="custom-reminder" data-i18n="customMinutes">Custom minutes before</label><input id="custom-reminder" type="number" min="1" max="10080" value="15"></div>
+        <div class="note-actions"><button class="button button-primary" type="submit" data-i18n="saveNote">Save note</button><span id="note-status" role="status" aria-live="polite"></span></div>
+      </form>
+      <div class="saved-notes"><h3 data-i18n="savedNotes">Saved notes</h3><ul id="saved-notes-list"></ul></div>
+    </div>
+  </section>
 </body>
 </html>

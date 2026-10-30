@@ -37,7 +37,6 @@
       card.classList.toggle("selected", selected);
       card.classList.toggle("today", today);
       card.classList.toggle("holiday", Boolean(holiday));
-      card.classList.toggle("has-movements", movements.length > 0);
 
       card.setAttribute("aria-pressed", String(selected));
       card.setAttribute(
@@ -64,13 +63,6 @@
       month.textContent = t.months[parts.month];
 
       card.append(name, number, month);
-      if (movements.length) {
-        const movementMark = document.createElement("span");
-        movementMark.className = "movement-indicator";
-        movementMark.textContent = "ⓘ";
-        movementMark.setAttribute("aria-hidden", "true");
-        card.append(movementMark);
-      }
       if (holiday) {
         const holidayName = document.createElement("span");
         holidayName.className = "holiday-name";
@@ -150,7 +142,6 @@
       cell.classList.toggle("today", today);
       cell.classList.toggle("selected", selected);
       cell.classList.toggle("holiday", Boolean(holiday));
-      cell.classList.toggle("has-movements", movements.length > 0);
 
       cell.setAttribute("aria-pressed", String(selected));
       cell.setAttribute(
@@ -245,7 +236,6 @@
           // Keep the date available to your existing click handler.
           day.dataset.date = key;
           day.classList.toggle("today", isToday);
-          day.classList.toggle("has-movements", movements.length > 0);
 
           day.setAttribute(
             "aria-label",
@@ -318,7 +308,9 @@
 
   function updateTodayButton(state, button) {
     if (!button) return;
-    const active = state.view === "week" && isTodayWeek(state.selectedDate);
+    const isCurrentDay = Core.dateKey(state.selectedDate) === Core.dateKey(new Date());
+    const active = (state.view === "week" && isTodayWeek(state.selectedDate)) ||
+      (state.view === "day" && isCurrentDay);
     button.classList.toggle("active", active);
     button.setAttribute("aria-pressed", String(active));
   }
@@ -356,6 +348,9 @@
     switch (state.view) {
       case "week":
         renderWeek(state);
+        break;
+      case "day":
+        window.CalendarNavigation.renderDay(state);
         break;
       case "month":
         renderMonth(state);
