@@ -29,10 +29,3 @@ build/
 # Temporary files
 *.tmp
 *.bak
-<<<<<<< HEAD
-
-# Generated deployment/mobile asset copies
-public/
-www/
-=======
->>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
