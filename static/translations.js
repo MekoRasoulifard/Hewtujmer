@@ -63,11 +63,11 @@
         "پێنجشەممە", "هەینی", "شەممە", "یەکشەممە"
       ],
       weekdaysShort: ["د", "س", "چ", "پ", "ه", "ش", "ی"],
-      months: [
-        "خاکەلێوە", "گوڵان", "جۆزەردان", "پووشپەڕ",
-        "گەلاوێژ", "خەرمانان", "ڕەزبەر", "گەڵاڕێزان",
-        "سەرماوەز", "بەفرانبار", "ڕێبەندان", "ڕەشەمە"
-      ],
+    months: [
+  "جەنەوەری", "فێبرەوەری", "مارچی", "ئەپرێڵ",
+  "مەی", "جوون", "جوولای", "ئاگۆست",
+  "سێپتەمبەر", "ئۆکتۆبەر", "نۆڤەمبەر", "دێسەمبەر"
+],
       dateFormat: (day, month, year) => `${day}ی ${month} ${year}`
     },
 
@@ -131,11 +131,11 @@
         "În", "Şemî", "Yekşem"
       ],
       weekdaysShort: ["D", "S", "Ç", "P", "În", "Ş", "Y"],
-      months: [
-        "Xakelêwe", "Gulan", "Cizerdan", "Pûşper",
-        "Gelawêj", "Xermanan", "Rezber", "Gelarêzan",
-        "Sermawez", "Befranbar", "Rêbendan", "Reşeme"
-      ],
+   months: [
+  "Çile", "Sibat", "Adar", "Nîsan",
+  "Gulan", "Hezîran", "Tîrmeh", "Tebax",
+  "Îlon", "Cotmeh", "Mijdar", "Kanûn"
+],
       dateFormat: (day, month, year) => `${day}ê ${month} ${year}`
     },
 
@@ -197,11 +197,11 @@
         "Friday", "Saturday", "Sunday"
       ],
       weekdaysShort: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-      months: [
-        "Xakelêwe", "Gulan", "Cizerdan", "Pûşper",
-        "Gelawêj", "Xermanan", "Rezber", "Gelarêzan",
-        "Sermawez", "Befranbar", "Rêbendan", "Reşeme"
-      ],
+  months: [
+  "January", "February", "March", "April",
+  "May", "June", "July", "August",
+  "September", "October", "November", "December"
+],
       dateFormat: (day, month, year) => `${month} ${day}, ${year}`
     }
   };
