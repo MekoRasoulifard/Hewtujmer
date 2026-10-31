@@ -36,7 +36,11 @@
 
     function navigateToView(view) {
       if (!VALID_VIEWS.has(view)) return;
+<<<<<<< HEAD
       if (view === "calendar" || view === "day") {
+=======
+      if (view === "calendar") {
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
         state.selectedDate = window.CalendarCore.startOfDay(new Date());
       }
       window.CalendarNavigation.setView(state, view);
@@ -160,7 +164,10 @@
         }
 
         render();
+<<<<<<< HEAD
         window.CalendarExtras?.showMovements(date);
+=======
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
         return;
       }
       const monthButton = event.target.closest("[data-month]");
@@ -204,9 +211,15 @@
   let gregorian = [];
   let loading = null;
 
+<<<<<<< HEAD
   function refreshMovements() {
     if (loading) return loading;
     loading = fetch("/static/calendar-movements.json", { cache: "no-store" })
+=======
+  function loadMovements() {
+    if (loading) return loading;
+    loading = fetch("./static/calendar-movements.json")
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
       .then(response => {
         if (!response.ok) throw new Error("Movement data could not be loaded.");
         return response.json();
@@ -218,6 +231,7 @@
         return true;
       })
       .catch(error => {
+<<<<<<< HEAD
         console.warn("Hewtûjmêr is keeping the available offline event data.", error.message);
         return false;
       })
@@ -230,6 +244,14 @@
     return refreshMovements();
   }
 
+=======
+        console.error("Hewtûjmêr movement data could not be loaded.", error);
+        return false;
+      });
+    return loading;
+  }
+
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
   function getForDate(date, language) {
     const parts = window.CalendarCore.kurdishDateParts(date);
     const result = movements.filter(item => item.month === parts.month && item.day === parts.day);
@@ -242,9 +264,21 @@
   window.CalendarMovements = Object.freeze({
     getForDate,
     load: loadMovements,
+<<<<<<< HEAD
     refresh: refreshMovements,
     get total() { return movements.length + gregorian.length; }
   });
+=======
+    get total() { return movements.length + gregorian.length; }
+  });
+  const STORAGE_KEY = "hewtujmer-notes-v1";
+  function readNotes() {
+    try { const value = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); return Array.isArray(value) ? value : []; }
+    catch (error) { return []; }
+  }
+  function writeNotes(notes) { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(notes)); return true; } catch (error) { return false; } }
+
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
   function bindExtras(state) {
     const movementOverlay = document.querySelector("#movement-overlay");
     const notesOverlay = document.querySelector("#notes-overlay");
@@ -252,6 +286,54 @@
     const notesDialog = notesOverlay?.querySelector(".movement-dialog");
     const movementList = document.querySelector("#movement-list");
     const movementTitle = document.querySelector("#movement-title");
+<<<<<<< HEAD
+=======
+    let autoClose = null;
+    let lastFocus = null;
+
+    function openDialog(overlay, dialog) {
+      if (!overlay || !dialog) return;
+      lastFocus = document.activeElement;
+      overlay.hidden = false;
+      dialog.focus();
+    }
+    function closeDialog(overlay) {
+      if (!overlay || overlay.hidden) return;
+      overlay.hidden = true;
+      if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+    }
+    function renderMovements(date, auto) {
+      if (!movementList || !movementTitle) return;
+      const Core = window.CalendarCore;
+      const t = window.HewtujmerTranslations[state.language];
+      clearTimeout(autoClose);
+      autoClose = null;
+      const list = window.CalendarMovements.getForDate(date, state.language);
+      movementTitle.textContent = Core.formatKurdishDate(date, state.language);
+      movementList.replaceChildren();
+      if (!list.length) {
+        const empty = document.createElement("p"); empty.textContent = t.noMovements; movementList.append(empty);
+      } else {
+        for (const item of list) {
+          const article = document.createElement("article"); article.className = "movement-item";
+          const type = document.createElement("span"); type.className = "movement-type";
+          type.textContent = item.type === "international" ? t.internationalDay : item.type === "anniversary" ? t.anniversary : t.historicalEvent;
+          const title = document.createElement("strong"); title.textContent = item.title;
+          article.append(type, title); movementList.append(article);
+        }
+      }
+      openDialog(movementOverlay, movementDialog);
+      if (auto) {
+        clearTimeout(autoClose);
+        autoClose = setTimeout(() => closeDialog(movementOverlay), 10000);
+      }
+    }
+    document.querySelector("#movements-button")?.addEventListener("click", () => {
+      renderMovements(state.selectedDate, false);
+    });
+    document.querySelector("#movement-close")?.addEventListener("click", () => closeDialog(movementOverlay));
+    movementOverlay?.addEventListener("click", () => closeDialog(movementOverlay));
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
     const noteForm = document.querySelector("#note-form");
     const noteText = document.querySelector("#note-text");
     const dateInput = document.querySelector("#reminder-date");
@@ -261,6 +343,7 @@
     const customMinutes = document.querySelector("#custom-reminder");
     const notesList = document.querySelector("#saved-notes-list");
     const noteStatus = document.querySelector("#note-status");
+<<<<<<< HEAD
     const saveButton = document.querySelector("#note-save-button");
     const cancelEditButton = document.querySelector("#note-cancel-edit");
     const notificationButton = document.querySelector("#enable-notifications-button");
@@ -348,10 +431,13 @@
       if (saveButton) saveButton.textContent = translations().saveNote;
       if (cancelEditButton) cancelEditButton.hidden = true;
     }
+=======
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
 
     function renderNotes() {
       if (!notesList) return;
       notesList.replaceChildren();
+<<<<<<< HEAD
       const notes = window.HewtujmerData?.getNotes() || [];
       const visibleNotes = notes.filter(note => note.syncStatus !== "pendingDelete");
 
@@ -595,12 +681,63 @@
       }
 
       const note = {
+=======
+      const notes = readNotes();
+      if (!notes.length) { const li = document.createElement("li"); li.textContent = "—"; notesList.append(li); return; }
+      for (const note of notes) {
+        const li = document.createElement("li"); li.className = "saved-note";
+        const content = document.createElement("div");
+        const text = document.createElement("p"); text.textContent = note.text;
+        const meta = document.createElement("small"); meta.textContent = note.date + " · " + note.time;
+        content.append(text, meta);
+        const remove = document.createElement("button"); remove.type = "button"; remove.textContent = window.HewtujmerTranslations[state.language].deleteNote;
+        remove.setAttribute("aria-label", window.HewtujmerTranslations[state.language].deleteNote + ": " + note.text.slice(0, 50));
+        remove.addEventListener("click", () => {
+          writeNotes(readNotes().filter(item => item.id !== note.id));
+          renderNotes();
+          window.dispatchEvent(new Event("calendar-notes-updated"));
+        });
+        li.append(content, remove); notesList.append(li);
+      }
+    }
+
+    for (const savedNote of readNotes()) {
+      window.CalendarNavigation.scheduleReminder(
+        savedNote, state.language, readNotes, writeNotes, false
+      );
+    }
+
+    document.querySelector("#notes-button")?.addEventListener("click", () => {
+      const now = new Date();
+      if (dateInput) dateInput.value = window.CalendarCore.dateKey(state.selectedDate || now);
+      if (timeInput) timeInput.value = "";
+      renderNotes(); openDialog(notesOverlay, notesDialog);
+      noteText?.focus();
+    });
+    document.querySelector("#notes-close")?.addEventListener("click", () => closeDialog(notesOverlay));
+    notesOverlay?.addEventListener("click", event => { if (event.target === notesOverlay) closeDialog(notesOverlay); });
+    preset?.addEventListener("change", () => { if (customWrap) customWrap.hidden = preset.value !== "custom"; });
+    noteForm?.addEventListener("submit", event => {
+      event.preventDefault();
+      const text = noteText?.value.trim();
+      if (!text) return;
+      const date = dateInput?.value || window.CalendarCore.dateKey(state.selectedDate);
+      const time = timeInput?.value || "";
+      const minutes = time
+        ? (preset.value === "custom" ? Number(customMinutes.value) : Number(preset.value))
+        : 0;
+      if (time && (!Number.isFinite(minutes) || minutes < 0 || minutes > 10080)) return;
+      const notes = readNotes();
+      const note = {
+        id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
         text,
         date,
         time,
         remindBefore: minutes,
         reminderShownAt: null
       };
+<<<<<<< HEAD
 
       const submitButton = saveButton;
       if (submitButton) submitButton.disabled = true;
@@ -732,10 +869,37 @@
     });
 
     // The initial This Day popup is preserved, but only appears when events exist.
+=======
+      notes.push(note);
+      if (!writeNotes(notes)) {
+        noteStatus.textContent = "Storage is unavailable in this browser.";
+        return;
+      }
+      noteText.value = "";
+      noteStatus.textContent = window.HewtujmerTranslations[state.language].noteSaved;
+      renderNotes();
+      window.CalendarNavigation.scheduleReminder(note, state.language, readNotes, writeNotes, Boolean(time));
+      window.dispatchEvent(new Event("calendar-notes-updated"));
+    });
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") { closeDialog(movementOverlay); closeDialog(notesOverlay); }
+      const activeOverlay = !notesOverlay?.hidden ? notesOverlay : !movementOverlay?.hidden ? movementOverlay : null;
+      if (event.key === "Tab" && activeOverlay) {
+        const focusable = activeOverlay.querySelectorAll("button, input, textarea, select, [tabindex='0']");
+        if (!focusable.length) return;
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
+    });
+
+    // Load the supplied movement list, then show today's items briefly when available.
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
     window.CalendarMovements.load().then(loaded => {
       if (!loaded) return;
       const today = window.CalendarCore.startOfDay(new Date());
       if (window.CalendarMovements.getForDate(today, state.language).length) {
+<<<<<<< HEAD
         window.setTimeout(() => renderMovements(today, true), 450);
       }
     });
@@ -749,6 +913,11 @@
       showMovements: showDateEvents,
       openNotes: openNotesDialog
     });
+=======
+        setTimeout(() => renderMovements(today, true), 450);
+      }
+    });
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
   }
   window.CalendarExtras = Object.freeze({ bind: bindExtras });
 })();

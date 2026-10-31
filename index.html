@@ -31,10 +31,13 @@
   <script src="/static/calendar-view.js" defer></script>
   <script src="/static/calendar-navigation.js" defer></script>
   <script src="/static/calendar-events.js" defer></script>
+<<<<<<< HEAD
   <script src="/static/storage.js" defer></script>
   <script src="/static/runtime-config.js" defer></script>
   <script src="/static/data-service.js" defer></script>
   <script src="/static/update-manager.js" defer></script>
+=======
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
   <script src="/static/app.js" defer></script>
 
 </head>
@@ -76,6 +79,7 @@
           Install app
         </button>
 
+<<<<<<< HEAD
         <button
           class="button header-tool-button"
           id="notes-button"
@@ -87,6 +91,16 @@
         >
           <span aria-hidden="true">✎</span>
           <span data-i18n="notes">Notes</span>
+=======
+        <button class="button header-tool-button" id="movements-button" type="button"
+          aria-label="Show today's movements" data-i18n-aria-label="movementsButton" data-i18n-title="movementsButton" title="Movements">
+          <span aria-hidden="true">ⓘ</span><span data-i18n="movements">Movements</span>
+        </button>
+
+        <button class="button header-tool-button" id="notes-button" type="button"
+          aria-label="Notes and reminders" data-i18n-aria-label="notesButton" data-i18n-title="notesButton" title="Notes and reminders">
+          <span aria-hidden="true">✎</span><span data-i18n="notes">Notes</span>
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
         </button>
 
         <button
@@ -253,6 +267,13 @@
           </article>
 
           <div class="hero-badge newroz-badge" aria-live="polite">
+<<<<<<< HEAD
+=======
+            <span class="newroz-sun" role="img" data-i18n-aria-label="newrozSunLabel" aria-label="Newroz sun emblem">
+              <span class="newroz-rays" aria-hidden="true"></span>
+              <span class="newroz-sun-disk" aria-hidden="true">7</span>
+            </span>
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
             <span class="newroz-details">
               <strong class="newroz-date" data-i18n="newrozStarts">Newroz: March 21</strong>
               <span class="newroz-countdown-line">
@@ -264,6 +285,7 @@
         </section>
 
         <!-- Mobile navigation -->
+<<<<<<< HEAD
         <nav class="mobile-view-nav" aria-label="Main navigation">
           <a class="nav-link" href="#week" data-view-link="week">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M8 4v16M3 10h18"></path></svg>
@@ -285,6 +307,24 @@
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"></path></svg>
             <span data-i18n="notes">Notes</span>
           </button>
+=======
+        <nav class="mobile-view-nav" aria-label="Calendar views">
+          <a class="nav-link" href="#week" data-view-link="week">
+            <span data-i18n="week">هەفتە</span>
+          </a>
+
+          <a class="nav-link" href="#day" data-view-link="day">
+            <span data-i18n="dayView">ئەمڕۆ</span>
+          </a>
+
+          <a class="nav-link" href="#month" data-view-link="month">
+            <span data-i18n="month">مانگ</span>
+          </a>
+
+          <a class="nav-link" href="#calendar" data-view-link="calendar">
+            <span data-i18n="calendar">ساڵنامە</span>
+          </a>
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
         </nav>
 
         <!-- Main calendar -->
@@ -404,6 +444,7 @@
     <div class="movement-dialog notes-dialog" role="dialog" aria-modal="true" aria-labelledby="notes-title" tabindex="-1">
       <div class="dialog-heading"><div><p class="dialog-eyebrow" data-i18n="privateNotes">Private to this browser</p><h2 id="notes-title" data-i18n="notesAndReminders">Notes and reminders</h2></div>
         <button class="dialog-close" id="notes-close" type="button" aria-label="Close" data-i18n-aria-label="close">×</button></div>
+<<<<<<< HEAD
       <div class="notes-tabs" role="tablist" aria-label="Notes and reminders">
         <button id="notes-tab" type="button" role="tab" aria-selected="true" aria-controls="notes-panel" data-i18n="notes">Notes</button>
         <button id="reminders-tab" type="button" role="tab" aria-selected="false" aria-controls="reminders-panel" data-i18n="reminders">Reminders</button>
@@ -470,5 +511,28 @@
     <span data-i18n="updateReady">A new version is ready.</span>
     <button class="button button-primary" id="apply-app-update" type="button" data-i18n="updateNow">Update now</button>
   </aside>
+=======
+      <form id="note-form" class="note-form">
+        <label for="note-text" data-i18n="noteLabel">Note</label>
+        <textarea id="note-text" rows="3" maxlength="2000" required></textarea>
+        <div class="note-form-row">
+          <div><label for="reminder-date" data-i18n="reminderDate">Reminder date</label><input id="reminder-date" type="date"></div>
+          <div><label for="reminder-time" data-i18n="reminderTime">Time</label><input id="reminder-time" type="time"></div>
+        </div>
+        <label for="reminder-preset" data-i18n="remindBefore">Remind me before</label>
+        <select id="reminder-preset">
+          <option value="0" data-i18n="atTime">At this time</option>
+          <option value="15" selected>15 minutes</option>
+          <option value="30">30 minutes</option>
+          <option value="60">1 hour</option>
+          <option value="custom" data-i18n="custom">Custom</option>
+        </select>
+        <div id="custom-reminder-wrap" hidden><label for="custom-reminder" data-i18n="customMinutes">Custom minutes before</label><input id="custom-reminder" type="number" min="1" max="10080" value="15"></div>
+        <div class="note-actions"><button class="button button-primary" type="submit" data-i18n="saveNote">Save note</button><span id="note-status" role="status" aria-live="polite"></span></div>
+      </form>
+      <div class="saved-notes"><h3 data-i18n="savedNotes">Saved notes</h3><ul id="saved-notes-list"></ul></div>
+    </div>
+  </section>
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
 </body>
 </html>

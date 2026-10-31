@@ -342,7 +342,11 @@ textarea:disabled {
   font-variant-numeric: tabular-nums;
 }
 
+<<<<<<< HEAD
 .mini-days>span {
+=======
+.mini-days > span {
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
   display: grid;
   min-width: 0;
   min-height: 22px;
@@ -351,17 +355,29 @@ textarea:disabled {
   overflow-wrap: anywhere;
 }
 
+<<<<<<< HEAD
 .mini-days>span[aria-hidden="true"] {
   pointer-events: none;
 }
 
 .mini-days>span.today {
+=======
+.mini-days > span[aria-hidden="true"] {
+  pointer-events: none;
+}
+
+.mini-days > span.today {
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
   background: var(--cream);
   color: var(--navy);
   font-weight: 700;
 }
 
+<<<<<<< HEAD
 .mini-days>span.holiday-day {
+=======
+.mini-days > span.holiday-day {
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
   text-decoration: underline;
   text-decoration-color: var(--border-strong);
   text-underline-offset: 2px;
@@ -442,7 +458,10 @@ textarea:disabled {
    --------------------------------------------------------- */
 
 @media (max-width: 640px) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
   html,
   body {
     width: 100%;
@@ -566,7 +585,11 @@ textarea:disabled {
 
   .mobile-view-nav {
     display: grid;
+<<<<<<< HEAD
     grid-template-columns: repeat(4, minmax(0, 1fr));
+=======
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
     gap: 6px;
   }
 
@@ -667,7 +690,11 @@ textarea:disabled {
     font-size: 0.65rem;
   }
 
+<<<<<<< HEAD
   .mini-days>span {
+=======
+  .mini-days > span {
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
     min-height: 19px;
   }
 
@@ -707,10 +734,17 @@ textarea:disabled {
 
 /* Prevent grid and flex children from forcing horizontal overflow. */
 
+<<<<<<< HEAD
 .app-layout>*,
 .workspace>*,
 .calendar-panel>*,
 .calendar-content>* {
+=======
+.app-layout > *,
+.workspace > *,
+.calendar-panel > *,
+.calendar-content > * {
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
   min-width: 0;
 }
 
@@ -728,6 +762,7 @@ textarea:disabled {
 
 
 /* Header brand and accessible movements / notes dialogs. */
+<<<<<<< HEAD
 .topbar {
   direction: ltr;
 }
@@ -1021,6 +1056,119 @@ textarea:disabled {
   color: var(--text);
 }
 
+=======
+.topbar { direction: ltr; }
+.topbar-actions { direction: ltr; flex-wrap: nowrap; }
+.brand { direction: ltr; }
+.brand-name { direction: ltr; unicode-bidi: plaintext; }
+.brand-mark.newroz-sun {
+  display: inline-block; width: 36px; height: 36px; flex: 0 0 36px;
+  border: 0; border-radius: 0; background: transparent; overflow: visible;
+}
+.brand-mark .newroz-ray { width: 4px; height: 8px; }
+.brand-mark .newroz-sun-disk { display: grid; place-items: center; color: #111; font-size: 10px; font-weight: 900; line-height: 1; }
+.header-tool-button { gap: 5px; white-space: nowrap; }
+.movement-overlay[hidden] { display: none; }
+.movement-overlay {
+  position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center;
+  padding: 18px; background: rgba(10, 18, 24, .42);
+}
+.movement-dialog {
+  width: min(560px, 100%); max-height: min(78vh, 720px); overflow: auto;
+  padding: 22px; border: 1px solid var(--border); border-radius: 16px;
+  background: var(--surface, var(--white)); color: var(--text); box-shadow: 0 18px 55px rgba(0,0,0,.22);
+}
+.dialog-heading { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:14px; }
+.dialog-heading h2 { margin:3px 0 0; font-size:1.2rem; }
+.dialog-eyebrow,.dialog-hint { margin:0; color:var(--muted); font-size:.82rem; }
+.dialog-close { width:36px; height:36px; border:1px solid var(--border); border-radius:9px; background:transparent; color:inherit; font-size:1.5rem; cursor:pointer; }
+.movement-list { display:grid; gap:9px; }
+.movement-item { padding:12px; border:1px solid var(--border); border-radius:10px; }
+.movement-item strong { display:block; margin-bottom:4px; }
+.movement-type { display:inline-block; margin-bottom:5px; color:var(--muted); font-size:.72rem; }
+.dialog-hint { margin-top:14px; }
+.note-form { display:grid; gap:9px; }
+.note-form label,.saved-notes h3 { font-size:.86rem; font-weight:650; }
+.note-form textarea,.note-form input,.note-form select { width:100%; min-height:42px; padding:9px 11px; border:1px solid var(--border); border-radius:8px; background:var(--topbar); color:var(--text); font:inherit; }
+.note-form textarea { min-height:88px; resize:vertical; }
+.note-form-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.note-form-row > div { display:grid; gap:7px; }
+.note-actions { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-top:5px; }
+.button-primary { border-color:var(--navy); background:var(--navy); color:#fff; }
+.saved-notes { margin-top:20px; border-top:1px solid var(--border); padding-top:12px; }
+.saved-notes h3 { margin:0 0 8px; }
+#saved-notes-list { display:grid; gap:8px; padding:0; margin:0; list-style:none; }
+.saved-note { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; padding:9px; border:1px solid var(--border); border-radius:8px; }
+.saved-note p { margin:0; white-space:pre-wrap; overflow-wrap:anywhere; }
+.saved-note small { display:block; color:var(--muted); margin-top:4px; }
+.saved-note button { border:1px solid var(--border); border-radius:7px; padding:5px 8px; background:transparent; color:inherit; cursor:pointer; }
+.movement-dialog :focus-visible { outline:3px solid var(--focus); outline-offset:3px; }
+@media (max-width:680px) {
+  .topbar { gap:5px; padding:0 7px; }
+  .topbar-actions { gap:3px; }
+  .brand-mark.newroz-sun { width:29px; height:29px; flex-basis:29px; }
+  .header-tool-button { min-width:32px; padding:4px; font-size:0; }
+  .header-tool-button span:first-child { font-size:1rem; }
+  .note-form-row { grid-template-columns:1fr; }
+}
+
+
+.date-strip .newroz-badge {
+  max-width: none; min-height: 58px; justify-content: flex-start;
+  border: var(--border-width) solid var(--border); border-radius: var(--radius-md);
+  background: var(--panel); color: var(--text);
+}
+.date-strip .newroz-date { color: var(--text); }
+.date-strip .newroz-countdown-line { color: var(--text); }
+
+[dir="rtl"] .topbar-actions .button { direction: rtl; }
+[dir="rtl"] .topbar-actions select { direction: rtl; }
+
+/* This Day view: public events and the user's date-specific notes. */
+.day-event-list {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 14px;
+}
+
+.day-event {
+  display: grid;
+  gap: 5px;
+  padding: 13px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+  color: var(--text);
+}
+
+.day-event strong {
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.day-event small {
+  color: var(--muted);
+}
+
+.day-empty {
+  margin: 0;
+  padding: 18px;
+  color: var(--muted);
+}
+
+.day-notes-heading {
+  margin: 12px 0 0;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.day-personal-note {
+  border-inline-start: 3px solid var(--focus);
+}
+
+/* First-open installation prompt and short-lived reminder notification. */
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
 .install-overlay[hidden] {
   display: none;
 }
@@ -1028,6 +1176,7 @@ textarea:disabled {
 .install-overlay {
   position: fixed;
   inset: 0;
+<<<<<<< HEAD
   z-index: 1100;
   display: grid;
   place-items: center;
@@ -1037,21 +1186,54 @@ textarea:disabled {
 
 .install-dialog {
   width: min(430px, 100%);
+=======
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(10, 18, 24, 0.48);
+}
+
+.install-dialog {
+  width: min(480px, 100%);
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
   padding: 22px;
   border: 1px solid var(--border);
   border-radius: 16px;
   background: var(--panel);
   color: var(--text);
+<<<<<<< HEAD
   box-shadow: 0 18px 55px rgba(0, 0, 0, .3);
 }
 
 .install-text {
   color: var(--text);
   line-height: 1.55;
+=======
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.22);
+}
+
+.install-dialog > p {
+  line-height: 1.6;
+}
+
+.install-instructions {
+  margin: 14px 0;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--topbar);
+  line-height: 1.6;
+}
+
+.install-instructions p {
+  margin: 0;
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
 }
 
 .install-actions {
   display: flex;
+<<<<<<< HEAD
   gap: 10px;
   justify-content: flex-end;
   flex-wrap: wrap;
@@ -1292,3 +1474,70 @@ textarea:disabled {
   color: #ffffff;
   border-color: #b5c8ce;
 }
+=======
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.install-actions button {
+  min-height: 40px;
+}
+
+.reminder-toast[hidden] {
+  display: none;
+}
+
+.reminder-toast {
+  position: fixed;
+  z-index: 1300;
+  inset-inline: 16px;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  display: flex;
+  width: min(480px, calc(100vw - 32px));
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-inline: auto;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--panel);
+  color: var(--text);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.reminder-toast-copy {
+  min-width: 0;
+}
+
+.reminder-toast-copy strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.reminder-toast-copy p {
+  margin: 0;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+#reminder-toast-close {
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.install-dialog :focus-visible,
+.reminder-toast :focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+>>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
