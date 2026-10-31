@@ -419,7 +419,6 @@
    VERY SMALL PHONES
    ------------------------- */
 
-<<<<<<< HEAD
 /* Fixed, touch-friendly mobile navigation with safe-area spacing. */
 @media (max-width: 680px) {
   /* Use the fixed bottom navigation for Notes on phones. */
@@ -622,10 +621,4 @@
   .saved-note-actions {
     flex-wrap: wrap;
   }
-=======
-/* Keep the Newroz panel in the same date-summary grid column on mobile. */
-.date-strip > .newroz-badge {
-  width: 100%;
-  max-width: none;
->>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
 }
