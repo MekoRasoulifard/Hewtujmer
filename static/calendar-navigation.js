@@ -69,18 +69,8 @@
   }
 
   function setToday(state) {
-<<<<<<< HEAD
     if (!state || !Core) return state;
     state.selectedDate = Core.startOfDay(new Date());
-=======
-    if (!state || !Core) {
-      return state;
-    }
-
-    state.selectedDate = Core.startOfDay(new Date());
-    state.view = state.view === "day" ? "day" : "week";
-
->>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
     return state;
   }
 
@@ -180,17 +170,7 @@
     const standalone = window.matchMedia
       ? window.matchMedia("(display-mode: standalone)").matches
       : false;
-<<<<<<< HEAD
     return standalone || window.navigator.standalone === true;
-=======
-    let acceptedInstall = false;
-    try {
-      acceptedInstall = localStorage.getItem("hewtujmer-installed") === "yes";
-    } catch (error) {
-      // Storage is optional.
-    }
-    return standalone || window.navigator.standalone === true || acceptedInstall;
->>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
   }
 
   function openInstallDialog() {
@@ -230,15 +210,7 @@
     const instructionBox = document.querySelector("#install-instructions");
     const instructionText = document.querySelector("#install-instruction-text");
 
-<<<<<<< HEAD
     window.HewtujmerUpdates?.register();
-=======
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register(new URL("service-worker.js", document.baseURI)).catch(error => {
-        console.warn("Hewtûjmêr offline support could not be registered.", error);
-      });
-    }
->>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
 
     if (installedAsApp()) {
       if (installButton) installButton.hidden = true;
@@ -292,19 +264,10 @@
     }
 
     function dismissInstallPrompt() {
-<<<<<<< HEAD
       window.HewtujmerStorage?.set(
         "install-dismissed-until",
         String(Date.now() + 7 * 24 * 60 * 60 * 1000)
       );
-=======
-      try {
-        localStorage.setItem(
-          "hewtujmer-install-dismissed-until",
-          String(Date.now() + 7 * 24 * 60 * 60 * 1000)
-        );
-      } catch (error) { /* The prompt can still close for this session. */ }
->>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
       closeInstallDialog();
     }
 
@@ -317,16 +280,9 @@
       if (event.key === "Escape" && overlay && !overlay.hidden) dismissInstallPrompt();
     });
 
-<<<<<<< HEAD
     const dismissedUntil = Number(
       window.HewtujmerStorage?.get("install-dismissed-until", "0") || 0
     );
-=======
-    let dismissedUntil = 0;
-    try {
-      dismissedUntil = Number(localStorage.getItem("hewtujmer-install-dismissed-until") || 0);
-    } catch (error) { /* Show the prompt when storage is blocked. */ }
->>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
 
     if (Date.now() >= dismissedUntil) {
       window.setTimeout(() => {
@@ -361,7 +317,6 @@
   }
 
   function getNotesForDate(date) {
-<<<<<<< HEAD
     return window.HewtujmerData?.getNotesForDate(date) || [];
   }
 
@@ -369,65 +324,5 @@
   window.CalendarNavigation = Object.freeze({
     move, setView, setToday, readViewFromHash, syncHash, renderDay,
     getNotesForDate, setupProgressiveWebApp, showReminderToast
-=======
-    try {
-      const notes = JSON.parse(localStorage.getItem("hewtujmer-notes-v1") || "[]");
-      const key = window.CalendarCore.dateKey(date);
-      return Array.isArray(notes) ? notes.filter(note => note.date === key) : [];
-    } catch (error) {
-      return [];
-    }
-  }
-
-  function scheduleReminder(note, language, readNotes, writeNotes, askPermission) {
-    if (!note.time || note.reminderShownAt) return;
-
-    const eventTime = new Date(note.date + "T" + note.time).getTime();
-    const reminderTime = eventTime - (Number(note.remindBefore || 0) * 60000);
-    const delay = reminderTime - Date.now();
-    if (!Number.isFinite(delay) || eventTime < Date.now()) return;
-
-    if (askPermission && window.Notification && window.Notification.permission === "default") {
-      Promise.resolve(window.Notification.requestPermission()).catch(() => {});
-    }
-
-    function showReminder() {
-      const notes = readNotes();
-      const saved = notes.find(item => item.id === note.id);
-      if (!saved || saved.reminderShownAt) return;
-      saved.reminderShownAt = new Date().toISOString();
-      if (!writeNotes(notes)) return;
-
-      const activeLanguage = document.documentElement.lang || language;
-      showReminderToast(note, activeLanguage);
-      if (document.hidden && window.Notification?.permission === "granted") {
-        try {
-          const t = window.HewtujmerTranslations[activeLanguage];
-          const notification = new window.Notification(t.reminderNotificationTitle, { body: note.text });
-          window.setTimeout(() => notification.close(), 10000);
-        } catch (error) {
-          console.warn("The browser could not show a system reminder.", error);
-        }
-      }
-    }
-
-    function waitForReminderTime() {
-      const remaining = reminderTime - Date.now();
-      if (remaining > 2147480000) {
-        window.setTimeout(waitForReminderTime, 2147480000);
-      } else if (remaining > 0) {
-        window.setTimeout(showReminder, remaining);
-      } else {
-        showReminder();
-      }
-    }
-
-    waitForReminderTime();
-  }
-
-  window.CalendarNavigation = Object.freeze({
-    move, setView, setToday, readViewFromHash, syncHash, renderDay,
-    getNotesForDate, setupProgressiveWebApp, showReminderToast, scheduleReminder
->>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
   });
 })();

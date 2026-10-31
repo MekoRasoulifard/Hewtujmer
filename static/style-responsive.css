@@ -421,13 +421,8 @@
 
 /* Fixed, touch-friendly mobile navigation with safe-area spacing. */
 @media (max-width: 680px) {
-  /* Use the fixed bottom navigation for Notes on phones. */
-  .topbar #notes-button {
-    display: none;
-  }
-
   .workspace {
-    padding-bottom: calc(94px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(144px + env(safe-area-inset-bottom, 0px));
   }
 
   .mobile-view-nav {
@@ -488,6 +483,9 @@
     outline-offset: 2px;
   }
 
+  .topbar #notes-button {
+    display: none;
+  }
 
   .app-update-toast {
     right: 10px;
@@ -621,4 +619,218 @@
   .saved-note-actions {
     flex-wrap: wrap;
   }
+}
+
+/* Notes composer: one-step entry on mobile and a clearer desktop panel. */
+.note-form[hidden],
+.add-note-button[hidden] {
+  display: none !important;
+}
+
+.saved-notes-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.saved-notes-heading h3 {
+  margin: 0;
+}
+
+.add-note-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 8px 14px;
+  white-space: nowrap;
+}
+
+.note-form textarea#note-text {
+  min-height: 138px;
+  line-height: 1.65;
+}
+
+.notes-dialog {
+  max-height: min(78vh, 740px);
+  max-height: min(calc(var(--visual-viewport-height, 100dvh) - 24px), 740px);
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+.notes-dialog .note-actions {
+  position: sticky;
+  z-index: 2;
+  bottom: -1px;
+  padding: 10px 0 5px;
+  background: inherit;
+}
+
+.notes-dialog .note-actions .button {
+  min-height: 44px;
+  padding-inline: 16px;
+}
+
+.mobile-add-note {
+  display: none;
+}
+
+@media (max-width: 680px) {
+  .mobile-add-note {
+    position: fixed;
+    z-index: 90;
+    inset-inline-end: 14px;
+    bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 50px;
+    padding: 8px 16px;
+    border: 1px solid var(--navy);
+    border-radius: 999px;
+    background: var(--navy);
+    color: #fff;
+    box-shadow: 0 8px 22px rgb(17 43 49 / 22%);
+    font: inherit;
+    font-size: .86rem;
+    font-weight: 700;
+    cursor: pointer;
+    direction: inherit;
+  }
+
+  .mobile-add-note:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  .mobile-add-note-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgb(255 255 255 / 16%);
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  #notes-overlay {
+    place-items: end center;
+    padding: max(8px, env(safe-area-inset-top, 0px)) 8px 8px;
+  }
+
+  .notes-dialog {
+    width: 100%;
+    max-height: calc(var(--visual-viewport-height, 100dvh) - 16px);
+    margin: 0;
+    padding: 16px 14px calc(14px + env(safe-area-inset-bottom, 0px));
+    border-radius: 18px 18px 12px 12px;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-block: 16px;
+  }
+
+  .notes-dialog .dialog-heading {
+    position: sticky;
+    z-index: 3;
+    top: -16px;
+    margin: -16px -14px 12px;
+    padding: 14px;
+    background: inherit;
+  }
+
+  .notes-dialog .note-form {
+    gap: 10px;
+  }
+
+  .notes-dialog .note-form textarea#note-text {
+    min-height: 150px;
+    max-height: 34vh;
+    padding: 12px;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .notes-dialog .note-form input,
+  .notes-dialog .note-form select {
+    min-height: 46px;
+    font-size: 16px;
+  }
+
+  .notes-dialog .note-actions {
+    bottom: -14px;
+    margin-inline: -14px;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .notes-dialog .note-actions .button {
+    flex: 1 1 auto;
+    min-height: 48px;
+  }
+
+  .saved-notes-heading {
+    align-items: center;
+  }
+
+  .saved-notes-heading .add-note-button {
+    min-height: 46px;
+  }
+
+  .saved-note {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .saved-note-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(78px, 1fr));
+    width: 100%;
+    gap: 7px;
+  }
+
+  .saved-note-actions button {
+    min-height: 42px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 380px) {
+  .mobile-add-note {
+    min-height: 46px;
+    padding: 7px 12px;
+    font-size: .8rem;
+  }
+
+  .saved-notes-heading {
+    align-items: flex-start;
+  }
+}
+
+/* Keep date/time controls stable in Kurdish right-to-left layouts. */
+.notes-dialog input[type="date"],
+.notes-dialog input[type="time"],
+.notes-dialog .saved-note small {
+  direction: ltr;
+  text-align: start;
+  unicode-bidi: isolate;
+}
+
+.notes-dialog textarea,
+.notes-dialog input[type="text"] {
+  text-align: start;
+}
+
+.note-status {
+  min-height: 1.4em;
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: .84rem;
+  line-height: 1.5;
+}
+
+.note-status:empty {
+  display: none;
 }

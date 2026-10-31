@@ -125,25 +125,11 @@
   ];
 
   const MONTHS_CKB = [
-<<<<<<< HEAD
-    "خاکەلێوە", "بانەمەڕ", "جۆزەردان", "پووشپەڕ",
-    "گەلاوێژ", "خەرمانان", "ڕەزبەر", "خەزەڵوەر",
-    "سەرماوەز", "بەفرانبار", "ڕێبەندان", "ڕەشەمە"
-  ];
-
-  const GREGORIAN_MONTHS_CKB = [
-    "جانیوەری", "فێبریوەری", "مارچ", "ئەپرێل",
-    "مەی", "جوون", "جولای", "ئۆگەست",
-    "سێپتەمبەر", "ئوکتۆبەر", "نۆڤەمبەر", "دیسێمبەر"
-  ];
-
-=======
     "خاکەلێوە", "گوڵان", "جۆزەردان", "پووشپەڕ",
     "گەلاوێژ", "خەرمانان", "ڕەزبەر", "گەڵاڕێزان",
     "سەرماوەز", "بەفرانبار", "ڕێبەندان", "ڕەشەمە"
   ];
 
->>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
   const HOLIDAYS = {
     "03-21": {
       en: "Newroz",
@@ -216,22 +202,11 @@ function localizeDigits(value, language = "en") {
 }
 
   function formatGregorian(date, language = "en") {
-<<<<<<< HEAD
-    if (language === "ckb") {
-      const day = localizeDigits(date.getDate(), language);
-      const month = GREGORIAN_MONTHS_CKB[date.getMonth()];
-      const year = localizeDigits(date.getFullYear(), language);
-      return `${day}ی ${month}ی ${year}ی زایینی`;
-    }
-
-    const locale = language === "kmr" ? "ku" : "en-GB";
-=======
     const locale = language === "ckb"
       ? "ckb"
       : language === "kmr"
         ? "ku"
         : "en-GB";
->>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
     try {
       return new Intl.DateTimeFormat(locale, {
         day: "numeric",
@@ -255,11 +230,7 @@ function localizeDigits(value, language = "en") {
     const day = localizeDigits(parts.day, language);
     const year = localizeDigits(parts.year, language);
     if (language === "ckb") {
-<<<<<<< HEAD
-      return `${day}ی ${month}ی ${year}ی کوردی`;
-=======
       return `${day}ی ${month} ${year}`;
->>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
     }
     if (language === "kmr") {
       return `${day}ê ${month} ${year}`;

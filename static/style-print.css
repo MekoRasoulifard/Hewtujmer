@@ -432,14 +432,7 @@ html[lang="en"] body * {
     color: var(--holiday-text) !important;
   }
 
-<<<<<<< HEAD
   .newroz-rays {
-=======
-  .newroz-sun,
-  .newroz-rays,
-  .newroz-sun::before,
-  .newroz-sun::after {
->>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
     animation: none !important;
   }
 }
@@ -482,10 +475,7 @@ html[lang="ckb"] .week-search-input::placeholder {
   line-height: 1;
 }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb
 .newroz-details {
   display: flex;
   min-width: 0;
@@ -553,26 +543,7 @@ html[lang="ckb"] .week-search-input::placeholder {
 }
 
 @media (prefers-reduced-motion: reduce) {
-<<<<<<< HEAD
   .newroz-rays {
     animation: none;
   }
 }
-=======
-  .newroz-sun,
-  .newroz-rays,
-  .newroz-sun::before,
-  .newroz-sun::after {
-    animation: none;
-  }
-}
-
-
-@media print {
-  .install-overlay,
-  .reminder-toast,
-  .movement-overlay {
-    display: none !important;
-  }
-}
->>>>>>> 26494999ea39bc70bfc6b80d481768d8b1e343eb

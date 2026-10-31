@@ -31,7 +31,7 @@
       reminderNotificationTitle: "بیرخەرەوەی Hewtûjmêr",
       newrozSunLabel: "نیشانی خۆری نەورۆز",
       movements: "جووڵەکان", movementsButton: "پیشاندانی ڕووداوەکانی ئەمڕۆ",
-      notes: "تێبینی", notesButton: "تێبینی و بیرخەرەوەکان", reminders: "بیرخەرەوەکان", todayMovements: "ڕووداوەکانی ئەمڕۆ",
+      notes: "تێبینی", addNote: "زیادکردنی تێبینی", notePlaceholder: "تێبینییەک لێرە بنووسە...", notesButton: "تێبینی و بیرخەرەوەکان", reminders: "بیرخەرەوەکان", todayMovements: "ڕووداوەکانی ئەمڕۆ",
       movementDismissHint: "بۆ داخستن، لە دەرەوە کلیک بکە یان Escape دابگرە.",
       close: "داخستن", privateNotes: "بۆ ئەم وێبگەڕە تایبەتە", notesAndReminders: "تێبینی و بیرخەرەوەکان",
       reminderTitle: "ناونیشان", reminderDescription: "وردەکاری", saveReminder: "پاشەکەوتکردنی بیرخەرەوە",
@@ -99,7 +99,7 @@
       reminderNotificationTitle: "Bîranîna Hewtûjmêr",
       newrozSunLabel: "Nîşana rojê ya Newrozê",
       movements: "Bûyer", movementsButton: "Bûyerên îro nîşan bide",
-      notes: "Têbînî", notesButton: "Têbînî û bîranîn", reminders: "Bîranîn", todayMovements: "Bûyerên îro",
+      notes: "Têbînî", addNote: "Têbîniyek zêde bike", notePlaceholder: "Têbîniya xwe li vir binivîse...", notesButton: "Têbînî û bîranîn", reminders: "Bîranîn", todayMovements: "Bûyerên îro",
       movementDismissHint: "Ji bo girtinê li derveyî panelê bitikîne an Escape pêl bike.",
       close: "Bigire", privateNotes: "Taybet ji bo vê gerokê", notesAndReminders: "Têbînî û bîranîn",
       reminderTitle: "Sernav", reminderDescription: "Danasîn", saveReminder: "Bîranînê tomar bike",
@@ -167,7 +167,7 @@
       reminderNotificationTitle: "Hewtûjmêr reminder",
       newrozSunLabel: "Newroz sun emblem",
       movements: "Events", movementsButton: "Show today's events", notes: "Notes", notesButton: "Notes and reminders", reminders: "Reminders",
-      todayMovements: "Today's events", movementDismissHint: "Click outside or press Escape to close.", close: "Close",
+      todayMovements: "Today's events", addNote: "Add note", notePlaceholder: "Write your note here...", movementDismissHint: "Click outside or press Escape to close.", close: "Close",
       privateNotes: "Private to this browser", notesAndReminders: "Notes and reminders", noteLabel: "Note",
       reminderTitle: "Title", reminderDescription: "Description", saveReminder: "Save reminder",
       savedReminders: "Saved reminders", notificationForReminder: "Send a notification for this reminder",
@@ -209,11 +209,6 @@
 
 
   // Solar Hijri display is localized here with the language dictionaries.
-function localizeDigits(value, language) {
-    const digits = language === "ckb" ? "٠١٢٣٤٥٦٧٨٩" : "0123456789";
-    return String(value).replace(/\d/g, digit => digits[Number(digit)]);
-  }
-
 function getSolarHijriParts(date) {
     const formatter = new Intl.DateTimeFormat("en-u-ca-persian-nu-latn", {
       day: "2-digit",
@@ -240,11 +235,7 @@ function getSolarHijriParts(date) {
     ];
     const monthNumber = Number(parts.month);
     const monthName = months[monthNumber - 1] || "";
-    const dateParts = [
-      localizeDigits(parts.day, "ckb"),
-      `${monthName}ی`,
-      `${localizeDigits(parts.year, "ckb")}ی هەتاوی`
-    ];
+    const dateParts = [parts.day.padStart(2, "0"), monthName, parts.year];
     const fragment = document.createDocumentFragment();
 
     for (let i = 0; i < dateParts.length; i++) {
