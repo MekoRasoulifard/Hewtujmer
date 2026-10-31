@@ -1,0 +1,474 @@
+
+<!doctype html>
+<html lang="ckb" dir="rtl" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Hewtûjmêr — Kurdish calendar with week, month, and year views."
+  >
+  <meta name="theme-color" content="#ddf0ec">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Hewtûjmêr">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/style-calendar.css">
+  <link rel="stylesheet" href="/static/style-responsive.css">
+  <link rel="stylesheet" href="/static/style-print.css">
+  <link rel="icon" href="/icons/icon-maskable-512.png" type="image/png">
+  <link rel="apple-touch-icon" href="/icons/icon-maskable-512.png">
+
+  <title>Hewtûjmêr — کوردی</title>
+
+  <!-- Stylesheets are kept in cascade order and split by responsibility. -->
+
+  <!-- Classic scripts keep the browser architecture simple and dependency order clear. -->
+  <script src="/static/translations.js" defer></script>
+  <script src="/static/calendar-core.js" defer></script>
+  <script src="/static/calendar-view.js" defer></script>
+  <script src="/static/calendar-navigation.js" defer></script>
+  <script src="/static/calendar-events.js" defer></script>
+  <script src="/static/storage.js" defer></script>
+  <script src="/static/runtime-config.js" defer></script>
+  <script src="/static/data-service.js" defer></script>
+  <script src="/static/update-manager.js" defer></script>
+  <script src="/static/app.js" defer></script>
+
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <header class="topbar">
+      <a class="brand" href="#week" aria-label="Hewtûjmêr home">
+        <span class="brand-mark newroz-sun" aria-hidden="true">
+          <span class="newroz-rays"></span>
+          <span class="newroz-sun-disk">7</span>
+        </span>
+        <span class="brand-name">Hewtûjmêr</span>
+      </a>
+
+      <div class="topbar-actions">
+        <label class="language-control">
+          <span class="visually-hidden" data-i18n="languageLabel">
+            زمان
+          </span>
+
+          <select id="language-select" aria-label="Language">
+            <optgroup label="کوردی">
+              <option value="ckb" selected>سۆرانی</option>
+              <option value="kmr">Kurmanji</option>
+            </optgroup>
+            <option value="en">English</option>
+          </select>
+        </label>
+
+        <button
+          class="button button-install"
+          id="install-app-button"
+          type="button"
+          data-i18n="installApp"
+          hidden
+        >
+          Install app
+        </button>
+
+        <button
+          class="button header-tool-button"
+          id="notes-button"
+          type="button"
+          aria-label="Notes and reminders"
+          data-i18n-aria-label="notesButton"
+          data-i18n-title="notesButton"
+          title="Notes and reminders"
+        >
+          <span aria-hidden="true">✎</span>
+          <span data-i18n="notes">Notes</span>
+        </button>
+
+        <button
+          class="button button-theme"
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle theme"
+          title="Toggle theme"
+        >
+          <span class="theme-icon" aria-hidden="true">☾</span>
+          <span class="theme-label" data-i18n="theme">ڕووکار</span>
+        </button>
+
+        <button
+          class="button button-print"
+          id="print-button"
+          type="button"
+          aria-label="Print or save as PDF"
+          title="Print or save as PDF"
+        >
+          <span aria-hidden="true">⎙</span>
+          <span data-i18n="print">چاپ / PDF</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="app-layout">
+
+      <aside class="sidebar" aria-label="Calendar navigation">
+        <p class="sidebar-label" data-i18n="views">
+          بینینەکان
+        </p>
+
+        <nav class="view-nav" aria-label="Calendar views">
+          <a class="nav-link" href="#week" data-view-link="week">
+            <span class="nav-icon" aria-hidden="true">▤</span>
+            <span data-i18n="week">هەفتە</span>
+          </a>
+
+          <a class="nav-link" href="#day" data-view-link="day">
+            <span class="nav-icon" aria-hidden="true">◷</span>
+            <span data-i18n="dayView">ئەمڕۆ</span>
+          </a>
+
+          <a class="nav-link" href="#month" data-view-link="month">
+            <span class="nav-icon" aria-hidden="true">▦</span>
+            <span data-i18n="month">مانگ</span>
+          </a>
+
+          <a class="nav-link" href="#calendar" data-view-link="calendar">
+            <span class="nav-icon" aria-hidden="true">▧</span>
+            <span data-i18n="calendar">ساڵنامە</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-note">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-i18n="calendarNote">ساڵنامەی کوردی</span>
+        </div>
+      </aside>
+
+      <main class="workspace">
+
+          <h1 id="print-calendar-heading" class="print-calendar-heading" aria-hidden="true"></h1>
+
+        <!-- Search -->
+        <section class="week-search" aria-label="Search calendar">
+          <form
+            id="week-search-form"
+            class="week-search-form"
+            role="search"
+          >
+            <label
+              class="visually-hidden"
+              for="week-search-input"
+              data-i18n="searchLabel"
+            >
+              Search for a week or date
+            </label>
+
+            <span class="week-search-icon" aria-hidden="true">⌕</span>
+
+            <input
+              id="week-search-input"
+              class="week-search-input"
+              name="week"
+              type="search"
+              autocomplete="off"
+              spellcheck="false"
+              placeholder="٤٤ ٢٠٢٦ یان ٢٠٢٦-١١-٠٩"
+              data-i18n-placeholder="searchPlaceholder"
+              aria-describedby="week-search-hint week-search-error"
+            >
+
+            <button
+              class="week-search-submit"
+              id="week-search-button"
+              type="submit"
+              aria-label="Search"
+              title="Search"
+            >
+              <span aria-hidden="true">➜</span>
+            </button>
+          </form>
+
+        <!--   <p
+            class="week-search-hint"
+            id="week-search-hint"
+            data-i18n="searchHint"
+          >
+            Search by ISO week number, week and year, or date.
+          </p> -->
+
+          <p
+            class="search-error"
+            id="week-search-error"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            hidden
+          ></p>
+        </section>
+
+        <!-- Current-week overview -->
+        <section class="hero-card" aria-labelledby="hero-title">
+          <div class="hero-copy">
+          <!--   <p class="eyebrow" data-i18n="currentIsoWeek">
+              هەفتەی ئایسۆی ئێستا
+            </p> -->
+
+            <h1 id="hero-title">
+              <span class="week-prefix" data-i18n="weekPrefix">
+                هەفتە
+              </span>
+              <span class="week-number" id="iso-week-number">—</span>
+            </h1>
+
+            <p class="hero-subtitle" id="hero-subtitle">—</p>
+          </div>
+
+        </section>
+
+        <!-- Current date information -->
+        <section class="date-strip" aria-label="Today's dates">
+          <article class="date-card">
+            <span class="date-card-label" data-i18n="kurdishDate">
+              بەرواری کوردی
+            </span>
+            <strong id="kurdish-date">—</strong>
+          </article>
+
+          <article class="date-card">
+            <span class="date-card-label" data-i18n="gregorianDate">
+              بەرواری زایینی
+            </span>
+            <strong id="gregorian-date">—</strong>
+          </article>
+
+          <article class="date-card">
+            <span class="date-card-label" data-i18n="solarHijriDate">
+              بەرواری هەتاوی
+            </span>
+            <strong id="solar-hijri-date">—</strong>
+          </article>
+
+          <div class="hero-badge newroz-badge" aria-live="polite">
+            <span class="newroz-details">
+              <strong class="newroz-date" data-i18n="newrozStarts">Newroz: March 21</strong>
+              <span class="newroz-countdown-line">
+                <strong id="newroz-countdown">—</strong>
+                <span class="newroz-countdown-label" id="newroz-countdown-label" data-i18n="newrozCountdown">days until Newroz</span>
+              </span>
+            </span>
+          </div>
+        </section>
+
+        <!-- Mobile navigation -->
+        <nav class="mobile-view-nav" aria-label="Main navigation">
+          <a class="nav-link" href="#week" data-view-link="week">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M8 4v16M3 10h18"></path></svg>
+            <span data-i18n="week">هەفتە</span>
+          </a>
+          <a class="nav-link" href="#day" data-view-link="day">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+            <span data-i18n="dayView">ئەمڕۆ</span>
+          </a>
+          <a class="nav-link" href="#month" data-view-link="month">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M16 2v4M8 2v4M3 9h18M8 13h2M14 13h2M8 17h2"></path></svg>
+            <span data-i18n="month">مانگ</span>
+          </a>
+          <a class="nav-link" href="#calendar" data-view-link="calendar">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M16 2v4M8 2v4M3 9h18M7 13h2M12 13h2M17 13h1M7 17h2M12 17h2"></path></svg>
+            <span data-i18n="calendar">ساڵنامە</span>
+          </a>
+          <button class="nav-link" type="button" data-nav-action="notes" aria-label="Notes" data-i18n-aria-label="notesButton">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"></path></svg>
+            <span data-i18n="notes">Notes</span>
+          </button>
+        </nav>
+
+        <!-- Main calendar -->
+        <section
+          class="calendar-panel"
+          aria-labelledby="calendar-heading"
+        >
+          <div class="panel-toolbar">
+            <div class="panel-heading">
+              <p
+                class="eyebrow"
+                id="view-eyebrow"
+                data-i18n="weekView"
+              >
+                بینینی هەفتە
+              </p>
+
+              <h2 id="calendar-heading">—</h2>
+            </div>
+
+            <div class="toolbar-actions">
+              <button
+                class="button button-today"
+                id="today-button"
+                type="button"
+                data-i18n="today"
+              >
+                ئەمڕۆ
+              </button>
+
+              <div
+                class="step-controls"
+                role="group"
+                aria-label="Navigate calendar"
+              >
+                <button
+                  class="button icon-button"
+                  id="previous-button"
+                  type="button"
+                  aria-label="Previous"
+                  title="Previous"
+                >
+                  <span aria-hidden="true">‹</span>
+                </button>
+
+                <button
+                  class="button icon-button"
+                  id="next-button"
+                  type="button"
+                  aria-label="Next"
+                  title="Next"
+                >
+                  <span aria-hidden="true">›</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="calendar-content"
+            id="calendar-content"
+            aria-live="polite"
+            aria-atomic="false"
+            tabindex="0"
+            aria-label="Calendar dates"
+          ></div>
+        </section>
+
+        <footer class="workspace-footer" data-i18n="footer">
+          ساڵنامەی کوردی · دەستپێکی ساڵ: ٢١ی ئازار
+        </footer>
+
+      </main>
+    </div>
+  </div>
+
+  <section class="install-overlay" id="install-overlay" hidden aria-labelledby="install-title">
+    <div class="install-dialog" role="dialog" aria-modal="true" aria-labelledby="install-title" tabindex="-1">
+      <div class="dialog-heading">
+        <div>
+          <p class="dialog-eyebrow" data-i18n="installPromptEyebrow">Use Hewtûjmêr like an app</p>
+          <h2 id="install-title" data-i18n="installPromptTitle">Install Hewtûjmêr</h2>
+        </div>
+        <button class="dialog-close" id="install-close" type="button" aria-label="Close" data-i18n-aria-label="close">×</button>
+      </div>
+      <p id="install-prompt-message" data-i18n="installPromptMessage">Add the calendar to your mobile home screen for quick access.</p>
+      <div class="install-instructions" id="install-instructions" hidden>
+        <p id="install-instruction-text"></p>
+      </div>
+      <div class="install-actions">
+        <button class="button button-primary" id="install-confirm-button" type="button" data-i18n="installApp">Install app</button>
+        <button class="button" id="install-later-button" type="button" data-i18n="installLater">Not now</button>
+      </div>
+    </div>
+  </section>
+
+  <aside class="reminder-toast" id="reminder-toast" hidden role="status" aria-live="assertive" tabindex="0">
+    <div class="reminder-toast-copy">
+      <strong id="reminder-toast-title"></strong>
+      <p id="reminder-toast-message"></p>
+    </div>
+    <button id="reminder-toast-close" type="button" aria-label="Close" data-i18n-aria-label="close">×</button>
+  </aside>
+
+  <section class="movement-overlay" id="movement-overlay" hidden aria-labelledby="movement-title">
+    <div class="movement-dialog" role="dialog" aria-modal="true" aria-labelledby="movement-title" tabindex="-1">
+      <div class="dialog-heading">
+        <div><p class="dialog-eyebrow" data-i18n="todayMovements">Today’s movements</p><h2 id="movement-title">—</h2></div>
+        <button class="dialog-close" id="movement-close" type="button" aria-label="Close" data-i18n-aria-label="close">×</button>
+      </div>
+      <div class="movement-list" id="movement-list" aria-live="polite"></div>
+      <p class="dialog-hint" data-i18n="movementDismissHint">Click outside or press Escape to close.</p>
+    </div>
+  </section>
+
+  <section class="movement-overlay" id="notes-overlay" hidden aria-labelledby="notes-title">
+    <div class="movement-dialog notes-dialog" role="dialog" aria-modal="true" aria-labelledby="notes-title" tabindex="-1">
+      <div class="dialog-heading"><div><p class="dialog-eyebrow" data-i18n="privateNotes">Private to this browser</p><h2 id="notes-title" data-i18n="notesAndReminders">Notes and reminders</h2></div>
+        <button class="dialog-close" id="notes-close" type="button" aria-label="Close" data-i18n-aria-label="close">×</button></div>
+      <div class="notes-tabs" role="tablist" aria-label="Notes and reminders">
+        <button id="notes-tab" type="button" role="tab" aria-selected="true" aria-controls="notes-panel" data-i18n="notes">Notes</button>
+        <button id="reminders-tab" type="button" role="tab" aria-selected="false" aria-controls="reminders-panel" data-i18n="reminders">Reminders</button>
+      </div>
+      <section id="notes-panel" role="tabpanel" aria-labelledby="notes-tab">
+        <form id="note-form" class="note-form">
+          <label for="note-text" data-i18n="noteLabel">Note</label>
+          <textarea id="note-text" rows="3" maxlength="2000" required></textarea>
+          <div class="note-form-row">
+            <div><label for="reminder-date" data-i18n="reminderDate">Reminder date</label><input id="reminder-date" type="date"></div>
+            <div><label for="reminder-time" data-i18n="reminderTime">Time</label><input id="reminder-time" type="time"></div>
+          </div>
+          <label for="reminder-preset" data-i18n="remindBefore">Remind me before</label>
+          <select id="reminder-preset">
+            <option value="0" data-i18n="atTime">At this time</option>
+            <option value="15" selected>15 minutes</option>
+            <option value="30">30 minutes</option>
+            <option value="60">1 hour</option>
+            <option value="custom" data-i18n="custom">Custom</option>
+          </select>
+          <div id="custom-reminder-wrap" hidden><label for="custom-reminder" data-i18n="customMinutes">Custom minutes before</label><input id="custom-reminder" type="number" min="1" max="10080" value="15"></div>
+          <div class="note-actions">
+            <button class="button button-primary" id="note-save-button" type="submit" data-i18n="saveNote">Save note</button>
+            <button class="button" id="note-cancel-edit" type="button" data-i18n="cancelEdit" hidden>Cancel</button>
+            <span id="note-status" role="status" aria-live="polite"></span>
+          </div>
+          <button class="button notification-permission-button" id="enable-notifications-button" type="button" data-i18n="enableNotifications">Enable notifications</button>
+        </form>
+        <div class="saved-notes"><h3 data-i18n="savedNotes">Saved notes</h3><ul id="saved-notes-list"></ul></div>
+      </section>
+      <section id="reminders-panel" role="tabpanel" aria-labelledby="reminders-tab" hidden>
+        <form id="reminder-form" class="note-form">
+          <label for="reminder-title" data-i18n="reminderTitle">Title</label>
+          <input id="reminder-title" type="text" maxlength="180" required>
+          <label for="reminder-description" data-i18n="reminderDescription">Description</label>
+          <textarea id="reminder-description" rows="2" maxlength="2000"></textarea>
+          <div class="note-form-row">
+            <div><label for="calendar-reminder-date" data-i18n="reminderDate">Reminder date</label><input id="calendar-reminder-date" type="date" required></div>
+            <div><label for="calendar-reminder-time" data-i18n="reminderTime">Time</label><input id="calendar-reminder-time" type="time" required></div>
+          </div>
+          <label for="calendar-reminder-preset" data-i18n="remindBefore">Remind me before</label>
+          <select id="calendar-reminder-preset">
+            <option value="0" data-i18n="atTime">At this time</option>
+            <option value="15" selected>15 minutes</option>
+            <option value="30">30 minutes</option>
+            <option value="60">1 hour</option>
+            <option value="custom" data-i18n="custom">Custom</option>
+          </select>
+          <div id="calendar-custom-reminder-wrap" hidden><label for="calendar-custom-reminder" data-i18n="customMinutes">Custom minutes before</label><input id="calendar-custom-reminder" type="number" min="1" max="10080" value="15"></div>
+          <label class="reminder-notification-choice"><input id="calendar-reminder-notification" type="checkbox" checked> <span data-i18n="notificationForReminder">Notify me for this reminder</span></label>
+          <div class="note-actions">
+            <button class="button button-primary" id="calendar-reminder-save" type="submit" data-i18n="saveReminder">Save reminder</button>
+            <button class="button" id="calendar-reminder-cancel" type="button" data-i18n="cancelEdit" hidden>Cancel</button>
+            <span id="reminder-status" role="status" aria-live="polite"></span>
+          </div>
+          <button class="button notification-permission-button" id="enable-reminder-notifications" type="button" data-i18n="enableNotifications">Enable notifications</button>
+        </form>
+        <div class="saved-notes"><h3 data-i18n="savedReminders">Saved reminders</h3><ul id="saved-reminders-list"></ul></div>
+      </section>
+    </div>
+  </section>
+
+  <aside class="app-update-toast" id="app-update-toast" hidden role="status" aria-live="polite">
+    <span data-i18n="updateReady">A new version is ready.</span>
+    <button class="button button-primary" id="apply-app-update" type="button" data-i18n="updateNow">Update now</button>
+  </aside>
+</body>
+</html>

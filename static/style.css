@@ -1,0 +1,1294 @@
+/* =========================================================
+   HEWTÛJMÊR — SHARED SUPPORT AND STATE STYLES
+   Accessibility, interaction states, Newroz animation, and responsive refinements.
+   ========================================================= */
+
+button:disabled,
+select:disabled,
+input:disabled,
+textarea:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+/* ---------------------------------------------------------
+   ACCESSIBILITY AND FOCUS
+   --------------------------------------------------------- */
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.day-card:focus-visible,
+.day-cell:focus-visible,
+.mini-month:focus-visible,
+.nav-link:focus-visible,
+.week-search-submit:focus-visible {
+  position: relative;
+  z-index: 2;
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------
+   SIDEBAR
+   --------------------------------------------------------- */
+
+.sidebar {
+  overflow: hidden;
+}
+
+[dir="rtl"] .nav-link.active {
+  border-right: 2px solid var(--navy);
+}
+
+[dir="ltr"] .nav-link.active {
+  border-left: 2px solid var(--navy);
+}
+
+/* ---------------------------------------------------------
+   WEEK SEARCH
+   --------------------------------------------------------- */
+
+.week-search-form {
+  transition: border-color 150ms ease;
+}
+
+.week-search-form:focus-within {
+  border-color: var(--focus);
+}
+
+.week-search-icon {
+  width: 28px;
+  min-width: 28px;
+  height: 28px;
+  place-items: center;
+}
+
+.week-search-submit {
+  transition: var(--transition-colors);
+}
+
+.week-search-submit:hover {
+  border-color: #30383d;
+}
+
+:root[data-theme="dark"] .week-search-submit:hover {
+  border-color: #f0e4ad;
+  background: #f0e4ad;
+}
+
+.week-search-hint {
+  text-align: center;
+}
+
+.week-search-input[aria-invalid="true"] {
+  text-underline-offset: 4px;
+}
+
+/* Autocomplete results */
+
+.week-search-result strong {
+  font-weight: 500;
+}
+
+/* Additional rules retained from the original main stylesheet. */
+
+/* ---------------------------------------------------------
+   NEWROZ SUN — SLOW ROTATION AND RADIO-WAVE PULSE
+   --------------------------------------------------------- */
+
+.newroz-sun {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  isolation: isolate;
+}
+
+/* The 21 rays are positioned by JavaScript using --ray-angle. */
+
+.newroz-rays {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  transform-origin: center;
+  animation: newroz-sun-rotation 24s linear infinite;
+}
+
+.newroz-ray {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 11px;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--ray-angle))
+    translateY(-14px);
+  transform-origin: center;
+}
+
+/* Yellow center with a subtle white outline pulse. */
+
+.newroz-sun::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  width: 54%;
+  height: 54%;
+  box-sizing: border-box;
+  border: 0.75px solid rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
+  background: var(--newroz-yellow);
+  transform: translate(-50%, -50%) scale(0.9);
+  transform-origin: center;
+  pointer-events: none;
+  animation: newroz-center-pulse 4s ease-in-out infinite;
+}
+
+/* Solid yellow center disk. */
+
+.newroz-sun-disk {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  width: 36%;
+  height: 36%;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 50%;
+  background: var(--newroz-yellow);
+  pointer-events: none;
+}
+
+/* Expanding white radio wave. */
+
+.newroz-sun::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  width: 54%;
+  height: 54%;
+  box-sizing: border-box;
+  border: 0.75px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  transform-origin: center;
+  pointer-events: none;
+  animation: newroz-radio-wave 4s ease-out infinite;
+}
+
+/* Keep the sun yellow in both themes. */
+
+.newroz-ray,
+.newroz-sun-disk {
+  background-color: var(--newroz-yellow);
+}
+
+/* ---------------------------------------------------------
+   NEWROZ ANIMATIONS
+   --------------------------------------------------------- */
+
+@keyframes newroz-sun-rotation {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes newroz-center-pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+@keyframes newroz-radio-wave {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1.65);
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   CALENDAR STATE DETAILS AND RESPONSIVE SUPPORT
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   CALENDAR PANEL
+   --------------------------------------------------------- */
+
+.week-grid,
+.month-grid,
+.year-grid {
+  padding: 12px;
+}
+
+.toolbar-actions {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.icon-button {
+  min-width: 40px;
+}
+
+.calendar-content {
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) var(--panel);
+}
+
+.calendar-content::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.calendar-content::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: var(--border-strong);
+}
+
+.calendar-content::-webkit-scrollbar-track {
+  background: var(--panel);
+}
+
+/* ---------------------------------------------------------
+   WEEK VIEW
+   --------------------------------------------------------- */
+
+.day-card {
+  justify-content: flex-start;
+  overflow-wrap: anywhere;
+  transition: var(--transition-colors);
+}
+
+.day-card.today {
+  box-shadow: inset 0 0 0 2px var(--border-strong);
+}
+
+.day-card.selected.today {
+  box-shadow: inset 0 0 0 2px var(--navy);
+}
+
+.day-card.holiday {
+  border-color: var(--border-strong);
+}
+
+.holiday-name {
+  margin-top: auto;
+}
+
+/* ---------------------------------------------------------
+   MONTH VIEW
+   --------------------------------------------------------- */
+
+.weekday-heading {
+  overflow-wrap: anywhere;
+}
+
+.day-cell {
+  transition: var(--transition-colors);
+}
+
+.day-cell:hover {
+  border-color: var(--border);
+}
+
+.day-cell.today,
+.day-cell.selected {
+  font-weight: 700;
+}
+
+.day-cell.holiday {
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* ---------------------------------------------------------
+   YEAR VIEW
+   --------------------------------------------------------- */
+
+.mini-month {
+  transition: var(--transition-colors);
+}
+
+.mini-month.current-month {
+  border-color: var(--border-strong);
+  background: var(--panel-raised);
+  box-shadow: inset 0 0 0 1px var(--border-strong);
+}
+
+.mini-days {
+  font-variant-numeric: tabular-nums;
+}
+
+.mini-days>span {
+  display: grid;
+  min-width: 0;
+  min-height: 22px;
+  place-items: center;
+  border-radius: 2px;
+  overflow-wrap: anywhere;
+}
+
+.mini-days>span[aria-hidden="true"] {
+  pointer-events: none;
+}
+
+.mini-days>span.today {
+  background: var(--cream);
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.mini-days>span.holiday-day {
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 2px;
+}
+
+/* ---------------------------------------------------------
+   MOBILE NAVIGATION AND FOOTER
+   --------------------------------------------------------- */
+
+.workspace-footer {
+  padding: 6px 0;
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE LAYOUT
+   --------------------------------------------------------- */
+
+/* Continued from 02-layout-overrides.css */
+
+@media (max-width: 1100px) {
+  .app-layout {
+    grid-template-columns: 190px minmax(0, 1fr);
+  }
+
+  .workspace {
+    padding-inline: 12px;
+  }
+
+  .year-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .day-card {
+    min-height: 125px;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-layout {
+    grid-template-columns: 175px minmax(0, 1fr);
+  }
+
+  .topbar {
+    gap: 10px;
+    padding-inline: 14px;
+  }
+
+  .workspace {
+    padding: 12px;
+  }
+
+  .hero-card {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .hero-badge {
+    max-width: 50%;
+  }
+
+  .week-grid {
+    gap: 5px;
+    padding: 8px;
+  }
+
+  .day-card {
+    min-height: 115px;
+    padding: 10px 4px;
+  }
+
+  .year-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---------------------------------------------------------
+   SMALL SCREENS
+   --------------------------------------------------------- */
+
+@media (max-width: 640px) {
+
+  html,
+  body {
+    width: 100%;
+    min-width: 0;
+  }
+
+  body {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+  }
+
+  .app-shell {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+  }
+
+  .topbar {
+    flex: 0 0 auto;
+    min-height: 60px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .brand {
+    gap: 7px;
+  }
+
+  .brand-name {
+    font-size: 0.95rem;
+  }
+
+  .brand-mark {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+
+  .topbar-actions {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .language-control select,
+  .button {
+    min-height: 36px;
+    padding: 6px 8px;
+    font-size: 0.85rem;
+  }
+
+  .app-layout {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .workspace {
+    width: 100%;
+    min-height: 0;
+    flex: 1 1 0;
+    gap: 10px;
+    padding: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+  }
+
+  .hero-card {
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .hero-copy h1 {
+    gap: 6px;
+  }
+
+  .week-prefix {
+    font-size: 1.15rem;
+  }
+
+  .week-number {
+    font-size: clamp(2.4rem, 12vw, 4rem);
+  }
+
+  .hero-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .hero-badge {
+    max-width: 48%;
+    gap: 5px;
+    padding: 6px;
+    font-size: 0.75rem;
+  }
+
+  .newroz-sun {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+
+  .date-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .date-card {
+    min-height: 54px;
+    padding: 7px 9px;
+  }
+
+  .mobile-view-nav {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .mobile-view-nav .nav-link {
+    justify-content: center;
+    min-height: 38px;
+    padding: 6px;
+    font-size: 0.85rem;
+  }
+
+  .calendar-panel {
+    min-height: 350px;
+    flex: 0 0 auto;
+  }
+
+  .panel-toolbar {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .panel-heading {
+    flex: 1 1 100%;
+  }
+
+  .panel-heading h2 {
+    font-size: 1rem;
+  }
+
+  .toolbar-actions {
+    width: 100%;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .calendar-content {
+    min-height: 260px;
+    flex: 1 1 auto;
+    overflow: auto;
+  }
+
+  .week-search {
+    width: 100%;
+  }
+
+  .week-search-hint {
+    font-size: 0.72rem;
+  }
+
+  .week-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    padding: 8px;
+  }
+
+  .day-card {
+    min-height: 110px;
+    padding: 10px 6px;
+  }
+
+  .day-number {
+    font-size: 1.8rem;
+  }
+
+  .month-grid {
+    gap: 3px;
+    padding: 7px;
+  }
+
+  .weekday-heading {
+    min-height: 30px;
+    font-size: 0.72rem;
+  }
+
+  .day-cell {
+    min-height: 40px;
+    padding: 3px;
+    font-size: 0.85rem;
+  }
+
+  .year-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    padding: 8px;
+  }
+
+  .mini-month {
+    gap: 5px;
+    padding: 7px;
+  }
+
+  .mini-month-title {
+    font-size: 0.8rem;
+  }
+
+  .mini-days {
+    gap: 1px;
+    font-size: 0.65rem;
+  }
+
+  .mini-days>span {
+    min-height: 19px;
+  }
+
+  .workspace-footer {
+    font-size: 0.72rem;
+  }
+}
+
+/* ---------------------------------------------------------
+   EXTRA SMALL SCREENS
+   --------------------------------------------------------- */
+
+@media (max-width: 380px) {
+  .topbar {
+    align-items: flex-start;
+  }
+
+  .topbar-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .hero-card {
+    flex-wrap: wrap;
+  }
+
+  .date-card strong {
+    font-size: 0.8rem;
+  }
+}
+
+/* Print rules are consolidated in style-calendar.css. */
+
+/* ---------------------------------------------------------
+   FINAL LAYOUT SAFETY FIXES
+   --------------------------------------------------------- */
+
+/* Prevent grid and flex children from forcing horizontal overflow. */
+
+.app-layout>*,
+.workspace>*,
+.calendar-panel>*,
+.calendar-content>* {
+  min-width: 0;
+}
+
+/* Keep long translated text within its available space. */
+
+.hero-subtitle,
+.hero-badge,
+.date-card,
+.panel-heading,
+.mini-month-title {
+  overflow-wrap: anywhere;
+}
+
+/* Keep the focus ring visible against light and dark surfaces. */
+
+
+/* Header brand and accessible movements / notes dialogs. */
+.topbar {
+  direction: ltr;
+}
+
+.topbar-actions {
+  direction: ltr;
+  flex-wrap: nowrap;
+}
+
+.brand {
+  direction: ltr;
+}
+
+.brand-name {
+  direction: ltr;
+  unicode-bidi: plaintext;
+}
+
+.brand-mark.newroz-sun {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.brand-mark .newroz-ray {
+  width: 4px;
+  height: 8px;
+}
+
+.brand-mark .newroz-sun-disk {
+  display: grid;
+  place-items: center;
+  color: #111;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.header-tool-button {
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.movement-overlay[hidden] {
+  display: none;
+}
+
+.movement-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(10, 18, 24, .42);
+}
+
+.movement-dialog {
+  width: min(560px, 100%);
+  max-height: min(78vh, 720px);
+  overflow: auto;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface, var(--white));
+  color: var(--navy);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, .22);
+}
+
+.dialog-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.dialog-heading h2 {
+  margin: 3px 0 0;
+  font-size: 1.2rem;
+}
+
+.dialog-eyebrow,
+.dialog-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: .82rem;
+}
+
+.dialog-close {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: transparent;
+  color: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.movement-list {
+  display: grid;
+  gap: 9px;
+}
+
+.movement-item {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.movement-item strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.movement-type {
+  display: inline-block;
+  margin-bottom: 5px;
+  color: var(--navy);
+  font-size: .72rem;
+}
+
+.dialog-hint {
+  margin-top: 14px;
+}
+
+.note-form {
+  display: grid;
+  gap: 9px;
+}
+
+.note-form label,
+.saved-notes h3 {
+  font-size: .86rem;
+  font-weight: 650;
+}
+
+.note-form textarea,
+.note-form input,
+.note-form select {
+  width: 100%;
+  min-height: 42px;
+  padding: 9px 11px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--topbar);
+  color: var(--text);
+  font: inherit;
+}
+
+.note-form textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.note-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.note-form-row>div {
+  display: grid;
+  gap: 7px;
+}
+
+.note-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+
+.button-primary {
+  border-color: var(--navy);
+  background: var(--navy);
+  color: #fff;
+}
+
+.saved-notes {
+  margin-top: 20px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+
+.saved-notes h3 {
+  margin: 0 0 8px;
+}
+
+#saved-notes-list {
+  display: grid;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.saved-note {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.saved-note p {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.saved-note small {
+  display: block;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.saved-note button {
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 5px 8px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.movement-dialog :focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+ 
+}
+
+@media (max-width:680px) {
+  .topbar {
+    gap: 5px;
+    padding: 0 7px;
+  }
+
+  .topbar-actions {
+    gap: 3px;
+  }
+
+  .brand-mark.newroz-sun {
+    width: 29px;
+    height: 29px;
+    flex-basis: 29px;
+  }
+
+  .header-tool-button {
+    min-width: 32px;
+    padding: 4px;
+    font-size: 0;
+  }
+
+  .header-tool-button span:first-child {
+    font-size: 1rem;
+  }
+
+  .note-form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.date-strip-newroz {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 58px;
+  padding: 8px 12px;
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.date-strip-newroz .newroz-countdown-line {
+  display: inline-flex;
+  gap: 5px;
+  color: var(--text);
+}
+
+.install-overlay[hidden] {
+  display: none;
+}
+
+.install-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(10, 18, 24, .55);
+}
+
+.install-dialog {
+  width: min(430px, 100%);
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--panel);
+  color: var(--text);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, .3);
+}
+
+.install-text {
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.install-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+/* Notes and reminders: strong contrast in dark mode. */
+:root[data-theme="dark"] .notes-dialog {
+  background: #10191d;
+  color: #f7fbfc;
+}
+
+:root[data-theme="dark"] .note-form label,
+:root[data-theme="dark"] .saved-notes h3 {
+  color: #f7fbfc;
+}
+
+:root[data-theme="dark"] .note-form textarea,
+:root[data-theme="dark"] .note-form input,
+:root[data-theme="dark"] .note-form select {
+  background: #0b1215;
+  color: #f7fbfc;
+  border-color: #91aeb6;
+  color-scheme: dark;
+}
+
+:root[data-theme="dark"] .note-form textarea::placeholder,
+:root[data-theme="dark"] .note-form input::placeholder {
+  color: #c9d8dc;
+  opacity: 1;
+}
+
+:root[data-theme="dark"] .saved-note {
+  background: #162226;
+  border-color: #91aeb6;
+  color: #f7fbfc;
+}
+
+:root[data-theme="dark"] .saved-note small,
+:root[data-theme="dark"] .dialog-eyebrow,
+:root[data-theme="dark"] .dialog-hint {
+  color: #000000;
+}
+
+:root[data-theme="dark"] .saved-note button {
+  background: #0b1215;
+  color: #ffffff;
+  border-color: #91aeb6;
+}
+
+
+[dir="rtl"] .topbar-actions .button {
+  direction: rtl;
+}
+
+[dir="rtl"] .topbar-actions select {
+  direction: rtl;
+}
+
+/* Reminder popup: high contrast in both themes. */
+.reminder-popup {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1200;
+  display: grid;
+  gap: 5px;
+  width: min(380px, calc(100vw - 36px));
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel);
+  color: var(--text);
+  text-align: start;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, .28);
+  cursor: pointer;
+  font: inherit;
+}
+
+.reminder-popup span {
+  line-height: 1.45;
+}
+
+:root[data-theme="dark"] .reminder-popup {
+  background: #172125;
+  color: #fff;
+  border-color: #7e969d;
+}
+
+@media (max-width:680px) {
+  .date-strip-newroz {
+    white-space: normal;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .reminder-popup {
+    right: 12px;
+    bottom: 12px;
+    width: calc(100vw - 24px);
+  }
+}
+
+/* This Day view and readable notes/reminders in both colour themes. */
+.day-view-panel {
+  display: grid;
+  gap: 14px;
+  width: 100%;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--panel-soft);
+  color: var(--text);
+}
+
+.day-view-date {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.day-view-list {
+  display: grid;
+  gap: 10px;
+}
+
+.day-view-event {
+  display: grid;
+  gap: 5px;
+  padding: 13px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 9px;
+  background: var(--panel-raised);
+  color: var(--text);
+}
+
+.day-view-event strong {
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.day-view-event-type {
+  color: var(--muted);
+  font-size: .78rem;
+}
+
+.day-view-holiday {
+  border-inline-start: 4px solid var(--focus);
+}
+
+.day-view-empty {
+  margin: 0;
+  padding: 16px 12px;
+  color: var(--muted);
+}
+
+/* High contrast for every part of the notes dialog in dark mode. */
+.notes-dialog,
+.notes-dialog * {
+  text-shadow: none;
+}
+
+.notes-dialog .note-form label,
+.notes-dialog .saved-notes h3,
+.notes-dialog .saved-note p,
+.notes-dialog .saved-note button,
+.notes-dialog #note-status {
+  color: var(--text);
+}
+
+.notes-dialog .note-form textarea,
+.notes-dialog .note-form input,
+.notes-dialog .note-form select {
+  background: var(--panel-raised);
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+.notes-dialog .note-form textarea::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+.notes-dialog .saved-note {
+  background: var(--panel-raised);
+  border-color: var(--border-strong);
+}
+
+.notes-dialog .saved-note small,
+.notes-dialog .saved-notes-empty {
+  color: var(--muted);
+}
+
+.notes-dialog .saved-note button {
+  background: var(--panel);
+  border-color: var(--border-strong);
+}
+
+.notes-dialog .note-form :focus-visible,
+.notes-dialog .saved-note button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+:root[data-theme="dark"] .notes-dialog {
+  background: #10191d;
+  color: #ffffff;
+}
+
+:root[data-theme="dark"] .notes-dialog .note-form textarea,
+:root[data-theme="dark"] .notes-dialog .note-form input,
+:root[data-theme="dark"] .notes-dialog .note-form select {
+  background: #050b0e;
+  color: #ffffff;
+  border-color: #b5c8ce;
+}
+
+:root[data-theme="dark"] .notes-dialog .note-form label,
+:root[data-theme="dark"] .notes-dialog .saved-notes h3,
+:root[data-theme="dark"] .notes-dialog .saved-note p,
+:root[data-theme="dark"] .notes-dialog #note-status {
+  color: #ffffff;
+}
+
+:root[data-theme="dark"] .notes-dialog .saved-note {
+  background: #17252b;
+  border-color: #9db4bc;
+  color: #ffffff;
+}
+
+:root[data-theme="dark"] .notes-dialog .saved-note small,
+:root[data-theme="dark"] .notes-dialog .saved-notes-empty {
+  color: #e1edf0;
+}
+
+:root[data-theme="dark"] .notes-dialog .saved-note button {
+  background: #071115;
+  color: #ffffff;
+  border-color: #b5c8ce;
+}

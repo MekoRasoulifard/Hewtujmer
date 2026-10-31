@@ -1,0 +1,549 @@
+@media (max-width: 380px) {
+  .topbar {
+    padding-inline: 5px;
+  }
+
+  .brand-name {
+    font-size: 0.78rem;
+  }
+
+  .language-control select {
+    max-width: 85px;
+  }
+
+  .topbar-actions {
+    gap: 3px;
+  }
+
+  .hero-card {
+    padding: 6px;
+  }
+
+  .hero-badge {
+    max-width: 35%;
+    padding: 4px;
+    font-size: 0.62rem;
+  }
+
+  .date-card {
+    padding: 3px 5px;
+  }
+
+  .panel-toolbar {
+    gap: 2px;
+    padding: 5px;
+  }
+
+  .panel-heading h2 {
+    font-size: 0.82rem;
+  }
+
+  .toolbar-actions {
+    gap: 2px;
+  }
+
+  .button-today {
+    padding: 4px;
+    font-size: 0.7rem;
+  }
+
+  .icon-button {
+    width: 36px;
+  }
+
+  .day-number {
+    font-size: 1.05rem;
+  }
+
+  /* One month per row on very narrow screens. */
+
+  .year-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: minmax(140px, auto);
+    gap: 7px;
+  }
+
+  .mini-month {
+    min-height: 140px;
+    padding: 9px;
+  }
+
+  .mini-month-title {
+    font-size: 0.95rem;
+  }
+
+  .mini-days {
+    grid-auto-rows: minmax(20px, auto);
+    font-size: 0.78rem;
+  }
+
+  .mini-days span {
+    min-height: 20px;
+  }
+}
+
+/* -------------------------
+   SHORT LANDSCAPE SCREENS
+   ------------------------- */
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .topbar {
+    flex-basis: 42px;
+  }
+
+  .workspace {
+    gap: 4px;
+    padding: 4px 7px;
+  }
+
+  .hero-card {
+    min-height: 60px;
+    padding: 5px 10px;
+  }
+
+  .week-number {
+    font-size: 2.7rem;
+  }
+
+  .hero-subtitle {
+    margin-top: 2px;
+  }
+
+  .date-strip {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
+  }
+
+  .date-card {
+    min-height: 34px;
+    padding: 3px 5px;
+  }
+
+  .date-card-label {
+    font-size: 0.62rem;
+  }
+
+  .date-card strong {
+    font-size: 0.7rem;
+  }
+
+  .week-search-hint,
+  .workspace-footer {
+    display: none;
+  }
+
+  .panel-toolbar {
+    padding: 4px 7px;
+  }
+
+  .calendar-content {
+    padding: 4px;
+  }
+
+  .day-card {
+    gap: 1px;
+    padding: 3px;
+  }
+
+}
+
+/* -------------------------
+   REDUCED MOTION
+   ------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------------------------------------------------------
+   LANGUAGE PRESENTATION — KEEP LAST IN THE CASCADE
+   --------------------------------------------------------- */
+
+/* Sorani: RTL with Arabic-script typography throughout the application. */
+html[lang="ckb"],
+html[lang="ckb"] body {
+  direction: rtl;
+  unicode-bidi: isolate;
+}
+
+html[lang="ckb"] body,
+html[lang="ckb"] body * {
+  font-family: "Noto Sans Arabic", Tahoma, Arial, sans-serif !important;
+}
+
+/* Kurmanji: match English's LTR layout, Latin font, and Latin numerals. */
+html[lang="kmr"],
+html[lang="kmr"] body {
+  direction: ltr !important;
+  text-align: left;
+  unicode-bidi: isolate;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+html[lang="kmr"] body *,
+html[lang="kmr"] body *::before,
+html[lang="kmr"] body *::after {
+  direction: ltr !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* English: keep the existing Latin font and left-to-right layout. */
+html[lang="en"],
+html[lang="en"] body {
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-family: Arial, Helvetica, sans-serif;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+html[lang="en"] body,
+html[lang="en"] body * {
+  font-family: Arial, Helvetica, sans-serif;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* A visible, theme-aware circle around today's date in all three views. */
+.mini-days [data-date].today {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 1.8em;
+  height: 1.8em;
+  border: 2px solid var(--focus) !important;
+  border-radius: 50% !important;
+  color: inherit;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.day-cell.today {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  box-sizing: border-box;
+  width: min(100%, 2.5rem);
+  aspect-ratio: 1 / 1;
+  min-height: 0;
+  padding: 0;
+  border: 2px solid var(--focus) !important;
+  border-radius: 50% !important;
+}
+
+.day-card.today .day-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 2em;
+  min-height: 2em;
+  border: 2px solid var(--focus) !important;
+  border-radius: 50% !important;
+}
+
+/* Today's outline does not erase the selected-date fill. */
+.day-card.selected.today,
+.day-cell.selected.today {
+  background: var(--cream);
+  color: var(--navy);
+}
+
+/* ---------------------------------------------------------
+   PRINT — KEEP THE SELECTED THEME AND LANGUAGE
+   --------------------------------------------------------- */
+
+.print-calendar-heading {
+  display: none;
+}
+
+/* The date order stays stable when Sorani uses a right-to-left layout. */
+#solar-hijri-date.solar-hijri-sorani {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.3em;
+  direction: rtl;
+  unicode-bidi: isolate;
+}
+
+#solar-hijri-date .solar-hijri-part {
+  display: inline;
+  direction: rtl;
+  unicode-bidi: isolate;
+}
+
+/* Continued from 09-print-and-newroz.css */
+
+@media print {
+  @page {
+    margin: 10mm;
+  }
+
+  html,
+  body {
+    width: auto;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    background: var(--page) !important;
+    color: var(--text) !important;
+  }
+
+  /* Keep the selected light or dark theme in printed output. */
+  * {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .app-shell,
+  .app-layout,
+  .workspace,
+  .calendar-panel,
+  .calendar-content {
+    display: block;
+    width: auto;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .topbar,
+  .sidebar,
+  .week-search,
+  .mobile-view-nav,
+  .toolbar-actions,
+  .hero-badge,
+  .workspace-footer {
+    display: none !important;
+  }
+
+  .workspace {
+    padding: 0;
+  }
+
+  .print-calendar-heading {
+    display: block;
+    margin: 0 0 12px;
+    color: var(--text) !important;
+    background: transparent;
+    font-size: 1.35rem;
+    font-weight: 700;
+    text-align: start;
+    direction: inherit;
+    unicode-bidi: isolate;
+    break-after: avoid;
+  }
+
+  /* Replace the on-screen week heading with the Kurdish calendar title. */
+  #hero-title,
+  #iso-week-number,
+  .week-number,
+  .week-prefix {
+    display: none !important;
+  }
+
+  .hero-card,
+  .date-card,
+  .calendar-panel,
+  .day-card,
+  .day-cell,
+  .mini-month {
+    break-inside: avoid;
+    box-shadow: none;
+    border-color: var(--border);
+  }
+
+  .date-strip {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: 8px 0;
+  }
+
+  .hero-card,
+  .date-card,
+  .calendar-panel {
+    margin-bottom: 12px;
+  }
+
+  .week-grid,
+  .month-grid,
+  .year-grid {
+    height: auto;
+    grid-template-rows: auto;
+    overflow: visible;
+    break-inside: avoid;
+  }
+
+  .week-grid {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+
+  .day-card {
+    min-height: 85px;
+  }
+
+  .month-grid {
+    grid-template-rows: auto repeat(6, minmax(25px, auto));
+  }
+
+  .day-cell {
+    min-height: 28px;
+  }
+
+  .year-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: auto;
+    gap: 8px;
+  }
+
+  .mini-month {
+    min-height: 110px;
+    padding: 8px;
+    overflow: visible;
+  }
+
+  .mini-month-title {
+    font-size: 0.9rem;
+  }
+
+  .mini-days {
+    grid-auto-rows: minmax(16px, auto);
+    font-size: 0.7rem;
+    overflow: visible;
+  }
+
+  .mini-days span {
+    min-height: 16px;
+  }
+
+  .day-card.holiday,
+  .day-cell.holiday,
+  .mini-days .holiday-day {
+    background: var(--holiday-bg) !important;
+    color: var(--holiday-text) !important;
+  }
+
+  .newroz-rays {
+    animation: none !important;
+  }
+}
+
+/* Sorani search field: keep placeholder typography and bidi direction explicit. */
+html[lang="ckb"] .week-search-input {
+  direction: rtl !important;
+  text-align: right !important;
+  font-family: "Noto Sans Arabic", Tahoma, Arial, sans-serif !important;
+}
+
+html[lang="ckb"] .week-search-input::placeholder {
+  color: var(--muted);
+  opacity: 0.35;
+  direction: rtl;
+  text-align: right;
+  font-family: "Noto Sans Arabic", Tahoma, Arial, sans-serif !important;
+  font-size: inherit;
+}
+
+/* Compact Newroz information card. */
+.newroz-badge {
+  max-width: 52%;
+  gap: 10px;
+  padding: 8px 12px;
+}
+
+.newroz-sun {
+  width: 34px;
+  height: 34px;
+  flex-basis: 34px;
+}
+
+.newroz-sun-disk {
+  display: grid;
+  place-items: center;
+  color: var(--navy);
+  font-size: 0.7rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+
+.newroz-details {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.newroz-date,
+.newroz-countdown-line {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.25;
+}
+
+.newroz-date {
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.newroz-countdown-line {
+  flex-wrap: wrap;
+  font-size: 0.76rem;
+  font-weight: 500;
+}
+
+#newroz-countdown {
+  font-size: 1rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.newroz-countdown-label {
+  color: var(--muted);
+}
+
+.button-install {
+  white-space: nowrap;
+}
+
+@media (max-width: 680px) {
+  .newroz-badge {
+    max-width: 58%;
+    gap: 7px;
+    padding: 6px 8px;
+  }
+
+  .newroz-sun {
+    width: 29px;
+    height: 29px;
+    flex-basis: 29px;
+  }
+
+  .newroz-date {
+    font-size: 0.72rem;
+  }
+
+  .newroz-countdown-line {
+    font-size: 0.68rem;
+  }
+
+  #newroz-countdown {
+    font-size: 0.85rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .newroz-rays {
+    animation: none;
+  }
+}
