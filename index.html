@@ -26,16 +26,19 @@
   <!-- Stylesheets are kept in cascade order and split by responsibility. -->
 
   <!-- Classic scripts keep the browser architecture simple and dependency order clear. -->
-  <script src="/static/translations.js" defer></script>
-  <script src="/static/calendar-core.js" defer></script>
-  <script src="/static/calendar-view.js" defer></script>
-  <script src="/static/calendar-navigation.js" defer></script>
-  <script src="/static/calendar-events.js" defer></script>
-  <script src="/static/storage.js" defer></script>
-  <script src="/static/runtime-config.js" defer></script>
-  <script src="/static/data-service.js" defer></script>
-  <script src="/static/update-manager.js" defer></script>
-  <script src="/static/app.js" defer></script>
+ <!-- Translation library must load before the translation dictionaries. -->
+<script src="/static/vendor/i18next.min.js" defer></script>
+<script src="/static/translations.js" defer></script>
+
+<script src="/static/calendar-core.js" defer></script>
+<script src="/static/calendar-view.js" defer></script>
+<script src="/static/calendar-navigation.js" defer></script>
+<script src="/static/calendar-events.js" defer></script>
+<script src="/static/storage.js" defer></script>
+<script src="/static/runtime-config.js" defer></script>
+<script src="/static/data-service.js" defer></script>
+<script src="/static/update-manager.js" defer></script>
+<script src="/static/app.js" defer></script>
 
 </head>
 
@@ -43,12 +46,12 @@
   <div class="app-shell">
 
     <header class="topbar">
-      <a class="brand" href="#week" aria-label="Hewtûjmêr home">
+      <a class="brand" href="#week" aria-label="Hewtûjmêr (حەتووژمێر) — home" data-i18n-aria-label="brandHome">
         <span class="brand-mark newroz-sun" aria-hidden="true">
           <span class="newroz-rays"></span>
           <span class="newroz-sun-disk">7</span>
         </span>
-        <span class="brand-name">Hewtûjmêr</span>
+        <span class="brand-name">Hewtûjmêr <span class="brand-kurdish">(حەوتووژمێر)</span></span>
       </a>
 
       <div class="topbar-actions">
@@ -57,12 +60,12 @@
             زمان
           </span>
 
-          <select id="language-select" aria-label="Language">
-            <optgroup label="کوردی">
-              <option value="ckb" selected>سۆرانی</option>
-              <option value="kmr">Kurmanji</option>
+          <select id="language-select" aria-label="Language" data-i18n-aria-label="languageLabel">
+            <optgroup id="language-group" label="کوردی">
+              <option value="ckb" selected data-i18n-option="soraniLanguage">سۆرانی</option>
+              <option value="kmr" data-i18n-option="kurmanjiLanguage">Kurmanji</option>
             </optgroup>
-            <option value="en">English</option>
+            <option value="en" data-i18n-option="englishLanguage">English</option>
           </select>
         </label>
 
@@ -74,19 +77,6 @@
           hidden
         >
           Install app
-        </button>
-
-        <button
-          class="button header-tool-button"
-          id="notes-button"
-          type="button"
-          aria-label="Notes and reminders"
-          data-i18n-aria-label="notesButton"
-          data-i18n-title="notesButton"
-          title="Notes and reminders"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"></path></svg>
-          <span data-i18n="notes">Notes</span>
         </button>
 
         <button
@@ -105,6 +95,8 @@
           id="print-button"
           type="button"
           aria-label="Print or save as PDF"
+          data-i18n-aria-label="printLabel"
+          data-i18n-title="printLabel"
           title="Print or save as PDF"
         >
           <span aria-hidden="true">⎙</span>
@@ -115,12 +107,12 @@
 
     <div class="app-layout">
 
-      <aside class="sidebar" aria-label="Calendar navigation">
+      <aside class="sidebar" aria-label="Calendar navigation" data-i18n-aria-label="calendarNavigation">
         <p class="sidebar-label" data-i18n="views">
           بینینەکان
         </p>
 
-        <nav class="view-nav" aria-label="Calendar views">
+        <nav class="view-nav" aria-label="Calendar views" data-i18n-aria-label="calendarViews">
           <a class="nav-link" href="#week" data-view-link="week">
             <span class="nav-icon" aria-hidden="true">▤</span>
             <span data-i18n="week">هەفتە</span>
@@ -153,7 +145,7 @@
           <h1 id="print-calendar-heading" class="print-calendar-heading" aria-hidden="true"></h1>
 
         <!-- Search -->
-        <section class="week-search" aria-label="Search calendar">
+        <section class="week-search" aria-label="Search calendar" data-i18n-aria-label="searchLabel">
           <form
             id="week-search-form"
             class="week-search-form"
@@ -186,6 +178,8 @@
               id="week-search-button"
               type="submit"
               aria-label="Search"
+              data-i18n-aria-label="searchAction"
+              data-i18n-title="searchAction"
               title="Search"
             >
               <span aria-hidden="true">➜</span>
@@ -230,7 +224,7 @@
         </section>
 
         <!-- Current date information -->
-        <section class="date-strip" aria-label="Today's dates">
+        <section class="date-strip" aria-label="Today's dates" data-i18n-aria-label="todayDates">
           <article class="date-card">
             <span class="date-card-label" data-i18n="kurdishDate">
               بەرواری کوردی
@@ -264,7 +258,7 @@
         </section>
 
         <!-- Mobile navigation -->
-        <nav class="mobile-view-nav" aria-label="Main navigation">
+        <nav class="mobile-view-nav" aria-label="Main navigation" data-i18n-aria-label="mainNavigation">
           <a class="nav-link" href="#week" data-view-link="week">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M8 4v16M3 10h18"></path></svg>
             <span data-i18n="week">هەفتە</span>
