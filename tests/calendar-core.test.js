@@ -48,3 +48,18 @@ test("Search parses valid ISO dates and ISO week references", () => {
   assert.equal(Core.parseSearch("week 99 2026"), null);
   assert.equal(Core.parseSearch("2026-02-30"), null);
 });
+
+test("Sorani date formatting keeps Kurdish suffixes and month names", () => {
+  const date = new Date(2026, 9, 1);
+  assert.equal(Core.formatGregorian(date, "ckb"), "۱ی ئوکتۆبەری ۲۰۲۶ی زایینی");
+  assert.match(Core.formatKurdishDate(date, "ckb"), /ی کوردی$/);
+});
+
+
+test("Sorani week range uses the requested wording and Monday start", () => {
+  const date = new Date(2026, 10, 1);
+  assert.equal(
+    Core.formatWeekRange(date, "ckb"),
+    "لە 26ی ئوکتۆبەری 2026 زاینی تا 1ی نۆڤەمبری 2026ی زاینی"
+  );
+});

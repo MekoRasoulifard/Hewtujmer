@@ -623,89 +623,166 @@
   }
 }
 
-/* Desktop header buttons share the mobile navigation tile design. */
-@media (min-width: 681px) {
-  .topbar-actions {
+
+/* Header controls use the same icon-above-label tile pattern as bottom navigation. */
+.topbar-actions {
+  align-items: center;
+  gap: 4px;
+}
+
+.topbar-actions .header-nav-tile {
+  display: inline-flex;
+  width: 68px;
+  min-width: 68px;
+  height: 58px;
+  min-height: 58px;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 5px 2px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  box-shadow: none;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.topbar-actions .header-nav-tile > svg,
+.topbar-actions .header-nav-tile > .theme-icon {
+  display: grid;
+  width: 21px;
+  height: 21px;
+  min-height: 21px;
+  flex: 0 0 21px;
+  place-items: center;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.topbar-actions .header-tile-label {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-size: inherit;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.topbar-actions .language-control.header-nav-tile {
+  width: 76px;
+  min-width: 76px;
+  cursor: pointer;
+}
+
+.topbar-actions .language-control.header-nav-tile select {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 18px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: 0.68rem;
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: center;
+  text-align-last: center;
+}
+
+.topbar-actions #install-app-button.header-nav-tile {
+  width: 88px;
+  min-width: 88px;
+}
+
+.topbar-actions #notes-button.header-nav-tile svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.topbar-actions .header-nav-tile:hover,
+.topbar-actions .header-nav-tile:focus-visible {
+  background: var(--accent-soft, #e2f1ee);
+  color: var(--navy);
+}
+
+.topbar-actions .header-nav-tile:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+:root[data-theme="dark"] .topbar-actions .header-nav-tile:hover,
+:root[data-theme="dark"] .topbar-actions .header-nav-tile:focus-visible {
+  background: #24383e;
+  color: #f3ffff;
+}
+
+@media (max-width: 680px) {
+  .topbar {
+    min-height: 106px;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
     gap: 4px;
+    padding: 5px 8px;
   }
 
-  .topbar-actions #notes-button,
-  .topbar-actions #theme-toggle,
-  .topbar-actions #print-button {
-    display: inline-flex;
-    width: 58px;
-    min-width: 58px;
-    height: 54px;
-    min-height: 54px;
-    flex-direction: column;
-    align-items: center;
+  .topbar .brand {
+    width: 100%;
+    min-height: 34px;
+    flex: 0 0 100%;
+  }
+
+  .topbar-actions {
+    width: 100%;
+    flex: 0 0 100%;
+    flex-wrap: nowrap;
     justify-content: center;
     gap: 4px;
-    padding: 5px 2px;
-    border: 0;
-    border-radius: 10px;
-    background: transparent;
-    color: var(--muted);
-    font: inherit;
-    font-size: 0.7rem;
-    font-weight: 600;
-    line-height: 1.15;
-    text-align: center;
-    white-space: normal;
-    box-shadow: none;
   }
 
-  .topbar-actions #notes-button svg {
-    display: block;
-    width: 21px;
-    height: 21px;
-    flex: 0 0 21px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.7;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+  .topbar-actions .header-nav-tile {
+    width: 64px;
+    min-width: 64px;
+    height: 56px;
+    min-height: 56px;
+    padding: 4px 2px;
+    font-size: 0.65rem;
   }
 
-  .topbar-actions #theme-toggle .theme-label {
-    display: inline;
+  .topbar-actions .language-control.header-nav-tile {
+    width: 72px;
+    min-width: 72px;
   }
 
-  .topbar-actions #theme-toggle .theme-icon,
-  .topbar-actions #print-button > span:first-child {
-    display: grid;
-    width: 21px;
-    height: 21px;
-    flex: 0 0 21px;
-    place-items: center;
-    font-size: 1.05rem;
-    line-height: 1;
+  .topbar-actions #install-app-button.header-nav-tile {
+    width: 82px;
+    min-width: 82px;
   }
 
-  .topbar-actions #notes-button:hover,
-  .topbar-actions #notes-button:focus-visible,
-  .topbar-actions #theme-toggle:hover,
-  .topbar-actions #theme-toggle:focus-visible,
-  .topbar-actions #print-button:hover,
-  .topbar-actions #print-button:focus-visible {
-    background: var(--accent-soft, #e2f1ee);
-    color: var(--navy);
-  }
-
-  .topbar-actions #notes-button:focus-visible,
-  .topbar-actions #theme-toggle:focus-visible,
-  .topbar-actions #print-button:focus-visible {
-    outline: 2px solid var(--focus);
-    outline-offset: 2px;
-  }
-
-  :root[data-theme="dark"] .topbar-actions #notes-button:hover,
-  :root[data-theme="dark"] .topbar-actions #notes-button:focus-visible,
-  :root[data-theme="dark"] .topbar-actions #theme-toggle:hover,
-  :root[data-theme="dark"] .topbar-actions #theme-toggle:focus-visible,
-  :root[data-theme="dark"] .topbar-actions #print-button:hover,
-  :root[data-theme="dark"] .topbar-actions #print-button:focus-visible {
-    background: #24383e;
-    color: #f3ffff;
+  /* Notes stays in the existing five-item mobile bottom navigation. */
+  .topbar #notes-button {
+    display: none;
   }
 }

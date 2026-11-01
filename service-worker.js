@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "hewtujmer-app-v13";
+const CACHE_VERSION = "hewtujmer-app-v14";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const PAGE_CACHE = `${CACHE_VERSION}-pages`;
 const CORE_ASSETS = [

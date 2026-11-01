@@ -18,22 +18,14 @@
   if (!translations[language]) language = "ckb";
 
   function readSavedDate() {
-    try {
-      const savedDate = localStorage.getItem("hewtujmer-selected-date");
-      const parsedDate = savedDate ? Core.dateFromKey(savedDate) : null;
-      return parsedDate ? Core.startOfDay(parsedDate) : Core.startOfDay(new Date());
-    } catch (error) {
-      return Core.startOfDay(new Date());
-    }
+    const savedDate = window.HewtujmerStorage?.get("selected-date");
+    const parsedDate = savedDate ? Core.dateFromKey(savedDate) : null;
+    return parsedDate ? Core.startOfDay(parsedDate) : Core.startOfDay(new Date());
   }
 
   function readSavedView() {
-    try {
-      const savedView = localStorage.getItem("hewtujmer-view");
-      if (["week", "day", "month", "calendar"].includes(savedView)) return savedView;
-    } catch (error) {
-      // Continue with the URL's view when storage is unavailable.
-    }
+    const savedView = window.HewtujmerStorage?.get("view");
+    if (["week", "day", "month", "calendar"].includes(savedView)) return savedView;
     return Navigation.readViewFromHash();
   }
 
@@ -47,18 +39,15 @@
     const selected = theme === "dark" ? "dark" : "light";
     document.documentElement.dataset.theme = selected;
 
-    try {
-      localStorage.setItem("hewtujmer-theme", selected);
-    } catch {
-      // The theme remains active for this session.
-    }
+    window.HewtujmerStorage?.set("theme", selected);
 
     const icon = document.querySelector("#theme-toggle .theme-icon");
     const button = document.querySelector("#theme-toggle");
     const isDark = selected === "dark";
+    const t = translations[state.language] || translations.en;
     const label = isDark
-      ? "Switch to light mode"
-      : "Switch to dark mode";
+      ? t.switchToLight
+      : t.switchToDark;
 
     if (icon) {
       icon.textContent = isDark ? "☀" : "☾";
@@ -101,6 +90,12 @@
 
     if (languageSelect) {
       languageSelect.value = state.language;
+      const group = languageSelect.querySelector("#language-group");
+      if (group) group.label = t.languageGroup;
+      for (const option of languageSelect.querySelectorAll("[data-i18n-option]")) {
+        const value = t[option.dataset.i18nOption];
+        if (typeof value === "string") option.textContent = value;
+      }
     }
 
     const translatedElements = document.querySelectorAll("[data-i18n]");
@@ -179,14 +174,7 @@
 
     state.language = nextLanguage;
 
-    try {
-      localStorage.setItem(
-        "hewtujmer-language",
-        nextLanguage
-      );
-    } catch {
-      // Language selection remains available this session.
-    }
+    window.HewtujmerStorage?.set("language", nextLanguage);
 
     updateTranslations();
     render();
@@ -226,15 +214,8 @@
   }
 
   function render() {
-    try {
-      localStorage.setItem("hewtujmer-view", state.view);
-      localStorage.setItem(
-        "hewtujmer-selected-date",
-        Core.dateKey(state.selectedDate)
-      );
-    } catch (error) {
-      // The calendar continues to work for this session.
-    }
+    window.HewtujmerStorage?.set("view", state.view);
+    window.HewtujmerStorage?.set("selected-date", Core.dateKey(state.selectedDate));
 
     updateTodayCards();
     View.render(state);
@@ -277,13 +258,7 @@
   }
 
   function initialize() {
-    let theme = "light";
-
-    try {
-      theme = localStorage.getItem("hewtujmer-theme") || "light";
-    } catch {
-      // Use light mode by default.
-    }
+    const theme = window.HewtujmerStorage?.get("theme", "light") || "light";
 
     applyTheme(theme);
     updateTranslations();
@@ -298,6 +273,8 @@
 
     window.addEventListener("calendar-movements-loaded", render);
     window.addEventListener("calendar-notes-updated", render);
+    window.HewtujmerData?.bindLifecycleRefresh();
+    window.HewtujmerData?.initialize();
     render();
   }
 

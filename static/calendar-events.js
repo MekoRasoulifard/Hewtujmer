@@ -230,6 +230,109 @@
     return refreshMovements();
   }
 
+  const MOVEMENT_TRANSLATIONS = [
+    ["جەلال مەلەکشا", "Jalal Maleksha", "Celal Meleksa"],
+    ["کۆبانی", "Kobani", "Kobanê"],
+    ["کۆچی دوایی", "Death of", "Koça dawî ya"],
+    ["ساڵوەگەڕی کۆچی دوایی", "Anniversary of the death of", "Salvegera koça dawî ya"],
+    ["یادی کۆچی دوایی", "Memorial of the death of", "Bîranîna koça dawî ya"],
+    ["ڕۆژی جیهانی", "World Day of", "Roja Cîhanî ya"],
+    ["ڕۆژی نێودەوڵەتی", "International Day of", "Roja navneteweyî ya"],
+    ["ڕۆژی پێشمەرگەی کوردستان", "Kurdistan Peshmerga Day", "Roja Pêşmergey Kurdistanê"],
+   /*  ["یادی مام قودرەت", "Memorial of Mam Qudret", "Bîranîna Mam Qudret"], */
+    ["یادی", "Memorial of", "Bîranîna"],
+    ["پێشمەرگەی", "Peshmerga", "Pêşmergey"],
+    ["کۆماری کوردستان", "Republic of Kurdistan", "Komara Kurdistanê"],
+    ["کۆماری", "Republic", "Komar"],
+    ["ڕۆژی", "Day of", "Roja"],
+    ["دامەزراندنی", "Establishment of", "Damezrandina"],
+    ["بڵاوکردنەوەی", "Publication of", "Weşandina"],
+    ["لەدایکبوونی", "Birth of", "Jidayikbûna"],
+    ["دەستپێکردنی", "Beginning of", "Destpêkirina"],
+    ["هەڵبژاردنی", "Election of", "Hilbijartina"],
+    ["مۆرکردنی", "Signing of", "Mohrkirina"],
+    ["پەسەندکردنی", "Approval of", "Pejirandina"],
+    ["بۆردومانی", "Bombing of", "Bombardûmana"],
+    ["کیمیابارانی", "Chemical attack on", "Êrîşa kîmyayî li ser"],
+    ["بۆمبارانکردنی", "Bombing of", "Bombardûmana"],
+    ["داگیرکردنی", "Occupation of", "Dagirkirina"],
+    ["ڕاگەیاندنی", "Declaration of", "Ragehandina"],
+    ["ڕێککەوتنی", "Agreement on", "Peymana"],
+    ["تیرۆرکردنی", "Assassination of", "Terorkirina"],
+    ["گیان‌بەختکردنی", "Death of", "Jiyana xwe ji destdana"],
+    ["شەهادەتی", "Martyrdom of", "Şehadeta"],
+    ["وەستانی", "End of", "Rawestanî"],
+    ["بوو بە", "became", "bû"],
+    ["یەکەم", "First", "Yekem"],
+    ["نەتەوەیی", "National", "Neteweyî"],
+    ["جیهانی", "World", "Cîhanî"],
+    ["کوردستان", "Kurdistan", "Kurdistan"],
+    ["کوردی", "Kurdish", "Kurdî"],
+    ["هەرێمی", "Regional", "Herêmî"],
+    ["حکومەتی", "government", "hikûmeta"],
+    ["سەرۆککۆماری", "President of", "Serokkomarê"],
+    ["سەرۆکایەتی", "Presidency of", "Serokatiya"],
+    ["نووسەر", "writer", "nivîskar"],
+    ["شاعیر", "poet", "helbestvan"],
+    ["هونەرمەند", "artist", "hunermend"],
+    ["گۆرانیبێژ", "singer", "stranbêj"],
+    ["ژینگەپارێز", "environmentalist", "parêzvanê jîngehê"],
+    ["ڕۆژنامەوان", "journalist", "rojnamevan"],
+    ["ڕۆژنامەڤان", "journalist", "rojnamevan"],
+    ["سینەماکاری", "filmmaker", "sînemakar"],
+    ["سیاسەتمەدار", "politician", "siyasetmedar"],
+    ["وەرگێڕ", "translator", "werger"],
+    ["زانای", "scholar", "zanayê"],
+    ["لێکۆڵەر", "researcher", "lêkolîner"],
+    ["چالاکوان", "activist", "çalakvan"],
+    ["مافناس", "lawyer", "mafnas"],
+    ["ئەدیب", "writer", "edîb"],
+    ["بەیت‌بێژ", "traditional singer", "beytbêj"],
+    ["حەیران‌بێژ", "traditional singer", "heyîranbêj"],
+    ["ئازا", "brave", "aza"],
+    ["ناسانراو بە", "known as", "nasînî bi navê"],
+    ["ناسراو بە", "known as", "nasînî bi navê"],
+    ["لە لایەن", "by", "ji aliyê"],
+    ["لە ساڵی", "in", "di sala"],
+    ["ساڵڕۆژی", "anniversary", "salvegera"],
+    ["ساڵیادی", "anniversary", "salvegera"],
+    ["سەرەتای ساڵی کوردی و نەورۆز", "Beginning of the Kurdish year and Newroz", "Destpêka sala kurdî û Newroz"]
+  ];
+
+  function translateMovementTitle(value, language) {
+    const source = String(value || "");
+    if (language === "ckb") return source;
+    if (language === "kmr") {
+      let translated = source;
+      for (const [ckb, en, kmr] of MOVEMENT_TRANSLATIONS) {
+        if (translated.includes(ckb)) translated = translated.replaceAll(ckb, kmr);
+      }
+      return translated;
+    }
+    if (language === "en") {
+      let translated = source;
+      // Long phrases first so the shorter replacements do not consume them.
+      const ordered = [...MOVEMENT_TRANSLATIONS].sort((a, b) => b[0].length - a[0].length);
+      for (const [ckb, en] of ordered) {
+        if (translated.includes(ckb)) translated = translated.replaceAll(ckb, en);
+      }
+      return transliterateSoraniNames(translated);
+    }
+    return source;
+  }
+
+  function transliterateSoraniNames(value) {
+    const letters = {
+      "ا":"a", "ئ":"e", "ە":"e", "ب":"b", "پ":"p", "ت":"t", "ج":"j", "چ":"ç", "ح":"h", "خ":"x",
+      "د":"d", "ر":"r", "ڕ":"rr", "ز":"z", "ژ":"j", "س":"s", "ش":"ş", "ع":"e", "غ":"x", "ف":"f",
+      "ڤ":"v", "ق":"q", "ک":"k", "گ":"g", "ل":"l", "ڵ":"ł", "م":"m", "ن":"n", "ۆ":"o", "و":"w",
+      "ه":"h", "ی":"y", "ێ":"ê", "ى":"y", "ء":"", "ـ":"", "ك":"k", "ي":"y"
+    };
+    return String(value).replace(/[\u0600-\u06FF\u0750-\u077F]+/g, word =>
+      Array.from(word, character => letters[character] ?? character).join("")
+    );
+  }
+
   function normalizeMovementTitle(value) {
     return String(value || "")
       .normalize("NFC")
@@ -256,11 +359,18 @@
     const seen = [];
 
     for (const item of result) {
-      const title = language === "ckb"
+      const sourceTitle = language === "ckb"
         ? item.ckb
         : language === "kmr"
           ? (item.kmr || item.ckb)
-          : (item.en || item.kmr || item.ckb);
+          : (item.en || item.ckb || item.kmr);
+      const title = language === "ckb"
+        ? sourceTitle
+        : language === "kmr" && sourceTitle === item.ckb
+          ? translateMovementTitle(item.ckb, "kmr")
+          : language === "en"
+            ? translateMovementTitle(sourceTitle, "en")
+            : sourceTitle;
       const normalized = normalizeMovementTitle(title);
       if (!normalized) continue;
 

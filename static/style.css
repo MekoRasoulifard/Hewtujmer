@@ -746,6 +746,12 @@ textarea:disabled {
   unicode-bidi: plaintext;
 }
 
+.brand-kurdish {
+  direction: rtl;
+  unicode-bidi: isolate;
+  white-space: nowrap;
+}
+
 .brand-mark.newroz-sun {
   display: inline-block;
   width: 36px;
@@ -1206,20 +1212,6 @@ textarea:disabled {
   margin: 0;
   padding: 16px 12px;
   color: var(--muted);
-}
-
-/* Keep the Notes action visible on narrow screens. */
-@media (max-width: 680px) {
-  #notes-button.header-tool-button {
-    min-width: auto;
-    padding: 5px 8px;
-    font-size: .72rem;
-    gap: 5px;
-  }
-
-  #notes-button.header-tool-button span:first-child {
-    font-size: .95rem;
-  }
 }
 
 /* High contrast for every part of the notes dialog in dark mode. */

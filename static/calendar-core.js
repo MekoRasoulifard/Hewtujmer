@@ -269,9 +269,25 @@ function localizeDigits(value, language = "en") {
     if (language === "no") {
       return formatNorwegianWeekRange(date);
     }
+
     const monday = startOfWeek(date);
     const sunday = addDays(monday, 6);
-    return `${formatGregorian(monday, language)} – ${formatGregorian(sunday, language)}`;
+
+    if (language === "ckb") {
+      const formatSorani = (value, includeYearSuffix) => {
+        const day = String(value.getDate());
+        const month = GREGORIAN_MONTHS_CKB[value.getMonth()];
+        const year = String(value.getFullYear());
+        return `${day}ی ${month}ی ${year}${includeYearSuffix ? "ی" : ""} زاینی`;
+      };
+      return `لە ${formatSorani(monday, false)} تا ${formatSorani(sunday, true)}`;
+    }
+
+    if (language === "kmr") {
+      return `Ji ${formatGregorian(monday, language)} heta ${formatGregorian(sunday, language)}`;
+    }
+
+    return `From ${formatGregorian(monday, language)} to ${formatGregorian(sunday, language)}`;
   }
 
   function getHoliday(date, language = "en") {
