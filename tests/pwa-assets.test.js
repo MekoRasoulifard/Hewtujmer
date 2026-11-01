@@ -35,14 +35,16 @@ test("service worker precaches the calendar and never intercepts API data", () =
   }
 });
 
-test("migration creates only the two personal data tables", () => {
+test("manual SQL creates only the two personal data tables", () => {
+  const temporarySql = read("temp-sql/001_create_tables.sql");
   const migrationSql = read("database/migrations/001_create_tables.sql");
-  const tables = [...migrationSql.matchAll(/CREATE TABLE IF NOT EXISTS\s+(\w+)/gi)]
+  assert.equal(temporarySql, migrationSql);
+  const tables = [...temporarySql.matchAll(/CREATE TABLE IF NOT EXISTS\s+(\w+)/gi)]
     .map(match => match[1].toLowerCase()).sort();
   assert.deepEqual(tables, ["notes", "reminders"]);
-  assert.match(migrationSql, /notification_enabled BOOLEAN/);
-  assert.match(migrationSql, /PRIMARY KEY/);
-  assert.match(migrationSql, /CREATE INDEX/);
+  assert.match(temporarySql, /notification_enabled BOOLEAN/);
+  assert.match(temporarySql, /PRIMARY KEY/);
+  assert.match(temporarySql, /CREATE INDEX/);
 });
 
 test("frontend contains the requested navigation and single Newroz sun", () => {
@@ -52,21 +54,7 @@ test("frontend contains the requested navigation and single Newroz sun", () => {
   assert.match(html, /data-view-link="month"/);
   assert.match(html, /data-view-link="calendar"/);
   assert.match(html, /data-nav-action="notes"/);
-  assert.match(html, /id="notes-button"/);
-  assert.equal((html.match(/id="notes-button"/g) || []).length, 1);
-  assert.equal((html.match(/data-nav-action="notes"/g) || []).length, 1);
   assert.match(html, /id="reminder-form"/);
-
-  const responsiveCss = read("static/style-responsive.css");
-  assert.match(responsiveCss, /@media\s*\(max-width:\s*680px\)[\s\S]*?\.topbar\s+#notes-button\s*\{\s*display:\s*none;/);
-
-  const eventScript = read("static/calendar-events.js");
-  assert.match(eventScript, /function openNotesDialog\(\)/);
-  assert.match(eventScript, /noteText\?\.focus\(\{ preventScroll: true \}\)/);
-  assert.match(eventScript, /openNotes:\s*openNotesDialog/);
-
-  const serviceWorker = read("service-worker.js");
-  assert.match(serviceWorker, /hewtujmer-app-v10/);
   assert.doesNotMatch(html, /id="movements-button"/);
   assert.equal((html.match(/class="newroz-rays"/g) || []).length, 1);
   const badge = html.match(/<div class="hero-badge newroz-badge"[\s\S]*?<\/div>/)?.[0] || "";

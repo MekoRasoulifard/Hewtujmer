@@ -31,7 +31,7 @@
       reminderNotificationTitle: "بیرخەرەوەی Hewtûjmêr",
       newrozSunLabel: "نیشانی خۆری نەورۆز",
       movements: "جووڵەکان", movementsButton: "پیشاندانی ڕووداوەکانی ئەمڕۆ",
-      notes: "تێبینی", addNote: "زیادکردنی تێبینی", notePlaceholder: "تێبینییەک لێرە بنووسە...", notesButton: "تێبینی و بیرخەرەوەکان", reminders: "بیرخەرەوەکان", todayMovements: "ڕووداوەکانی ئەمڕۆ",
+      notes: "تێبینی", notesButton: "تێبینی و بیرخەرەوەکان", reminders: "بیرخەرەوەکان", todayMovements: "ڕووداوەکانی ئەمڕۆ",
       movementDismissHint: "بۆ داخستن، لە دەرەوە کلیک بکە یان Escape دابگرە.",
       close: "داخستن", privateNotes: "بۆ ئەم وێبگەڕە تایبەتە", notesAndReminders: "تێبینی و بیرخەرەوەکان",
       reminderTitle: "ناونیشان", reminderDescription: "وردەکاری", saveReminder: "پاشەکەوتکردنی بیرخەرەوە",
@@ -63,11 +63,11 @@
         "پێنجشەممە", "هەینی", "شەممە", "یەکشەممە"
       ],
       weekdaysShort: ["د", "س", "چ", "پ", "ه", "ش", "ی"],
-    months: [
-  "جەنەوەری", "فێبرەوەری", "مارچی", "ئەپرێڵ",
-  "مەی", "جوون", "جوولای", "ئاگۆست",
-  "سێپتەمبەر", "ئۆکتۆبەر", "نۆڤەمبەر", "دێسەمبەر"
-],
+      months: [
+        "خاکەلێوە", "گوڵان", "جۆزەردان", "پووشپەڕ",
+        "گەلاوێژ", "خەرمانان", "ڕەزبەر", "گەڵاڕێزان",
+        "سەرماوەز", "بەفرانبار", "ڕێبەندان", "ڕەشەمە"
+      ],
       dateFormat: (day, month, year) => `${day}ی ${month} ${year}`
     },
 
@@ -99,7 +99,7 @@
       reminderNotificationTitle: "Bîranîna Hewtûjmêr",
       newrozSunLabel: "Nîşana rojê ya Newrozê",
       movements: "Bûyer", movementsButton: "Bûyerên îro nîşan bide",
-      notes: "Têbînî", addNote: "Têbîniyek zêde bike", notePlaceholder: "Têbîniya xwe li vir binivîse...", notesButton: "Têbînî û bîranîn", reminders: "Bîranîn", todayMovements: "Bûyerên îro",
+      notes: "Têbînî", notesButton: "Têbînî û bîranîn", reminders: "Bîranîn", todayMovements: "Bûyerên îro",
       movementDismissHint: "Ji bo girtinê li derveyî panelê bitikîne an Escape pêl bike.",
       close: "Bigire", privateNotes: "Taybet ji bo vê gerokê", notesAndReminders: "Têbînî û bîranîn",
       reminderTitle: "Sernav", reminderDescription: "Danasîn", saveReminder: "Bîranînê tomar bike",
@@ -131,11 +131,11 @@
         "În", "Şemî", "Yekşem"
       ],
       weekdaysShort: ["D", "S", "Ç", "P", "În", "Ş", "Y"],
-   months: [
-  "Çile", "Sibat", "Adar", "Nîsan",
-  "Gulan", "Hezîran", "Tîrmeh", "Tebax",
-  "Îlon", "Cotmeh", "Mijdar", "Kanûn"
-],
+      months: [
+        "Xakelêwe", "Gulan", "Cizerdan", "Pûşper",
+        "Gelawêj", "Xermanan", "Rezber", "Gelarêzan",
+        "Sermawez", "Befranbar", "Rêbendan", "Reşeme"
+      ],
       dateFormat: (day, month, year) => `${day}ê ${month} ${year}`
     },
 
@@ -167,7 +167,7 @@
       reminderNotificationTitle: "Hewtûjmêr reminder",
       newrozSunLabel: "Newroz sun emblem",
       movements: "Events", movementsButton: "Show today's events", notes: "Notes", notesButton: "Notes and reminders", reminders: "Reminders",
-      todayMovements: "Today's events", addNote: "Add note", notePlaceholder: "Write your note here...", movementDismissHint: "Click outside or press Escape to close.", close: "Close",
+      todayMovements: "Today's events", movementDismissHint: "Click outside or press Escape to close.", close: "Close",
       privateNotes: "Private to this browser", notesAndReminders: "Notes and reminders", noteLabel: "Note",
       reminderTitle: "Title", reminderDescription: "Description", saveReminder: "Save reminder",
       savedReminders: "Saved reminders", notificationForReminder: "Send a notification for this reminder",
@@ -197,11 +197,11 @@
         "Friday", "Saturday", "Sunday"
       ],
       weekdaysShort: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-  months: [
-  "January", "February", "March", "April",
-  "May", "June", "July", "August",
-  "September", "October", "November", "December"
-],
+      months: [
+        "Xakelêwe", "Gulan", "Cizerdan", "Pûşper",
+        "Gelawêj", "Xermanan", "Rezber", "Gelarêzan",
+        "Sermawez", "Befranbar", "Rêbendan", "Reşeme"
+      ],
       dateFormat: (day, month, year) => `${month} ${day}, ${year}`
     }
   };

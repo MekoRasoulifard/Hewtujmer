@@ -1,4 +1,3 @@
-
 "use strict";
 
 let pool = null;
@@ -21,7 +20,66 @@ function makeConfigurationError(message, code) {
   return error;
 }
 
-function getPool() {
+function isLocalHost(hostname) {
+  return ["localhost", "127.0.0.1", "::1"].includes(
+    String(hostname || "").toLowerCase()
+  );
+}
+
+function getConnectionOptions() {
+  const isServerless = Boolean(process.env.VERCEL);
+
+  const poolOptions = {
+    max: isServerless ? 1 : 5,
+    idleTimeoutMillis: isServerless ? 10000 : 30000,
+    connectionTimeoutMillis: 5000,
+    allowExitOnIdle: isServerless
+  };
+
+  const databaseUrl = String(process.env.DATABASE_URL || "").trim();
+
+  // Prefer DATABASE_URL when it is configured.
+  if (databaseUrl) {
+    let parsedUrl;
+
+    try {
+      parsedUrl = new URL(databaseUrl);
+    } catch (error) {
+      throw makeConfigurationError(
+        "DATABASE_URL is not a valid PostgreSQL connection URL.",
+        "DATABASE_URL_INVALID"
+      );
+    }
+
+    if (
+      !["postgres:", "postgresql:"].includes(parsedUrl.protocol) ||
+      !parsedUrl.hostname ||
+      !parsedUrl.pathname ||
+      parsedUrl.pathname === "/" ||
+      !parsedUrl.username
+    ) {
+      throw makeConfigurationError(
+        "DATABASE_URL must use postgres:// or postgresql:// and include a host, database name, and username.",
+        "DATABASE_URL_INVALID"
+      );
+    }
+
+    // Hosted PostgreSQL services such as Neon require TLS.
+    // Preserve an explicitly configured sslmode.
+    if (
+      !parsedUrl.searchParams.has("sslmode") &&
+      !isLocalHost(parsedUrl.hostname)
+    ) {
+      parsedUrl.searchParams.set("sslmode", "require");
+    }
+
+    return {
+      ...poolOptions,
+      connectionString: parsedUrl.toString()
+    };
+  }
+
+  // Keep compatibility with the existing local database configuration.
   const required = [
     "DB_HOST",
     "DB_NAME",
@@ -33,11 +91,39 @@ function getPool() {
 
   if (missing.length) {
     throw makeConfigurationError(
-      `Missing database configuration: ${missing.join(", ")}`,
-      "DATABASE_CONFIG_MISSING"
+      "Set DATABASE_URL, or provide all four legacy settings: DB_HOST, DB_NAME, DB_USER, and DB_PASSWORD.",
+      "DATABASE_URL_MISSING"
     );
   }
 
+  const host = String(process.env.DB_HOST).trim();
+  const local = isLocalHost(host);
+  const sslSetting = String(process.env.DB_SSL || "")
+    .trim()
+    .toLowerCase();
+
+  let ssl;
+
+  if (["false", "0", "disable"].includes(sslSetting)) {
+    ssl = false;
+  } else if (["true", "1", "require"].includes(sslSetting)) {
+    ssl = { rejectUnauthorized: true };
+  } else {
+    ssl = local ? false : { rejectUnauthorized: true };
+  }
+
+  return {
+    ...poolOptions,
+    host,
+    port: Number(process.env.DB_PORT || 5432),
+    database: process.env.DB_NAME,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    ssl
+  };
+}
+
+function getPool() {
   if (!pool) {
     let Pool;
 
@@ -50,31 +136,7 @@ function getPool() {
       );
     }
 
-    const isServerless = Boolean(process.env.VERCEL);
-
-    const hostname = process.env.DB_HOST.toLowerCase();
-    const isLocal = ["localhost", "127.0.0.1", "::1"].includes(hostname);
-
-    const connectionOptions = {
-      host: process.env.DB_HOST,
-      port: Number(process.env.DB_PORT || 5432),
-      database: process.env.DB_NAME,
-      user: process.env.DB_USER,
-
-      // Password is passed directly, so # and commas remain unchanged.
-      password: process.env.DB_PASSWORD,
-
-      max: isServerless ? 1 : 5,
-      idleTimeoutMillis: isServerless ? 10000 : 30000,
-      connectionTimeoutMillis: 5000,
-      allowExitOnIdle: false
-    };
-
-    if (!isLocal) {
-      connectionOptions.ssl = {
-        rejectUnauthorized: true
-      };
-    }
+    const connectionOptions = getConnectionOptions();
 
     pool = new Pool(connectionOptions);
 

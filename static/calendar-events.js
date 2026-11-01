@@ -262,8 +262,6 @@
     const notesList = document.querySelector("#saved-notes-list");
     const noteStatus = document.querySelector("#note-status");
     const saveButton = document.querySelector("#note-save-button");
-    const addNoteButton = document.querySelector("#add-note-button");
-    const mobileAddNoteButton = document.querySelector("#mobile-add-note");
     const cancelEditButton = document.querySelector("#note-cancel-edit");
     const notificationButton = document.querySelector("#enable-notifications-button");
     const noteTab = document.querySelector("#notes-tab");
@@ -288,34 +286,14 @@
     let lastFocus = null;
     let editingNoteId = null;
     let editingReminderId = null;
-    let noteSaving = false;
-    let reminderSaving = false;
 
     function translations() {
       return window.HewtujmerTranslations[state.language] || window.HewtujmerTranslations.en;
     }
 
-    function updateDialogViewport() {
-      if (!window.visualViewport) return;
-      document.documentElement.style.setProperty(
-        "--visual-viewport-height",
-        `${Math.round(window.visualViewport.height)}px`
-      );
-    }
-
-    window.addEventListener("resize", updateDialogViewport);
-    window.visualViewport?.addEventListener("resize", () => {
-      updateDialogViewport();
-      const focused = notesOverlay?.contains(document.activeElement) ? document.activeElement : null;
-      if (focused && typeof focused.scrollIntoView === "function") {
-        window.requestAnimationFrame(() => focused.scrollIntoView({ block: "nearest" }));
-      }
-    });
-
     function openDialog(overlay, dialog) {
       if (!overlay || !dialog) return;
       lastFocus = document.activeElement;
-      updateDialogViewport();
       overlay.hidden = false;
       dialog.focus();
     }
@@ -363,15 +341,9 @@
       return renderMovements(date, false);
     }
 
-    function setNoteComposerVisible(visible) {
-      if (noteForm) noteForm.hidden = !visible;
-      if (addNoteButton) addNoteButton.hidden = visible;
-    }
-
     function resetNoteForm() {
       editingNoteId = null;
       noteForm?.reset();
-      setNoteComposerVisible(false);
       if (customWrap) customWrap.hidden = true;
       if (saveButton) saveButton.textContent = translations().saveNote;
       if (cancelEditButton) cancelEditButton.hidden = true;
@@ -397,7 +369,6 @@
         const content = document.createElement("div");
         const text = document.createElement("p");
         text.textContent = note.text;
-        text.dir = "auto";
         const meta = document.createElement("small");
         meta.textContent = [note.date, note.time].filter(Boolean).join(" · ") || translations().noReminderDate;
         content.append(text, meta);
@@ -432,7 +403,6 @@
 
     function editNote(note) {
       editingNoteId = note.id;
-      setNoteComposerVisible(true);
       if (noteText) noteText.value = note.text;
       if (dateInput) dateInput.value = note.date || "";
       if (timeInput) timeInput.value = note.time || "";
@@ -444,7 +414,6 @@
       if (saveButton) saveButton.textContent = translations().updateNote;
       if (cancelEditButton) cancelEditButton.hidden = false;
       noteText?.focus();
-      noteText?.scrollIntoView({ block: "nearest", behavior: "smooth" });
     }
 
     function selectNotesTab(name) {
@@ -453,31 +422,8 @@
       if (remindersPanel) remindersPanel.hidden = showNotes;
       noteTab?.setAttribute("aria-selected", showNotes ? "true" : "false");
       remindersTab?.setAttribute("aria-selected", showNotes ? "false" : "true");
-      if (!showNotes) resetNoteForm();
-    }
-
-    async function openNotesDialog(options = {}) {
-      const selectedDate = state.selectedDate || new Date();
-      resetNoteForm();
-      resetReminderForm();
-      if (dateInput) dateInput.value = window.CalendarCore.dateKey(selectedDate);
-      if (calendarReminderDate) calendarReminderDate.value = window.CalendarCore.dateKey(selectedDate);
-      selectNotesTab("notes");
-      if (noteStatus) noteStatus.textContent = "";
-      renderNotes();
-      renderReminders();
-      if (options.compose) setNoteComposerVisible(true);
-      openDialog(notesOverlay, notesDialog);
-      if (options.compose) {
-        noteText?.focus();
-        noteText?.scrollIntoView({ block: "center", behavior: "smooth" });
-      } else {
-        addNoteButton?.focus();
-      }
-      await window.HewtujmerData?.refresh();
-      renderNotes();
-      renderReminders();
-      if (options.compose) noteText?.focus();
+      if (showNotes) noteText?.focus();
+      else reminderTitle?.focus();
     }
 
     function resetReminderForm() {
@@ -525,7 +471,6 @@
         const content = document.createElement("div");
         const title = document.createElement("p");
         title.textContent = reminder.title;
-        title.dir = "auto";
         const meta = document.createElement("small");
         meta.textContent = [reminder.date, reminder.time].filter(Boolean).join(" · ");
         content.append(title, meta);
@@ -533,7 +478,6 @@
           const description = document.createElement("p");
           description.className = "saved-reminder-description";
           description.textContent = reminder.description;
-          description.dir = "auto";
           content.append(description);
         }
 
@@ -575,19 +519,39 @@
     noteTab?.addEventListener("click", () => selectNotesTab("notes"));
     remindersTab?.addEventListener("click", () => selectNotesTab("reminders"));
 
-    addNoteButton?.addEventListener("click", () => {
-      if (noteStatus) noteStatus.textContent = "";
-      setNoteComposerVisible(true);
-      noteText?.focus();
-      noteText?.scrollIntoView({ block: "center", behavior: "smooth" });
-    });
-
     document.querySelectorAll('[data-nav-action="notes"]').forEach(button => {
-      button.addEventListener("click", () => openNotesDialog());
+      button.addEventListener("click", async () => {
+        const now = new Date();
+        if (dateInput) dateInput.value = window.CalendarCore.dateKey(state.selectedDate || now);
+        if (calendarReminderDate) calendarReminderDate.value = window.CalendarCore.dateKey(state.selectedDate || now);
+        if (timeInput) timeInput.value = "";
+        resetNoteForm();
+        resetReminderForm();
+        selectNotesTab("notes");
+        if (noteStatus) noteStatus.textContent = "";
+        renderNotes();
+        renderReminders();
+        openDialog(notesOverlay, notesDialog);
+        noteText?.focus();
+        await window.HewtujmerData?.refresh();
+        renderNotes();
+        renderReminders();
+      });
     });
 
-    document.querySelector("#notes-button")?.addEventListener("click", () => openNotesDialog());
-    mobileAddNoteButton?.addEventListener("click", () => openNotesDialog({ compose: true }));
+    document.querySelector("#notes-button")?.addEventListener("click", async () => {
+      const now = new Date();
+      if (dateInput) dateInput.value = window.CalendarCore.dateKey(state.selectedDate || now);
+      if (calendarReminderDate) calendarReminderDate.value = window.CalendarCore.dateKey(state.selectedDate || now);
+      resetNoteForm();
+      resetReminderForm();
+      if (noteStatus) noteStatus.textContent = "";
+      renderNotes();
+      openDialog(notesOverlay, notesDialog);
+      noteText?.focus();
+      await window.HewtujmerData?.refresh();
+      renderNotes();
+    });
 
     document.querySelector("#movement-close")?.addEventListener("click", () => closeDialog(movementOverlay));
     movementOverlay?.addEventListener("click", event => {
@@ -604,11 +568,10 @@
     cancelEditButton?.addEventListener("click", resetNoteForm);
     noteForm?.addEventListener("submit", async event => {
       event.preventDefault();
-      if (noteSaving) return;
       const text = noteText?.value.trim() || "";
       if (!text) return;
 
-      const date = dateInput?.value || null;
+      const date = dateInput?.value || window.CalendarCore.dateKey(state.selectedDate);
       const time = timeInput?.value || "";
       const minutes = time
         ? (preset?.value === "custom" ? Number(customMinutes?.value) : Number(preset?.value || 0))
@@ -627,7 +590,6 @@
       };
 
       const submitButton = saveButton;
-      noteSaving = true;
       if (submitButton) submitButton.disabled = true;
       try {
         const savedId = editingNoteId || null;
@@ -648,7 +610,6 @@
       } catch (error) {
         if (noteStatus) noteStatus.textContent = error.message || translations().noteSaveFailed;
       } finally {
-        noteSaving = false;
         if (submitButton) submitButton.disabled = false;
       }
     });
@@ -659,7 +620,6 @@
     reminderCancelButton?.addEventListener("click", resetReminderForm);
     reminderForm?.addEventListener("submit", async event => {
       event.preventDefault();
-      if (reminderSaving) return;
       const title = reminderTitle?.value.trim() || "";
       const date = calendarReminderDate?.value || "";
       const time = calendarReminderTime?.value || "";
@@ -682,7 +642,6 @@
         notificationEnabled: calendarReminderNotification?.checked !== false,
         reminderShownAt: null
       };
-      reminderSaving = true;
       if (reminderSaveButton) reminderSaveButton.disabled = true;
       try {
         const id = editingReminderId;
@@ -701,7 +660,6 @@
       } catch (error) {
         if (reminderStatus) reminderStatus.textContent = error.message;
       } finally {
-        reminderSaving = false;
         if (reminderSaveButton) reminderSaveButton.disabled = false;
       }
     });
@@ -776,7 +734,7 @@
     selectNotesTab("notes");
     window.CalendarExtras = Object.freeze({
       showMovements: showDateEvents,
-      openNotes: () => openNotesDialog()
+      openNotes: () => document.querySelector("#notes-button")?.click()
     });
   }
   window.CalendarExtras = Object.freeze({ bind: bindExtras });

@@ -201,40 +201,26 @@ function localizeDigits(value, language = "en") {
   );
 }
 
-function formatGregorian(date, language = "en") {
-  const months = {
-    ckb: [
-      "جەنەوەری", "فێبرەوەری", "مارچی", "ئەپرێڵ",
-      "مەی", "جوون", "جوولای", "ئاگۆست",
-      "سێپتەمبەر", "ئۆکتۆبەر", "نۆڤەمبەر", "دێسەمبەر"
-    ],
-    kmr: [
-      "Çile", "Sibat", "Adar", "Nîsan",
-      "Gulan", "Hezîran", "Tîrmeh", "Tebax",
-      "Îlon", "Cotmeh", "Mijdar", "Kanûn"
-    ],
-    en: [
-      "January", "February", "March", "April",
-      "May", "June", "July", "August",
-      "September", "October", "November", "December"
-    ]
-  };
-
-  const month = months[language] || months.en;
-  const day = date.getDate();
-  const year = date.getFullYear();
-  const monthName = month[date.getMonth()];
-
-  if (language === "ckb") {
-    return `${localizeDigits(day, "ckb")}ی ${monthName} ${localizeDigits(year, "ckb")}ی زایینی`;
+  function formatGregorian(date, language = "en") {
+    const locale = language === "ckb"
+      ? "ckb"
+      : language === "kmr"
+        ? "ku"
+        : "en-GB";
+    try {
+      return new Intl.DateTimeFormat(locale, {
+        day: "numeric",
+        month: "short",
+        year: "numeric"
+      }).format(date);
+    } catch {
+      return new Intl.DateTimeFormat("en-GB", {
+        day: "numeric",
+        month: "short",
+        year: "numeric"
+      }).format(date);
+    }
   }
-
-  if (language === "kmr") {
-    return `${day}ê ${monthName} ${year}`;
-  }
-
-  return `${monthName} ${day}, ${year}`;
-}
 
   function formatKurdishDate(date, language = "en") {
     const parts = kurdishDateParts(date);
