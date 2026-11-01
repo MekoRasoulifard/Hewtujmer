@@ -17,6 +17,41 @@ class MemoryPool {
     const now = () => new Date().toISOString();
 
     if (statement === "SELECT 1") return { rows: [{ "?COLUMN?": 1 }], rowCount: 1 };
+    if (statement.includes("INFORMATION_SCHEMA.COLUMNS")) {
+  const columns = {
+    notes: [
+      "id",
+      "owner_id",
+      "text",
+      "reminder_date",
+      "reminder_time",
+      "remind_before_minutes",
+      "reminder_shown_at",
+      "created_at",
+      "updated_at"
+    ],
+    reminders: [
+      "id",
+      "owner_id",
+      "title",
+      "description",
+      "reminder_date",
+      "reminder_time",
+      "completed",
+      "remind_before_minutes",
+      "notification_enabled",
+      "reminder_shown_at",
+      "created_at",
+      "updated_at"
+    ]
+  };
+
+  const rows = Object.entries(columns).flatMap(([table_name, names]) =>
+    names.map(column_name => ({ table_name, column_name }))
+  );
+
+  return { rows, rowCount: rows.length };
+}
 
     if (statement.startsWith("SELECT ID, TEXT, REMINDER_DATE")) {
       const [first, second] = values;
