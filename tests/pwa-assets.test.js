@@ -36,7 +36,7 @@ test("service worker precaches the calendar and never intercepts API data", () =
 });
 
 test("manual SQL creates only the two personal data tables", () => {
-  const temporarySql = read("temp-sql/001_create_tables.sql");
+ const temporarySql = read("database/migrations/001_create_tables.sql");
   const migrationSql = read("database/migrations/001_create_tables.sql");
   assert.equal(temporarySql, migrationSql);
   const tables = [...temporarySql.matchAll(/CREATE TABLE IF NOT EXISTS\s+(\w+)/gi)]
