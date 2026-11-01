@@ -125,9 +125,15 @@
   ];
 
   const MONTHS_CKB = [
-    "خاکەلێوە", "گوڵان", "جۆزەردان", "پووشپەڕ",
-    "گەلاوێژ", "خەرمانان", "ڕەزبەر", "گەڵاڕێزان",
+    "خاکەلێوە", "بانەمەڕ", "جۆزەردان", "پووشپەڕ",
+    "گەلاوێژ", "خەرمانان", "ڕەزبەر", "خەزەڵوەر",
     "سەرماوەز", "بەفرانبار", "ڕێبەندان", "ڕەشەمە"
+  ];
+
+  const GREGORIAN_MONTHS_CKB = [
+    "جانیوەری", "فێبریوەری", "مارچ", "ئەپرێل",
+    "مەی", "جوون", "جولای", "ئۆگەست",
+    "سێپتەمبەر", "ئوکتۆبەر", "نۆڤەمبر", "دیسێمبەر"
   ];
 
   const HOLIDAYS = {
@@ -193,7 +199,7 @@
   }
 function localizeDigits(value, language = "en") {
   const digits = language === "ckb"
-    ? "٠١٢٣٤٥٦٧٨٩"
+    ? "۰۱۲۳۴۵۶۷۸۹"
     : "0123456789";
   return String(value).replace(
     /\d/g,
@@ -202,11 +208,14 @@ function localizeDigits(value, language = "en") {
 }
 
   function formatGregorian(date, language = "en") {
-    const locale = language === "ckb"
-      ? "ckb"
-      : language === "kmr"
-        ? "ku"
-        : "en-GB";
+    if (language === "ckb") {
+      const day = localizeDigits(date.getDate(), language);
+      const month = GREGORIAN_MONTHS_CKB[date.getMonth()];
+      const year = localizeDigits(date.getFullYear(), language);
+      return `${day}ی ${month}ی ${year}ی زایینی`;
+    }
+
+    const locale = language === "kmr" ? "ku" : "en-GB";
     try {
       return new Intl.DateTimeFormat(locale, {
         day: "numeric",
@@ -230,7 +239,7 @@ function localizeDigits(value, language = "en") {
     const day = localizeDigits(parts.day, language);
     const year = localizeDigits(parts.year, language);
     if (language === "ckb") {
-      return `${day}ی ${month} ${year}`;
+      return `${day}ی ${month}ی ${year}ی کوردی`;
     }
     if (language === "kmr") {
       return `${day}ê ${month} ${year}`;
@@ -275,7 +284,7 @@ function localizeDigits(value, language = "en") {
   }
 
   function normalizeSearchDigits(value) {
-    const arabicIndicDigits = "٠١٢٣٤٥٦٧٨٩";
+    const arabicIndicDigits = "۰۱۲۳۴۵۶۷۸۹";
     const persianDigits = "۰۱۲۳۴۵۶۷۸۹";
     let normalized = "";
     for (let i = 0; i < value.length; i++) {

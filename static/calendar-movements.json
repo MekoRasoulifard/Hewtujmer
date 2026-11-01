@@ -1,6 +1,209 @@
 {
   "movements": [
     {
+      "month": 0,
+      "day": 1,
+      "ckb": "سەرەتای ساڵی کوردی و نەورۆز",
+      "kmr": "Destpêka sala kurdî û Newroz",
+      "type": "international"
+    },
+    {
+      "month": 0,
+      "day": 2,
+      "ckb": "کۆچی دوایی مەلا عەبدولکەریم شاریکەندی",
+      "kmr": "کۆچی دوایی مەلا عەبدولکەریم شاریکەندی",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 2,
+      "ckb": "کیمیابارانی سوێسێنان لە ١٩٨٨",
+      "kmr": "Êrîşa kîmyayî ya Sweisênan di 1988an de",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 5,
+      "ckb": "کۆچی دوایی مەلاکەریم فیدایی (١٩٩٣ / ١٣٧٢ی هەتاوی)",
+      "kmr": "کۆچی دوایی مەلاکەریم فیدایی (١٩٩٣ / ١٣٧٢ی هەتاوی)",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 8,
+      "ckb": "بڵاوکردنەوەی یەکەم ژمارەی ڕۆژنامەی «بانگی حەق» لە لایەن شۆڕشی شێخ مەحموودەوە",
+      "kmr": "بڵاوکردنەوەی یەکەم ژمارەی ڕۆژنامەی «بانگی حەق» لە لایەن شۆڕشی شێخ مەحموودەوە",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 8,
+      "ckb": "ڕۆژی جیهانی شانۆ",
+      "kmr": "Roja Cîhanî ya şanoyê",
+      "type": "international"
+    },
+    {
+      "month": 0,
+      "day": 10,
+      "ckb": "دەستپێکردنی وەشانی تەلەڤیزیۆنی ئاسمانی مێدتیڤی، وەک یەکەم تەلەڤیزیۆنی کوردی لە ئەورووپا (١٩٩٥)",
+      "kmr": "دەستپێکردنی وەشانی تەلەڤیزیۆنی ئاسمانی مێدتیڤی، وەک یەکەم تەلەڤیزیۆنی کوردی لە ئەورووپا (١٩٩٥)",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 10,
+      "ckb": "لە سێدارەدانی پێشەوا قازی محەممەد و هاوڕێیانی",
+      "kmr": "Darikirina Pêşewa Qazî Mihemed û hevalên wî",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 11,
+      "ckb": "دەستپێکردنی کۆڕەوی گەلی کورد لە ١٩٩١",
+      "kmr": "Destpêkirina koça gelê kurd di 1991an de",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 13,
+      "ckb": "ساڵیادی کۆچی دوایی بیرمەند و نووسەر مەسعوود محەممەد (١ی ئاوریل)",
+      "kmr": "ساڵیادی کۆچی دوایی بیرمەند و نووسەر مەسعوود محەممەد (١ی ئاوریل)",
+      "type": "anniversary"
+    },
+    {
+      "month": 0,
+      "day": 13,
+      "ckb": "لەدایکبوونی یەڵماز گۆنای، سینەماکاری کورد",
+      "kmr": "لەدایکبوونی یەڵماز گۆنای، سینەماکاری کورد",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 14,
+      "ckb": "کۆچی دوایی محەممەد ئیسلامی موکری، ناسراو بە سوورە",
+      "kmr": "کۆچی دوایی محەممەد ئیسلامی موکری، ناسراو بە سوورە",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 15,
+      "ckb": "کۆچی دوایی محەممەدسەعید ئیبراهیمی محەممەدی، ناسراو بە دیوان شەونەم",
+      "kmr": "کۆچی دوایی محەممەدسەعید ئیبراهیمی محەممەدی، ناسراو بە دیوان شەونەم",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 16,
+      "ckb": "کۆچی دوایی محەممەد عەبدوڵڵازادە ئەقدەم، ناسراو بە مەحمەڵ؛ بەیت‌بێژ و حەیران‌بێژ",
+      "kmr": "کۆچی دوایی محەممەد عەبدوڵڵازادە ئەقدەم، ناسراو بە مەحمەڵ؛ بەیت‌بێژ و حەیران‌بێژ",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 17,
+      "ckb": "هەڵبژاردنی جەلال تاڵەبانی وەک سەرۆککۆماری عێراق لە ٢٠٠٥",
+      "kmr": "Hilbijartina Celal Talebanî wek serokkomarê Iraqê di 2005an de",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 17,
+      "ckb": "کۆچی دوایی مامۆستا خەدیجە بەرزوون، ناسراو بە خەجەی حەمەدە",
+      "kmr": "کۆچی دوایی مامۆستا خەدیجە بەرزوون، ناسراو بە خەجەی حەمەدە",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 17,
+      "ckb": "کۆچی دوایی ناسر ئاغابرا، ناسراو بە ژاکاو (١٣٩٩ی هەتاوی)",
+      "kmr": "کۆچی دوایی ناسر ئاغابرا، ناسراو بە ژاکاو (١٣٩٩ی هەتاوی)",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 17,
+      "ckb": "کۆچی دوایی هونەرمەند عەلی زەندی، گۆرانیبێژ و ژەنیار",
+      "kmr": "کۆچی دوایی هونەرمەند عەلی زەندی، گۆرانیبێژ و ژەنیار",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 20,
+      "ckb": "کۆچی دوایی ئیبراهیم ئەحمەد (٨ی ئاپریل)",
+      "kmr": "کۆچی دوایی ئیبراهیم ئەحمەد (٨ی ئاپریل)",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 21,
+      "ckb": "کۆچی دوایی ئەحمەد حەسەنی‌فەرد، شاعیر و نووسەر",
+      "kmr": "کۆچی دوایی ئەحمەد حەسەنی‌فەرد، شاعیر و نووسەر",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 21,
+      "ckb": "کۆچی دوایی دڵزاری شاعیر (١٠ی ئاوریلی ٢٠٢١)",
+      "kmr": "کۆچی دوایی دڵزاری شاعیر (١٠ی ئاوریلی ٢٠٢١)",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 22,
+      "ckb": "بڵاوکردنەوەی یەکەم ژمارەی گۆڤاری «تێولۆ» بە زاراوەی کرمانجی (١١ی ئاوریلی ١٩٩٢)",
+      "kmr": "بڵاوکردنەوەی یەکەم ژمارەی گۆڤاری «تێولۆ» بە زاراوەی کرمانجی (١١ی ئاوریلی ١٩٩٢)",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 23,
+      "ckb": "کۆچی دوایی حەپسەخانی نەقیب، چالاکوانی کورد",
+      "kmr": "کۆچی دوایی حەپسەخانی نەقیب، چالاکوانی کورد",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 23,
+      "ckb": "کۆچی دوایی سەید محەممەدئەمین بەرزەنجی، شاعیر (١٣٧١ی هەتاوی)",
+      "kmr": "کۆچی دوایی سەید محەممەدئەمین بەرزەنجی، شاعیر (١٣٧١ی هەتاوی)",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 25,
+      "ckb": "کۆچی دوایی هونەرمەند عوسمان ئیبراهیمی",
+      "kmr": "کۆچی دوایی هونەرمەند عوسمان ئیبراهیمی",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 25,
+      "ckb": "یادی کارەساتی ئەنفال لە ١٩٨٨",
+      "kmr": "Salvegera karesata Enfalê ya 1988an",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 28,
+      "ckb": "کۆچی دوایی شاعیر هێمن",
+      "kmr": "Koça dawî ya helbestvan Hêmin",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 28,
+      "ckb": "کۆچی دوایی قادر سەیاحی",
+      "kmr": "کۆچی دوایی قادر سەیاحی",
+      "type": "historical"
+    },
+    {
+      "month": 0,
+      "day": 31,
+      "ckb": "بڵاوکردنەوەی یەکەم ژمارەی گۆڤاری «ڕزگاری» لە باشووری کوردستان (٢٠ی ئاوریلی ١٩٦٩)",
+      "kmr": "بڵاوکردنەوەی یەکەم ژمارەی گۆڤاری «ڕزگاری» لە باشووری کوردستان (٢٠ی ئاوریلی ١٩٦٩)",
+      "type": "historical"
+    },
+    {
       "month": 1,
       "day": 2,
       "ckb": "ڕۆژی ڕۆژنامەگەری کوردی؛ بڵاوکردنەوەی یەکەم ژمارەی ڕۆژنامەی کوردستان لە ١٨٩٨",
@@ -12,132 +215,6 @@
       "day": 2,
       "ckb": "کۆچی دوایی ئەرسەلان قانع‌زادە",
       "kmr": "Koça dawî ya Erselan Qanezadê",
-      "type": "historical"
-    },
-    {
-      "month": 1,
-      "day": 4,
-      "ckb": "یادی کۆچی دوایی ئەرسەلان پیرۆتی، ژینگەپارێز",
-      "kmr": "Salvegera koça dawî ya Erselan Pîrotî, parêzvanê jîngehê",
-      "type": "historical"
-    },
-    {
-      "month": 1,
-      "day": 5,
-      "ckb": "دامەزراندنی بەشی کوردی ڕادیۆی دەنگی ئەمریکا لە ١٩٩٢",
-      "kmr": "Di 1992an de damezrandina beşa kurdî ya Radyoya Dengê Amerîkayê",
-      "type": "historical"
-    },
-    {
-      "month": 1,
-      "day": 6,
-      "ckb": "ڕۆژی سنە",
-      "kmr": "Roja Sineyê",
-      "type": "historical"
-    },
-    {
-      "month": 1,
-      "day": 6,
-      "ckb": "لەدایکبوونی هونەرمەند ئیبراهیم قادری",
-      "kmr": "Jidayikbûna hunermend Îbrahîm Qadirî",
-      "type": "historical"
-    },
-    {
-      "month": 1,
-      "day": 8,
-      "ckb": "کۆچی دوایی قادر لوتفیانی، ئازا؛ شاعیر",
-      "kmr": "Koça dawî ya Qadir Lutfiyanî, Aza; helbestvan",
-      "type": "historical"
-    },
-    {
-      "month": 1,
-      "day": 8,
-      "ckb": "کۆچی دوایی حەسەن ماملێ، گۆرانیبێژ",
-      "kmr": "Koça dawî ya Hesen Mamle, stranbêj",
-      "type": "historical"
-    },
-    {
-      "month": 1,
-      "day": 12,
-      "ckb": "لەدایکبوونی شێرکۆ بێکەس لە ١٩٤٠",
-      "kmr": "Jidayikbûna Şêrko Bêkes di 1940an de",
-      "type": "historical"
-    },
-    {
-      "month": 1,
-      "day": 13,
-      "ckb": "لەدایکبوونی لەیلا زانا لە ١٩٦١",
-      "kmr": "Jidayikbûna Leyla Zana di 1961an de",
-      "type": "historical"
-    },
-    {
-      "month": 1,
-      "day": 16,
-      "ckb": "کۆچی دوایی محەممەد موکری، نووسەر",
-      "kmr": "Koça dawî ya Mihemed Mukrî, nivîskar",
-      "type": "historical"
-    },
-    {
-      "month": 1,
-      "day": 17,
-      "ckb": "کۆچی دوایی مامۆستا قانع، سەید محەممەد کابولی",
-      "kmr": "Koça dawî ya Mamoste Qani, Seyid Mihemed Qabulî",
-      "type": "historical"
-    },
-    {
-      "month": 1,
-      "day": 17,
-      "ckb": "کۆچی دوایی عەلی حەسەنیانی، نووسەر و شاعیر",
-      "kmr": "Koça dawî ya Elî Heseniyan, nivîskar û helbestvan",
-      "type": "historical"
-    },
-    {
-      "month": 1,
-      "day": 20,
-      "ckb": "لە سێدارەدانی شاعیری مەلائاوارە لە سەردەشت",
-      "kmr": "Darikirina helbestvanê Melaawara li Serdeştê",
-      "type": "historical"
-    },
-    {
-      "month": 1,
-      "day": 22,
-      "ckb": "کۆچی دوایی شێخ لەتیفی حەفید",
-      "kmr": "Koça dawî ya Şêx Letîfî Hefîd",
-      "type": "historical"
-    },
-    {
-      "month": 1,
-      "day": 25,
-      "ckb": "ڕۆژی زمانی کوردی",
-      "kmr": "Roja zimanê kurdî",
-      "type": "international"
-    },
-    {
-      "month": 1,
-      "day": 25,
-      "ckb": "بڵاوکردنەوەی یەکەم ژمارەی گۆڤاری هاوار لە ١٩٣٢",
-      "kmr": "Weşandina hejmareya yekem a kovara Hawarê di 1932an de",
-      "type": "historical"
-    },
-    {
-      "month": 1,
-      "day": 26,
-      "ckb": "مۆرکردنی ڕێککەوتنی سایکس ـ پیکۆ",
-      "kmr": "Îmzekirina peymana Sykes–Picot",
-      "type": "historical"
-    },
-    {
-      "month": 1,
-      "day": 29,
-      "ckb": "کۆچی دوایی نۆشیروان مستەفا، سیاسەتمەدار و ئەدیب",
-      "kmr": "Koça dawî ya Noshîrwan Mistefa, siyasetmedar û edebnas",
-      "type": "historical"
-    },
-    {
-      "month": 1,
-      "day": 31,
-      "ckb": "کۆچی دوایی قالەمەڕە",
-      "kmr": "Koça dawî ya Qelemere",
       "type": "historical"
     },
     {
@@ -156,9 +233,58 @@
     },
     {
       "month": 1,
+      "day": 4,
+      "ckb": "یادی کۆچی دوایی ئەرسەلان پیرۆتی، ژینگەپارێز",
+      "kmr": "Salvegera koça dawî ya Erselan Pîrotî, parêzvanê jîngehê",
+      "type": "historical"
+    },
+    {
+      "month": 1,
+      "day": 5,
+      "ckb": "دامەزراندنی بەشی کوردی ڕادیۆی دەنگی ئەمریکا لە ١٩٩٢",
+      "kmr": "Di 1992an de damezrandina beşa kurdî ya Radyoya Dengê Amerîkayê",
+      "type": "historical"
+    },
+    {
+      "month": 1,
+      "day": 6,
+      "ckb": "لەدایکبوونی هونەرمەند ئیبراهیم قادری",
+      "kmr": "Jidayikbûna hunermend Îbrahîm Qadirî",
+      "type": "historical"
+    },
+    {
+      "month": 1,
+      "day": 6,
+      "ckb": "ڕۆژی سنە",
+      "kmr": "Roja Sineyê",
+      "type": "historical"
+    },
+    {
+      "month": 1,
       "day": 7,
       "ckb": "ڕۆژی هێمنایەتی و ئاڵوگۆڕ",
       "kmr": "Roja aramiyê û guhertinê",
+      "type": "international"
+    },
+    {
+      "month": 1,
+      "day": 8,
+      "ckb": "کۆچی دوایی حەسەن ماملێ، گۆرانیبێژ",
+      "kmr": "Koça dawî ya Hesen Mamle, stranbêj",
+      "type": "historical"
+    },
+    {
+      "month": 1,
+      "day": 8,
+      "ckb": "کۆچی دوایی قادر لوتفیانی، ئازا؛ شاعیر",
+      "kmr": "Koça dawî ya Qadir Lutfiyanî, Aza; helbestvan",
+      "type": "historical"
+    },
+    {
+      "month": 1,
+      "day": 9,
+      "ckb": "ڕۆژی شووڕا",
+      "kmr": "ڕۆژی شووڕا",
       "type": "international"
     },
     {
@@ -178,15 +304,64 @@
     {
       "month": 1,
       "day": 12,
+      "ckb": "لەدایکبوونی شێرکۆ بێکەس لە ١٩٤٠",
+      "kmr": "Jidayikbûna Şêrko Bêkes di 1940an de",
+      "type": "historical"
+    },
+    {
+      "month": 1,
+      "day": 12,
       "ckb": "ڕۆژی مامۆستا",
       "kmr": "Roja mamosteyan",
       "type": "international"
     },
     {
       "month": 1,
+      "day": 13,
+      "ckb": "لەدایکبوونی لەیلا زانا لە ١٩٦١",
+      "kmr": "Jidayikbûna Leyla Zana di 1961an de",
+      "type": "historical"
+    },
+    {
+      "month": 1,
       "day": 15,
       "ckb": "ڕۆژی جیهانی ماما",
       "kmr": "Roja Cîhanî ya pîrikên dayikê",
+      "type": "international"
+    },
+    {
+      "month": 1,
+      "day": 16,
+      "ckb": "کۆچی دوایی محەممەد موکری، نووسەر",
+      "kmr": "Koça dawî ya Mihemed Mukrî, nivîskar",
+      "type": "historical"
+    },
+    {
+      "month": 1,
+      "day": 17,
+      "ckb": "کۆچی دوایی عەلی حەسەنیانی، نووسەر و شاعیر",
+      "kmr": "Koça dawî ya Elî Heseniyan, nivîskar û helbestvan",
+      "type": "historical"
+    },
+    {
+      "month": 1,
+      "day": 17,
+      "ckb": "کۆچی دوایی مامۆستا قانع، سەید محەممەد کابولی",
+      "kmr": "Koça dawî ya Mamoste Qani, Seyid Mihemed Qabulî",
+      "type": "historical"
+    },
+    {
+      "month": 1,
+      "day": 17,
+      "ckb": "کۆچی دوایی هونەرمەند حەسەن مستەفاپوور، ناسراو بە حەسەن تووزە",
+      "kmr": "کۆچی دوایی هونەرمەند حەسەن مستەفاپوور، ناسراو بە حەسەن تووزە",
+      "type": "historical"
+    },
+    {
+      "month": 1,
+      "day": 18,
+      "ckb": "ڕۆژی جیهانی مانگی سوور",
+      "kmr": "Roja Cîhanî ya Heyva Sor",
       "type": "international"
     },
     {
@@ -198,13 +373,6 @@
     },
     {
       "month": 1,
-      "day": 18,
-      "ckb": "ڕۆژی جیهانی مانگی سوور",
-      "kmr": "Roja Cîhanî ya Heyva Sor",
-      "type": "international"
-    },
-    {
-      "month": 1,
       "day": 19,
       "ckb": "ڕۆژی بەڵگەنامە و میراتی نووسراو",
       "kmr": "Roja belge û mîrata nivîskî",
@@ -212,10 +380,45 @@
     },
     {
       "month": 1,
+      "day": 20,
+      "ckb": "لە سێدارەدانی شاعیری مەلائاوارە لە سەردەشت",
+      "kmr": "Darikirina helbestvanê Melaawara li Serdeştê",
+      "type": "historical"
+    },
+    {
+      "month": 1,
+      "day": 22,
+      "ckb": "کۆچی دوایی شێخ لەتیفی حەفید",
+      "kmr": "Koça dawî ya Şêx Letîfî Hefîd",
+      "type": "historical"
+    },
+    {
+      "month": 1,
+      "day": 25,
+      "ckb": "بڵاوکردنەوەی یەکەم ژمارەی گۆڤاری هاوار لە ١٩٣٢",
+      "kmr": "Weşandina hejmareya yekem a kovara Hawarê di 1932an de",
+      "type": "historical"
+    },
+    {
+      "month": 1,
       "day": 25,
       "ckb": "ڕۆژی جیهانی بنەماڵە",
       "kmr": "Roja Cîhanî ya malbatê",
       "type": "international"
+    },
+    {
+      "month": 1,
+      "day": 25,
+      "ckb": "ڕۆژی زمانی کوردی",
+      "kmr": "Roja zimanê kurdî",
+      "type": "international"
+    },
+    {
+      "month": 1,
+      "day": 26,
+      "ckb": "مۆرکردنی ڕێککەوتنی سایکس ـ پیکۆ",
+      "kmr": "Îmzekirina peymana Sykes–Picot",
+      "type": "historical"
     },
     {
       "month": 1,
@@ -233,9 +436,30 @@
     },
     {
       "month": 1,
+      "day": 29,
+      "ckb": "کۆچی دوایی نۆشیروان مستەفا، سیاسەتمەدار و ئەدیب",
+      "kmr": "Koça dawî ya Noshîrwan Mistefa, siyasetmedar û edebnas",
+      "type": "historical"
+    },
+    {
+      "month": 1,
       "day": 30,
       "ckb": "ڕۆژی نەتەوەیی حەشیمەت",
       "kmr": "Roja neteweyî ya nifûsê",
+      "type": "international"
+    },
+    {
+      "month": 1,
+      "day": 31,
+      "ckb": "کۆچی دوایی قالەمەڕە",
+      "kmr": "Koça dawî ya Qelemere",
+      "type": "historical"
+    },
+    {
+      "month": 1,
+      "day": 31,
+      "ckb": "ڕۆژی هەدیەکردنی لەش و ئەندامەکان",
+      "kmr": "ڕۆژی هەدیەکردنی لەش و ئەندامەکان",
       "type": "international"
     },
     {
@@ -250,6 +474,13 @@
       "day": 1,
       "ckb": "بڵاوکردنەوەی بەیاننامەی شێخ مەحموودی حەفید لە ١٩١٩",
       "kmr": "Weşandina daxuyaniya Şêx Mehmûdê Hefîd di 1919an de",
+      "type": "historical"
+    },
+    {
+      "month": 2,
+      "day": 1,
+      "ckb": "حوسێن فەقیهی، لێکۆڵەری بواری فۆلکلۆری کوردی",
+      "kmr": "حوسێن فەقیهی، لێکۆڵەری بواری فۆلکلۆری کوردی",
       "type": "historical"
     },
     {
@@ -276,8 +507,22 @@
     {
       "month": 2,
       "day": 4,
+      "ckb": "ساڵوەگەڕی کۆچی دوایی دوکتور مستەفا خوڕەم‌دڵ، نووسەر و وەرگێڕ",
+      "kmr": "ساڵوەگەڕی کۆچی دوایی دوکتور مستەفا خوڕەم‌دڵ، نووسەر و وەرگێڕ",
+      "type": "anniversary"
+    },
+    {
+      "month": 2,
+      "day": 4,
       "ckb": "بۆردومانی سلێمانی لەلایەن فڕۆکەکانی ئینگلیزەوە لە ١٩٢٤",
       "kmr": "Bombebarana Silêmaniyê ji aliyê balafirên Îngilîz ve di 1924an de",
+      "type": "historical"
+    },
+    {
+      "month": 2,
+      "day": 5,
+      "ckb": "کۆچی دوایی محەممەدساڵح ئیبڕاهیمی، ناسراو بە شەپۆل",
+      "kmr": "کۆچی دوایی محەممەدساڵح ئیبڕاهیمی، ناسراو بە شەپۆل",
       "type": "historical"
     },
     {
@@ -324,6 +569,13 @@
     },
     {
       "month": 2,
+      "day": 13,
+      "ckb": "کۆچی دوایی محەممەد ڕیانی، نووسەر و وەرگێڕ",
+      "kmr": "کۆچی دوایی محەممەد ڕیانی، نووسەر و وەرگێڕ",
+      "type": "historical"
+    },
+    {
+      "month": 2,
       "day": 14,
       "ckb": "دامەزراندنی حکومەتی هەرێمی کوردستان؛ ١٩٩٢",
       "kmr": "Damezrandina hikûmeta Herêma Kurdistanê di 1992an de",
@@ -331,751 +583,23 @@
     },
     {
       "month": 2,
-      "day": 18,
-      "ckb": "پەسەندکردنی یاسای سەرۆکایەتی هەرێمی کوردستان لە ٢٠٠٥",
-      "kmr": "Pejirandina qanûna serokatiya Herêma Kurdistanê di 2005an de",
-      "type": "historical"
-    },
-    {
-      "month": 2,
-      "day": 19,
-      "ckb": "ڕاگەیاندنی دەستپێکردنەوەی شەڕ لە دژی کورد لە ١٩٦٣",
-      "kmr": "Daxuyandina destpêkirina şerê li dijî kurdan di 1963an de",
-      "type": "historical"
-    },
-    {
-      "month": 2,
-      "day": 20,
-      "ckb": "دامەزراندنی کۆمەڵەی ڕەنجدەرانی کوردستان لە ١٩٧٠",
-      "kmr": "Damezrandina Komeleya Kedkarên Kurdistanê di 1970an de",
-      "type": "historical"
-    },
-    {
-      "month": 2,
-      "day": 22,
-      "ckb": "ڕێککەوتنی یەکخستنی دوو ئیدارەی هەولێر و سلێمانی لە ٢٠٠٣",
-      "kmr": "Lihevhatina yekxistina du rêveberiyên Hewlêr û Silêmaniyê di 2003an de",
-      "type": "historical"
-    },
-    {
-      "month": 2,
-      "day": 31,
-      "ckb": "تیرۆرکردنی سمکۆی شکاک لە ١٩٣٠",
-      "kmr": "Kuştina Îsmaîl Axa Şikak, Simko, di 1930an de",
-      "type": "historical"
-    },
-    {
-      "month": 3,
-      "day": 1,
-      "ckb": "ڕۆژی ئەسناف و بازاڕیان",
-      "kmr": "Roja esnaf û bazirganan",
-      "type": "international"
-    },
-    {
-      "month": 3,
-      "day": 2,
-      "ckb": "لە سێدارەدانی شێخ مارف بەرزەنجی",
-      "kmr": "Darikirina Şêx Marif Berzencî",
-      "type": "historical"
-    },
-    {
-      "month": 3,
-      "day": 2,
-      "ckb": "کۆچی دوایی محەممەدئەمین ڕەسووڵی، فەقێ مینە",
-      "kmr": "Koça dawî ya Mihemedemîn Resûlî, Feqê Mîne",
-      "type": "historical"
-    },
-    {
-      "month": 3,
-      "day": 5,
-      "ckb": "کۆچی دوایی حەسەن زیرەک، گۆرانیبێژ",
-      "kmr": "Koça dawî ya Hesen Zîrek, stranbêj",
-      "type": "historical"
-    },
-    {
-      "month": 3,
-      "day": 5,
-      "ckb": "ڕۆژی جیهانی بەرەنگاربوونەوە لەگەڵ مادە هۆشبەرەکان",
-      "kmr": "Roja Cîhanî ya têkoşîna li dijî madeyên hişbir",
-      "type": "international"
-    },
-    {
-      "month": 3,
-      "day": 7,
-      "ckb": "کیمیابارانی سەردەشت",
-      "kmr": "Êrîşa kîmyayî ya Serdeştê",
-      "type": "historical"
-    },
-    {
-      "month": 3,
-      "day": 8,
-      "ckb": "ڕۆژی بەرەنگاربوونەوە لەگەڵ چەکی کیمیایی و میکرۆبی",
-      "kmr": "Roja têkoşîna li dijî çekên kîmyayî û mîkrobî",
-      "type": "international"
-    },
-    {
-      "month": 3,
-      "day": 13,
-      "ckb": "دامەزراندنی یەکەم کابینەی حکومەتی هەرێمی کوردستان لە ١٩٩٢",
-      "kmr": "Damezrandina kabîneya yekem a hikûmeta Herêma Kurdistanê di 1992an de",
-      "type": "historical"
-    },
-    {
-      "month": 3,
-      "day": 18,
-      "ckb": "ڕۆژی ئەدەبیاتی منداڵان و هەرزەکاران",
-      "kmr": "Roja edebiyata zarok û ciwanan",
-      "type": "international"
-    },
-    {
-      "month": 3,
-      "day": 22,
-      "ckb": "دەستپێکردنی گۆڤاری زاری کرمانجی لە هەولێر",
-      "kmr": "Destpêkirina kovara Zariya Kurmancî li Hewlêrê",
-      "type": "historical"
-    },
-    {
-      "month": 3,
-      "day": 25,
-      "ckb": "ڕۆژی خۆشگوزەرانی و ژیانی کۆمەڵایەتی",
-      "kmr": "Roja refah û jiyana civakî",
-      "type": "international"
-    },
-    {
-      "month": 3,
-      "day": 31,
-      "ckb": "ڕۆژی جیهانی ژمارەی پی",
-      "kmr": "Roja Cîhanî ya hejmareya Pi",
-      "type": "international"
-    },
-    {
-      "month": 6,
-      "day": 7,
-      "ckb": "کۆچی دوایی حەمەی نێرگز",
-      "kmr": "Koça dawî ya Heme Nêrgiz",
-      "type": "historical"
-    },
-    {
-      "month": 6,
-      "day": 9,
-      "ckb": "کۆچی دوایی حەسەن قزڵجی، چیرۆکنووس و وەرگێڕ",
-      "kmr": "Koça dawî ya Hesen Qizilcî, çîrokvan û werger",
-      "type": "historical"
-    },
-    {
-      "month": 6,
-      "day": 11,
-      "ckb": "کۆچی دوایی پڕۆفیسۆر عێزەددین مستەفا ڕەسووڵ لە ٢٠١٩",
-      "kmr": "Koça dawî ya Profesor Îzzeddîn Mistefa Resûl di 2019an de",
-      "type": "historical"
-    },
-    {
-      "month": 6,
-      "day": 12,
-      "ckb": "کۆچی دوایی کامڕان بەردخان، نووسەر و ڕۆژنامەڤان",
-      "kmr": "Koça dawî ya Kamiran Berdexan, nivîskar û rojnamevan",
-      "type": "historical"
-    },
-    {
-      "month": 6,
-      "day": 17,
-      "ckb": "کۆچی دوایی مەهاباد قەرەداغی، شاعیر و نووسەر لە ٢٠٢٠",
-      "kmr": "Koça dawî ya Mehabad Qeredaxî, helbestvan û nivîskar di 2020an de",
-      "type": "historical"
-    },
-    {
-      "month": 6,
-      "day": 18,
-      "ckb": "ڕۆژی جیهانی بەساڵاچووان",
-      "kmr": "Roja Cîhanî ya kal û pîran",
-      "type": "international"
-    },
-    {
-      "month": 6,
-      "day": 19,
-      "ckb": "ڕۆژی جیهانی پۆست",
-      "kmr": "Roja Cîhanî ya postê",
-      "type": "international"
-    },
-    {
-      "month": 6,
-      "day": 24,
-      "ckb": "ڕۆژی جیهانی خواردەمەنی",
-      "kmr": "Roja Cîhanî ya xwarinê",
-      "type": "international"
-    },
-    {
-      "month": 6,
-      "day": 25,
-      "ckb": "ڕۆژی جیهانی بڕینەوەی هەژاری",
-      "kmr": "Roja Cîhanî ya tinekirina xizanî",
-      "type": "international"
-    },
-    {
-      "month": 6,
-      "day": 29,
-      "ckb": "ڕۆژی نەتەوەیی شاخەوان",
-      "kmr": "Roja neteweyî ya çiyageran",
-      "type": "international"
-    },
-    {
-      "month": 8,
-      "day": 2,
-      "ckb": "کۆچی دوایی شامی کرماشانی",
-      "kmr": "Koça dawî ya Şamî Kirmanşanî",
-      "type": "historical"
-    },
-    {
-      "month": 8,
-      "day": 5,
-      "ckb": "کۆچی دوایی مەلا حوسێن عەبدوڵڵازادە",
-      "kmr": "Koça dawî ya Mela Huseyn Ebdullahzade",
-      "type": "historical"
-    },
-    {
-      "month": 8,
-      "day": 8,
-      "ckb": "لەدایکبوونی حەسەن زیرەک",
-      "kmr": "Jidayikbûna Hesen Zîrek",
-      "type": "historical"
-    },
-    {
-      "month": 8,
-      "day": 14,
-      "ckb": "کۆچی دوایی نێلسۆن ماندێلا",
-      "kmr": "Koça dawî ya Nelson Mandela",
-      "type": "historical"
-    },
-    {
-      "month": 8,
-      "day": 15,
-      "ckb": "دەرچوونی یەکەم ژمارەی گۆڤاری ستێر لە ١٩٤٣",
-      "kmr": "Derketina hejmareya yekem a kovara Stêr di 1943an de",
-      "type": "historical"
-    },
-    {
-      "month": 8,
-      "day": 19,
-      "ckb": "ڕۆژی جیهانی مافی مرۆڤ",
-      "kmr": "Roja Cîhanî ya mafên mirovan",
-      "type": "international"
-    },
-    {
-      "month": 8,
-      "day": 20,
-      "ckb": "دامەزراندنی ڕێکخراوی یونیسێف لە ١٩٤٧",
-      "kmr": "Damezrandina rêxistina UNICEF di 1947an de",
-      "type": "historical"
-    },
-    {
-      "month": 8,
-      "day": 22,
-      "ckb": "کۆچی دوایی مامۆستا عەلائەددین سەجادی",
-      "kmr": "Koça dawî ya Mamoste Elaeddîn Secadî",
-      "type": "historical"
-    },
-    {
-      "month": 8,
-      "day": 27,
-      "ckb": "کۆچی دوایی فایەق بێکەس، شاعیر",
-      "kmr": "Koça dawî ya Fayiq Bêkes, helbestvan",
-      "type": "historical"
-    },
-    {
-      "month": 11,
-      "day": 2,
-      "ckb": "کۆچی دوایی مامۆستا هەژار",
-      "kmr": "Koça dawî ya Mamoste Hejar",
-      "type": "historical"
-    },
-    {
-      "month": 11,
-      "day": 2,
-      "ckb": "ڕۆژی جیهانی زمانی دایکی",
-      "kmr": "Roja Cîhanî ya zimanê dayikê",
-      "type": "international"
-    },
-    {
-      "month": 11,
-      "day": 5,
-      "ckb": "ڕۆژی ئەندازیار",
-      "kmr": "Roja endezyaran",
-      "type": "international"
-    },
-    {
-      "month": 11,
-      "day": 7,
-      "ckb": "ڕۆژی پارێزەر",
-      "kmr": "Roja parêzeran",
-      "type": "international"
-    },
-    {
-      "month": 11,
-      "day": 11,
-      "ckb": "کۆچی دوایی سیامەند ڕەحمان",
-      "kmr": "Koça dawî ya Sîamend Rehman",
-      "type": "historical"
-    },
-    {
-      "month": 11,
-      "day": 15,
-      "ckb": "ڕۆژی نەمام‌چاندن",
-      "kmr": "Roja çandina daran",
-      "type": "international"
-    },
-    {
-      "month": 11,
-      "day": 17,
-      "ckb": "ڕۆژی جیهانی ژنان؛ ٨ی مارس",
-      "kmr": "Roja Cîhanî ya jinan; 8ê Adarê",
-      "type": "international"
-    },
-    {
-      "month": 11,
-      "day": 25,
-      "ckb": "کیمیابارانی هەڵەبجە",
-      "kmr": "Êrîşa kîmyayî ya Helebceyê",
-      "type": "historical"
-    },
-    {
-      "month": 11,
-      "day": 27,
-      "ckb": "ڕۆژی جیهانی چەوساوەکان",
-      "kmr": "Roja Cîhanî ya bindestan",
-      "type": "international"
-    },
-    {
-      "month": 4,
-      "day": 2,
-      "ckb": "کۆچی دوایی هونەرمەند عەلی مەردان",
-      "kmr": "Koça dawî ya hunermend Elî Merdan",
-      "type": "historical"
-    },
-    {
-      "month": 4,
-      "day": 9,
-      "ckb": "ساڵی سێڵاوی مەهاباد لە ١٣١٥ی هەتاوی",
-      "kmr": "Sala lehiyê ya Mehabadê di 1315ê Hicrî-Şemsî de",
-      "type": "historical"
-    },
-    {
-      "month": 4,
-      "day": 11,
-      "ckb": "کیمیابارانی شاری شنۆ",
-      "kmr": "Êrîşa kîmyayî ya bajarê Şinoyê",
-      "type": "historical"
-    },
-    {
-      "month": 4,
-      "day": 12,
-      "ckb": "ڕۆژی کۆمەڵکوژی کوردانی ئێزیدی",
-      "kmr": "Roja komkujî ya Êzidiyên kurd",
-      "type": "historical"
-    },
-    {
-      "month": 4,
-      "day": 13,
-      "ckb": "کۆچی دوایی شێرکۆ بێکەس و ڕەفیق حیلمی",
-      "kmr": "Koça dawî ya Şêrko Bêkes û Refîq Hilmî",
-      "type": "historical"
-    },
-    {
-      "month": 4,
-      "day": 15,
-      "ckb": "دامەزراندنی سۆما",
-      "kmr": "Damezrandina Sûmayê",
-      "type": "historical"
-    },
-    {
-      "month": 4,
-      "day": 18,
-      "ckb": "کۆچی دوایی قەدریجان، شاعیر و نووسەر",
-      "kmr": "Koça dawî ya Qedrîcan, helbestvan û nivîskar",
-      "type": "historical"
-    },
-    {
-      "month": 4,
-      "day": 21,
-      "ckb": "ڕۆژی جیهانی لاوان",
-      "kmr": "Roja Cîhanî ya ciwanan",
-      "type": "international"
-    },
-    {
-      "month": 4,
-      "day": 22,
-      "ckb": "ڕۆژی جیهانی چەپ‌دەستەکان",
-      "kmr": "Roja Cîhanî ya çepdestan",
-      "type": "international"
-    },
-    {
-      "month": 4,
-      "day": 28,
-      "ckb": "ڕۆژی جیهانی وێنەگری",
-      "kmr": "Roja Cîhanî ya wênekêşiyê",
-      "type": "international"
-    },
-    {
-      "month": 4,
-      "day": 29,
-      "ckb": "وەستانی شەڕی ئێران و عێراق",
-      "kmr": "Rawestandina şerê Îran û Iraqê",
-      "type": "historical"
-    },
-    {
-      "month": 0,
-      "day": 1,
-      "ckb": "سەرەتای ساڵی کوردی و نەورۆز",
-      "kmr": "Destpêka sala kurdî û Newroz",
-      "type": "international"
-    },
-    {
-      "month": 0,
-      "day": 2,
-      "ckb": "کیمیابارانی سوێسێنان لە ١٩٨٨",
-      "kmr": "Êrîşa kîmyayî ya Sweisênan di 1988an de",
-      "type": "historical"
-    },
-    {
-      "month": 0,
-      "day": 8,
-      "ckb": "ڕۆژی جیهانی شانۆ",
-      "kmr": "Roja Cîhanî ya şanoyê",
-      "type": "international"
-    },
-    {
-      "month": 0,
-      "day": 10,
-      "ckb": "لە سێدارەدانی پێشەوا قازی محەممەد و هاوڕێیانی",
-      "kmr": "Darikirina Pêşewa Qazî Mihemed û hevalên wî",
-      "type": "historical"
-    },
-    {
-      "month": 0,
-      "day": 11,
-      "ckb": "دەستپێکردنی کۆڕەوی گەلی کورد لە ١٩٩١",
-      "kmr": "Destpêkirina koça gelê kurd di 1991an de",
-      "type": "historical"
-    },
-    {
-      "month": 0,
-      "day": 12,
-      "ckb": "ڕۆژی جیهانی بەرەنگاربوونەوە لەگەڵ ئۆتیزم",
-      "kmr": "Roja Cîhanî ya hişyariyê li ser otîzmê",
-      "type": "international"
-    },
-    {
-      "month": 0,
-      "day": 17,
-      "ckb": "هەڵبژاردنی جەلال تاڵەبانی وەک سەرۆککۆماری عێراق لە ٢٠٠٥",
-      "kmr": "Hilbijartina Celal Talebanî wek serokkomarê Iraqê di 2005an de",
-      "type": "historical"
-    },
-    {
-      "month": 0,
-      "day": 25,
-      "ckb": "یادی کارەساتی ئەنفال لە ١٩٨٨",
-      "kmr": "Salvegera karesata Enfalê ya 1988an",
-      "type": "historical"
-    },
-    {
-      "month": 0,
-      "day": 28,
-      "ckb": "کۆچی دوایی شاعیر هێمن",
-      "kmr": "Koça dawî ya helbestvan Hêmin",
-      "type": "historical"
-    },
-    {
-      "month": 10,
-      "day": 1,
-      "ckb": "کۆچی دوایی شێخ ڕەزای تاڵەبانی",
-      "kmr": "Koça dawî ya Şêx Reza Talebanî",
-      "type": "historical"
-    },
-    {
-      "month": 10,
-      "day": 3,
-      "ckb": "کۆچی دوایی محەممەد ماملێ، گۆرانیبێژ",
-      "kmr": "Koça dawî ya Mihemed Mamle, stranbêj",
-      "type": "historical"
-    },
-    {
-      "month": 10,
-      "day": 6,
-      "ckb": "ئازادکردنی کۆبانێ لە دەستی داعش لە ٢٠١٥",
-      "kmr": "Rizgarkirina Kobanê ji destê DAIŞê di 2015an de",
-      "type": "historical"
-    },
-    {
-      "month": 10,
-      "day": 9,
-      "ckb": "کردنەوەی یەکەم ئێستگەی کوردی لە بەغدا لە ١٩٣٩",
-      "kmr": "Vekirina yekemîn radyoya kurdî li Bexdayê di 1939an de",
-      "type": "historical"
-    },
-    {
-      "month": 10,
-      "day": 17,
-      "ckb": "کۆچی دوایی ئەحمەد موختار جاف، شاعیر",
-      "kmr": "Koça dawî ya Ehmed Muxtar Caf, helbestvan",
-      "type": "historical"
-    },
-    {
-      "month": 10,
-      "day": 19,
-      "ckb": "کۆچی دوایی ئیبراهیم یونسی، نووسەر و وەرگێڕ",
-      "kmr": "Koça dawî ya Îbrahîm Yûnsî, nivîskar û werger",
-      "type": "historical"
-    },
-    {
-      "month": 10,
-      "day": 23,
-      "ckb": "بۆردومانی مەهاباد لە ١٣٦٥ی هەتاوی",
-      "kmr": "Bombebarana Mehabadê di 1365ê Hicrî-Şemsî de",
-      "type": "historical"
-    },
-    {
-      "month": 5,
-      "day": 3,
-      "ckb": "یادی کۆچی دوایی مامۆستا بێخود",
-      "kmr": "Salvegera koça dawî ya Mamoste Bêxod",
-      "type": "historical"
-    },
-    {
-      "month": 5,
-      "day": 5,
-      "ckb": "هێرشی فڕۆکەکانی سۆڤیەت بۆ سەر مەهاباد لە ١٣٢٠",
-      "kmr": "Êrîşa balafirên Sovyetê li ser Mehabadê di 1320an de",
-      "type": "historical"
-    },
-    {
-      "month": 5,
-      "day": 8,
-      "ckb": "کۆچی دوایی مەلا عەبدولکەریم مودەڕیس",
-      "kmr": "Koça dawî ya Mela Ebdulkerîm Muderrîs",
-      "type": "historical"
-    },
-    {
-      "month": 5,
-      "day": 8,
-      "ckb": "کۆچی دوایی مەلای جزیری",
-      "kmr": "Koça dawî ya Melayê Cizîrî",
-      "type": "historical"
-    },
-    {
-      "month": 5,
-      "day": 17,
-      "ckb": "ڕۆژی جیهانی نەمانی نەخوێندەواری",
-      "kmr": "Roja Cîhanî ya tinekirina nexwendewariyê",
-      "type": "international"
-    },
-    {
-      "month": 5,
-      "day": 22,
-      "ckb": "ڕۆژی جیهانی ئاشتی",
-      "kmr": "Roja Cîhanî ya aştiyê",
-      "type": "international"
-    },
-    {
-      "month": 5,
-      "day": 24,
-      "ckb": "ڕۆژی جیهانی دێموکراسی",
-      "kmr": "Roja Cîhanî ya demokrasiyê",
-      "type": "international"
-    },
-    {
-      "month": 5,
-      "day": 30,
-      "ckb": "ڕۆژی جیهانی ئەلزهایمەر",
-      "kmr": "Roja Cîhanî ya Alzheimerê",
-      "type": "international"
-    },
-    {
-      "month": 7,
-      "day": 1,
-      "ckb": "دامەزراندنی زانکۆی سلێمانی لە ١٩٦٨",
-      "kmr": "Damezrandina Zanîngeha Silêmaniyê di 1968an de",
-      "type": "historical"
-    },
-    {
-      "month": 7,
-      "day": 3,
-      "ckb": "کۆچی دوایی دوکتور مارف خەزنەدار",
-      "kmr": "Koça dawî ya Dr. Marif Xeznedar",
-      "type": "historical"
-    },
-    {
-      "month": 7,
-      "day": 4,
-      "ckb": "کۆچی دوایی عەلی ئەشرەف دەروێشیان، نووسەر",
-      "kmr": "Koça dawî ya Elî Eşref Derweşiyan, nivîskar",
-      "type": "historical"
-    },
-    {
-      "month": 7,
-      "day": 6,
-      "ckb": "کۆچی دوایی خالیدئاغای حیسامی، هێدی",
-      "kmr": "Koça dawî ya Xalidaxa Hisamî, Hêdî",
-      "type": "historical"
-    },
-    {
-      "month": 7,
-      "day": 7,
-      "ckb": "کۆچی دوایی ئەحمەد هەردی، شاعیر",
-      "kmr": "Koça dawî ya Ehmed Herdî, helbestvan",
-      "type": "historical"
-    },
-    {
-      "month": 7,
-      "day": 10,
-      "ckb": "ڕۆژی جیهانی کۆبانی",
-      "kmr": "Roja Cîhanî ya Kobanê",
-      "type": "international"
-    },
-    {
-      "month": 7,
-      "day": 19,
-      "ckb": "کۆچی دوایی زیوەر، شاعیر",
-      "kmr": "Koça dawî ya Zîwer, helbestvan",
-      "type": "historical"
-    },
-    {
-      "month": 7,
-      "day": 21,
-      "ckb": "کۆچی دوایی دڵدار، شاعیر",
-      "kmr": "Koça dawî ya Dildar, helbestvan",
-      "type": "historical"
-    },
-    {
-      "month": 7,
-      "day": 23,
-      "ckb": "دامەزراندنی شاری سلێمانی لە ١٧٨٤",
-      "kmr": "Damezrandina bajarê Silêmaniyê di 1784an de",
-      "type": "historical"
-    },
-    {
-      "month": 7,
-      "day": 25,
-      "ckb": "کۆچی دوایی ئەحمەد کایا",
-      "kmr": "Koça dawî ya Ehmed Kaya",
-      "type": "historical"
-    },
-    {
-      "month": 7,
-      "day": 27,
-      "ckb": "کۆچی دوایی گۆران، شاعیر",
-      "kmr": "Koça dawî ya Goran, helbestvan",
-      "type": "historical"
-    },
-    {
-      "month": 7,
-      "day": 29,
-      "ckb": "کۆچی دوایی هونەرمەند ئیبراهیم قادری",
-      "kmr": "Koça dawî ya hunermend Îbrahîm Qadirî",
-      "type": "historical"
-    },
-    {
-      "month": 7,
-      "day": 1,
-      "ckb": "ڕۆژی ئامار و پلان دانان",
-      "kmr": "Roja statîstîk û plansaziyê",
-      "type": "international"
-    },
-    {
-      "month": 7,
-      "day": 11,
-      "ckb": "ڕۆژی جیهانی نووسەر",
-      "kmr": "Roja Cîhanî ya nivîskaran",
-      "type": "international"
-    },
-    {
-      "month": 7,
-      "day": 13,
-      "ckb": "ڕۆژی قوتابی",
-      "kmr": "Roja xwendekaran",
-      "type": "international"
-    },
-    {
-      "month": 7,
-      "day": 24,
-      "ckb": "ڕۆژی کتێب و خوێندنەوە",
-      "kmr": "Roja pirtûk û xwendinê",
-      "type": "international"
-    },
-    {
-      "month": 7,
-      "day": 28,
-      "ckb": "ڕۆژی جیهانی فەلسەفە",
-      "kmr": "Roja Cîhanî ya felsefeyê",
-      "type": "international"
-    },
-    {
-      "month": 7,
-      "day": 29,
-      "ckb": "ڕۆژی جیهانی منداڵ",
-      "kmr": "Roja Cîhanî ya zarokan",
-      "type": "international"
-    },
-    {
-      "month": 7,
-      "day": 5,
-      "ckb": "کۆچی دوایی ئەبووبەکر حەسەنزادە، نووسەر و وەرگێڕ",
-      "kmr": "Koça dawî ya Ebûbekir Hesen zade, nivîskar û werger",
-      "type": "historical"
-    },
-    {
-      "month": 7,
-      "day": 8,
-      "ckb": "ڕۆژی نیشتمانی تازەلاوان",
-      "kmr": "Roja neteweyî ya ciwanên nû",
-      "type": "international"
-    },
-    {
-      "month": 7,
-      "day": 9,
-      "ckb": "کۆچی دوایی قەناتی کۆردۆ، زانا و زمانناس",
-      "kmr": "Koça dawî ya Qenatî Kordo, zanayê ziman",
-      "type": "historical"
-    },
-    {
-      "month": 7,
-      "day": 14,
-      "ckb": "کۆچی دوایی مریەم قازی، چیرۆک‌نووس و شاعیر",
-      "kmr": "Koça dawî ya Meryem Qazî, çîrokvan û helbestvan",
-      "type": "historical"
-    },
-    {
-      "month": 7,
-      "day": 15,
-      "ckb": "کۆچی دوایی هونەرمەند عەلی جافری",
-      "kmr": "Koça dawî ya hunermend Elî Cafirî",
-      "type": "historical"
-    },
-    {
-      "month": 7,
-      "day": 18,
-      "ckb": "کۆچی دوایی خدر ڕەش ئەحمەدی، شانۆکار",
-      "kmr": "Koça dawî ya Xidr Reş Ehmedî, şanoger",
-      "type": "historical"
-    },
-    {
-      "month": 7,
-      "day": 21,
-      "ckb": "کۆچی دوایی دڵدار، شاعیر",
-      "kmr": "Koça dawî ya Dildar, helbestvan",
-      "type": "historical"
-    },
-    {
-      "month": 7,
-      "day": 27,
-      "ckb": "کۆچی دوایی هونەرمەند ئیبراهیم قادری",
-      "kmr": "Koça dawî ya hunermend Îbrahîm Qadirî",
-      "type": "historical"
-    },
-    {
-      "month": 2,
       "day": 14,
       "ckb": "کۆچی دوایی دوکتور مەحموود ئیبڕاهیمی، نووسەر و وەرگێڕ",
       "kmr": "Koça dawî ya Dr. Mehmûd Îbrahîmî, nivîskar û werger",
+      "type": "historical"
+    },
+    {
+      "month": 2,
+      "day": 14,
+      "ckb": "کۆچی دوایی پرۆفیسۆر مستەفا زەڵمی، زانای کورد و جیهانی ئیسلامی (٤ی ژوئەنی ٢٠١٦)",
+      "kmr": "کۆچی دوایی پرۆفیسۆر مستەفا زەڵمی، زانای کورد و جیهانی ئیسلامی (٤ی ژوئەنی ٢٠١٦)",
+      "type": "historical"
+    },
+    {
+      "month": 2,
+      "day": 14,
+      "ckb": "یەکەم کۆبوونەوەی ئەنجوومەنی نیشتمانی کوردستان و دەنگدان بۆ کابینەی یەکەمی حکومەتی هەرێمی کوردستان (١٩٩٢)",
+      "kmr": "یەکەم کۆبوونەوەی ئەنجوومەنی نیشتمانی کوردستان و دەنگدان بۆ کابینەی یەکەمی حکومەتی هەرێمی کوردستان (١٩٩٢)",
       "type": "historical"
     },
     {
@@ -1102,8 +626,43 @@
     {
       "month": 2,
       "day": 18,
+      "ckb": "پەسەندکردنی یاسای سەرۆکایەتی هەرێمی کوردستان لە ٢٠٠٥",
+      "kmr": "Pejirandina qanûna serokatiya Herêma Kurdistanê di 2005an de",
+      "type": "historical"
+    },
+    {
+      "month": 2,
+      "day": 18,
       "ckb": "یادی کۆچی دوایی سەید ڕەحیم قوڕیشی",
       "kmr": "Salvegera koça dawî ya Seyid Rehîm Qurişî",
+      "type": "historical"
+    },
+    {
+      "month": 2,
+      "day": 19,
+      "ckb": "بۆمبارانکردنی زێوەی مڕگەوەر لە ساڵی ١٣٦٤ی هەتاوی",
+      "kmr": "بۆمبارانکردنی زێوەی مڕگەوەر لە ساڵی ١٣٦٤ی هەتاوی",
+      "type": "historical"
+    },
+    {
+      "month": 2,
+      "day": 19,
+      "ckb": "ڕاگەیاندنی دەستپێکردنەوەی شەڕ لە دژی کورد لە ١٩٦٣",
+      "kmr": "Daxuyandina destpêkirina şerê li dijî kurdan di 1963an de",
+      "type": "historical"
+    },
+    {
+      "month": 2,
+      "day": 20,
+      "ckb": "ساڵوەگەڕی کۆچی دوایی ئەحمەد شەریفی، لێکۆڵەر و ڕۆژنامەوان",
+      "kmr": "ساڵوەگەڕی کۆچی دوایی ئەحمەد شەریفی، لێکۆڵەر و ڕۆژنامەوان",
+      "type": "anniversary"
+    },
+    {
+      "month": 2,
+      "day": 20,
+      "ckb": "دامەزراندنی کۆمەڵەی ڕەنجدەرانی کوردستان لە ١٩٧٠",
+      "kmr": "Damezrandina Komeleya Kedkarên Kurdistanê di 1970an de",
       "type": "historical"
     },
     {
@@ -1111,6 +670,20 @@
       "day": 21,
       "ckb": "کۆچی دوایی ئەنوەر ئێران‌زادە، نووسەر و مافناس",
       "kmr": "Koça dawî ya Enwer Îranzade, nivîskar û hiqûqnas",
+      "type": "historical"
+    },
+    {
+      "month": 2,
+      "day": 21,
+      "ckb": "کۆچی دوایی عەلی موئەییەدزادە، ناسراو بە بەرزاو؛ شاعیر",
+      "kmr": "کۆچی دوایی عەلی موئەییەدزادە، ناسراو بە بەرزاو؛ شاعیر",
+      "type": "historical"
+    },
+    {
+      "month": 2,
+      "day": 22,
+      "ckb": "ڕێککەوتنی یەکخستنی دوو ئیدارەی هەولێر و سلێمانی لە ٢٠٠٣",
+      "kmr": "Lihevhatina yekxistina du rêveberiyên Hewlêr û Silêmaniyê di 2003an de",
       "type": "historical"
     },
     {
@@ -1137,8 +710,43 @@
     {
       "month": 2,
       "day": 29,
+      "ckb": "بڵاوکردنەوەی گۆڤاری «ڕۆژی کورد» لە ئەستەمبوڵ",
+      "kmr": "بڵاوکردنەوەی گۆڤاری «ڕۆژی کورد» لە ئەستەمبوڵ",
+      "type": "historical"
+    },
+    {
+      "month": 2,
+      "day": 29,
       "ckb": "کۆچی دوایی حاجی تۆفیق بەگ، پیرەمێرد",
       "kmr": "Koça dawî ya Hacî Tewfîq Beg, Pîremêrd",
+      "type": "historical"
+    },
+    {
+      "month": 2,
+      "day": 30,
+      "ckb": "بۆردومانی شاری سلێمانی لەلایەن فڕۆکە جەنگییەکانی ئینگلیزەوە (١٩٢٤)",
+      "kmr": "بۆردومانی شاری سلێمانی لەلایەن فڕۆکە جەنگییەکانی ئینگلیزەوە (١٩٢٤)",
+      "type": "historical"
+    },
+    {
+      "month": 2,
+      "day": 30,
+      "ckb": "کۆچی دوایی مەلا عەبدولکەریم عەزیزنیژاد، مەلاکەریمی ساردەکوێستانی؛ ڕاوچی",
+      "kmr": "کۆچی دوایی مەلا عەبدولکەریم عەزیزنیژاد، مەلاکەریمی ساردەکوێستانی؛ ڕاوچی",
+      "type": "historical"
+    },
+    {
+      "month": 2,
+      "day": 31,
+      "ckb": "تیرۆرکردنی سمکۆی شکاک لە ١٩٣٠",
+      "kmr": "Kuştina Îsmaîl Axa Şikak, Simko, di 1930an de",
+      "type": "historical"
+    },
+    {
+      "month": 2,
+      "day": 31,
+      "ckb": "کۆچی دوایی عەرەبی شەمۆ",
+      "kmr": "کۆچی دوایی عەرەبی شەمۆ",
       "type": "historical"
     },
     {
@@ -1146,6 +754,34 @@
       "day": 1,
       "ckb": "کۆچی دوایی تەها فەیزیزادە، نووسەر",
       "kmr": "Koça dawî ya Teha Feyzîzade, nivîskar",
+      "type": "historical"
+    },
+    {
+      "month": 3,
+      "day": 1,
+      "ckb": "کۆچی دوایی عەرەب شامیلۆ (٢١ی ژووەن)",
+      "kmr": "کۆچی دوایی عەرەب شامیلۆ (٢١ی ژووەن)",
+      "type": "historical"
+    },
+    {
+      "month": 3,
+      "day": 1,
+      "ckb": "ڕۆژی ئەسناف و بازاڕیان",
+      "kmr": "Roja esnaf û bazirganan",
+      "type": "international"
+    },
+    {
+      "month": 3,
+      "day": 2,
+      "ckb": "لە سێدارەدانی شێخ مارف بەرزەنجی",
+      "kmr": "Darikirina Şêx Marif Berzencî",
+      "type": "historical"
+    },
+    {
+      "month": 3,
+      "day": 2,
+      "ckb": "کۆچی دوایی محەممەدئەمین ڕەسووڵی، فەقێ مینە",
+      "kmr": "Koça dawî ya Mihemedemîn Resûlî, Feqê Mîne",
       "type": "historical"
     },
     {
@@ -1165,15 +801,43 @@
     {
       "month": 3,
       "day": 5,
+      "ckb": "کۆچی دوایی حەسەن زیرەک، گۆرانیبێژ",
+      "kmr": "Koça dawî ya Hesen Zîrek, stranbêj",
+      "type": "historical"
+    },
+    {
+      "month": 3,
+      "day": 5,
       "ckb": "کۆچی دوایی عەلائەددین باباشەهابی، گۆرانیبێژ و دانەری مۆسیقا",
       "kmr": "Koça dawî ya Elaeddîn Babaşehabî, stranbêj û bestekar",
       "type": "historical"
     },
     {
       "month": 3,
+      "day": 5,
+      "ckb": "ڕۆژی جیهانی بەرەنگاربوونەوە لەگەڵ مادە هۆشبەرەکان",
+      "kmr": "Roja Cîhanî ya têkoşîna li dijî madeyên hişbir",
+      "type": "international"
+    },
+    {
+      "month": 3,
       "day": 6,
       "ckb": "کۆچی دوایی بورهان قانع",
       "kmr": "Koça dawî ya Burhan Qani",
+      "type": "historical"
+    },
+    {
+      "month": 3,
+      "day": 7,
+      "ckb": "کیمیابارانی سەردەشت",
+      "kmr": "Êrîşa kîmyayî ya Serdeştê",
+      "type": "historical"
+    },
+    {
+      "month": 3,
+      "day": 8,
+      "ckb": "کۆچی دوایی ئەحمەد دەروێش، ئەخۆل؛ شاعیر",
+      "kmr": "Koça dawî ya Ehmed Derwêş, Exol; helbestvan",
       "type": "historical"
     },
     {
@@ -1186,15 +850,29 @@
     {
       "month": 3,
       "day": 8,
-      "ckb": "کۆچی دوایی ئەحمەد دەروێش، ئەخۆل؛ شاعیر",
-      "kmr": "Koça dawî ya Ehmed Derwêş, Exol; helbestvan",
-      "type": "historical"
+      "ckb": "ڕۆژی بەرەنگاربوونەوە لەگەڵ چەکی کیمیایی و میکرۆبی",
+      "kmr": "Roja têkoşîna li dijî çekên kîmyayî û mîkrobî",
+      "type": "international"
     },
     {
       "month": 3,
       "day": 10,
       "ckb": "ڕۆژی کانگا و پیشەسازی",
       "kmr": "Roja kan û pîşesaziyê",
+      "type": "international"
+    },
+    {
+      "month": 3,
+      "day": 13,
+      "ckb": "دامەزراندنی یەکەم کابینەی حکومەتی هەرێمی کوردستان لە ١٩٩٢",
+      "kmr": "Damezrandina kabîneya yekem a hikûmeta Herêma Kurdistanê di 1992an de",
+      "type": "historical"
+    },
+    {
+      "month": 3,
+      "day": 14,
+      "ckb": "ڕۆژی شارەداری و دێهیاری",
+      "kmr": "Roja şaredarî û gundiyariyê",
       "type": "international"
     },
     {
@@ -1206,10 +884,10 @@
     },
     {
       "month": 3,
-      "day": 14,
-      "ckb": "ڕۆژی شارەداری و دێهیاری",
-      "kmr": "Roja şaredarî û gundiyariyê",
-      "type": "international"
+      "day": 16,
+      "ckb": "کۆچی دوایی خەلیل موفقی",
+      "kmr": "کۆچی دوایی خەلیل موفقی",
+      "type": "historical"
     },
     {
       "month": 3,
@@ -1221,15 +899,43 @@
     {
       "month": 3,
       "day": 17,
+      "ckb": "ساڵوەگەڕی کۆچی دوایی ئەوڕەحمانی حاجی مارف (٨ی جولای)",
+      "kmr": "ساڵوەگەڕی کۆچی دوایی ئەوڕەحمانی حاجی مارف (٨ی جولای)",
+      "type": "anniversary"
+    },
+    {
+      "month": 3,
+      "day": 17,
       "ckb": "کۆچی دوایی هونەرمەند ئەنوەر یۆسفی",
       "kmr": "Koça dawî ya hunermend Enwer Yûsifî",
       "type": "historical"
     },
     {
       "month": 3,
+      "day": 18,
+      "ckb": "ڕۆژی ئەدەبیاتی منداڵان و هەرزەکاران",
+      "kmr": "Roja edebiyata zarok û ciwanan",
+      "type": "international"
+    },
+    {
+      "month": 3,
       "day": 19,
       "ckb": "کۆچی دوایی ئەمین زەکی بەگ، مێژوونووس",
       "kmr": "Koça dawî ya Emîn Zekî Beg, dîroknas",
+      "type": "historical"
+    },
+    {
+      "month": 3,
+      "day": 22,
+      "ckb": "دەستپێکردنی گۆڤاری زاری کرمانجی لە هەولێر",
+      "kmr": "Destpêkirina kovara Zariya Kurmancî li Hewlêrê",
+      "type": "historical"
+    },
+    {
+      "month": 3,
+      "day": 22,
+      "ckb": "کۆچی دوایی ئیبڕاهیم ئەمین باڵدار، نووسەر و زمانەوان (١١ی جولای)",
+      "kmr": "کۆچی دوایی ئیبڕاهیم ئەمین باڵدار، نووسەر و زمانەوان (١١ی جولای)",
       "type": "historical"
     },
     {
@@ -1245,6 +951,20 @@
       "ckb": "کۆچی دوایی میرجەلادەت بەدرخان و شێخ محەممەدی خاڵ",
       "kmr": "Koça dawî ya Mîr Celadet Bedirxan û Şêx Mihemed Xal",
       "type": "historical"
+    },
+    {
+      "month": 3,
+      "day": 25,
+      "ckb": "کۆچی دوایی هاشم شیرازی",
+      "kmr": "کۆچی دوایی هاشم شیرازی",
+      "type": "historical"
+    },
+    {
+      "month": 3,
+      "day": 25,
+      "ckb": "ڕۆژی خۆشگوزەرانی و ژیانی کۆمەڵایەتی",
+      "kmr": "Roja refah û jiyana civakî",
+      "type": "international"
     },
     {
       "month": 3,
@@ -1268,6 +988,601 @@
       "type": "historical"
     },
     {
+      "month": 3,
+      "day": 31,
+      "ckb": "ڕۆژی جیهانی ژمارەی پی",
+      "kmr": "Roja Cîhanî ya hejmareya Pi",
+      "type": "international"
+    },
+    {
+      "month": 4,
+      "day": 2,
+      "ckb": "کۆچی دوایی هونەرمەند عەلی مەردان",
+      "kmr": "Koça dawî ya hunermend Elî Merdan",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 2,
+      "ckb": "کۆچی دوایی گیو موکریانی",
+      "kmr": "کۆچی دوایی گیو موکریانی",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 3,
+      "ckb": "ڕۆژی بنەماڵە و ڕێزگرتن لە خانەنشینان",
+      "kmr": "ڕۆژی بنەماڵە و ڕێزگرتن لە خانەنشینان",
+      "type": "international"
+    },
+    {
+      "month": 4,
+      "day": 4,
+      "ckb": "کۆچی دوایی ئەحمەد هەردی، شاعیر",
+      "kmr": "Koça dawî ya Ehmed Herdî, helbestvan",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 4,
+      "ckb": "کۆچی دوایی سەدیق بۆرەکەیی",
+      "kmr": "کۆچی دوایی سەدیق بۆرەکەیی",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 5,
+      "ckb": "کۆچی دوایی ئەبووبەکر حەسەنزادە، نووسەر و وەرگێڕ",
+      "kmr": "Koça dawî ya Ebûbekir Hesen zade, nivîskar û werger",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 6,
+      "ckb": "ڕۆژی کارخوڵقێنەر و داهێنەر",
+      "kmr": "ڕۆژی کارخوڵقێنەر و داهێنەر",
+      "type": "international"
+    },
+    {
+      "month": 4,
+      "day": 9,
+      "ckb": "ساڵی سێڵاوی مەهاباد لە ١٣١٥ی هەتاوی",
+      "kmr": "Sala lehiyê ya Mehabadê di 1315ê Hicrî-Şemsî de",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 9,
+      "ckb": "ڕۆژی خوێن‌بەخشین",
+      "kmr": "ڕۆژی خوێن‌بەخشین",
+      "type": "international"
+    },
+    {
+      "month": 4,
+      "day": 10,
+      "ckb": "کۆچی دوایی هونەرمەند ئیسماعیل سەردەشتی",
+      "kmr": "کۆچی دوایی هونەرمەند ئیسماعیل سەردەشتی",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 11,
+      "ckb": "کۆچی دوایی هونەرمەند عەلی کەردار",
+      "kmr": "کۆچی دوایی هونەرمەند عەلی کەردار",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 11,
+      "ckb": "کیمیابارانی شاری شنۆ",
+      "kmr": "Êrîşa kîmyayî ya bajarê Şinoyê",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 12,
+      "ckb": "ڕۆژی کۆمەڵکوژی کوردانی ئێزیدی",
+      "kmr": "Roja komkujî ya Êzidiyên kurd",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 13,
+      "ckb": "کۆچی دوایی شێرکۆ بێکەس و ڕەفیق حیلمی",
+      "kmr": "Koça dawî ya Şêrko Bêkes û Refîq Hilmî",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 14,
+      "ckb": "کۆچی دوایی مریەم قازی، چیرۆک‌نووس و شاعیر",
+      "kmr": "Koça dawî ya Meryem Qazî, çîrokvan û helbestvan",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 15,
+      "ckb": "دامەزراندنی سۆما",
+      "kmr": "Damezrandina Sûmayê",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 15,
+      "ckb": "کۆچی دوایی سەیدعەلی ئەسغەر کوردستانی",
+      "kmr": "کۆچی دوایی سەیدعەلی ئەسغەر کوردستانی",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 15,
+      "ckb": "کۆچی دوایی هونەرمەند عەلی جافری",
+      "kmr": "Koça dawî ya hunermend Elî Cafirî",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 17,
+      "ckb": "کۆچی دوایی هونەرمەند ئارام تیگران (٨ی ئاگۆست)",
+      "kmr": "کۆچی دوایی هونەرمەند ئارام تیگران (٨ی ئاگۆست)",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 17,
+      "ckb": "ڕۆژی ڕۆژنامەڤان",
+      "kmr": "ڕۆژی ڕۆژنامەڤان",
+      "type": "international"
+    },
+    {
+      "month": 4,
+      "day": 18,
+      "ckb": "کۆچی دوایی حەبیبوڵڵا تابانی",
+      "kmr": "کۆچی دوایی حەبیبوڵڵا تابانی",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 18,
+      "ckb": "کۆچی دوایی خدر ڕەش ئەحمەدی، شانۆکار",
+      "kmr": "Koça dawî ya Xidr Reş Ehmedî, şanoger",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 18,
+      "ckb": "کۆچی دوایی سەید ئەحمەدی شێخ محەممەدی بەنا بەرزنجی، ناسراو بە مەزڵووم؛ شاعیر",
+      "kmr": "کۆچی دوایی سەید ئەحمەدی شێخ محەممەدی بەنا بەرزنجی، ناسراو بە مەزڵووم؛ شاعیر",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 18,
+      "ckb": "کۆچی دوایی قەدریجان، شاعیر و نووسەر",
+      "kmr": "Koça dawî ya Qedrîcan, helbestvan û nivîskar",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 18,
+      "ckb": "ڕۆژی جیهانیی دڵدارانی کتێب",
+      "kmr": "ڕۆژی جیهانیی دڵدارانی کتێب",
+      "type": "international"
+    },
+    {
+      "month": 4,
+      "day": 19,
+      "ckb": "کۆچی دوایی هونەرمەندی شێوەکار ئازاد شەوقی",
+      "kmr": "کۆچی دوایی هونەرمەندی شێوەکار ئازاد شەوقی",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 21,
+      "ckb": "کۆچی دوایی عەبدولکەریم شێخانی، نووسەر و وەرگێڕ",
+      "kmr": "کۆچی دوایی عەبدولکەریم شێخانی، نووسەر و وەرگێڕ",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 21,
+      "ckb": "کۆچی دوایی مەلا غەفور دەباغی، حافزی مەهابادی",
+      "kmr": "کۆچی دوایی مەلا غەفور دەباغی، حافزی مەهابادی",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 21,
+      "ckb": "ڕۆژی جیهانی لاوان",
+      "kmr": "Roja Cîhanî ya ciwanan",
+      "type": "international"
+    },
+    {
+      "month": 4,
+      "day": 21,
+      "ckb": "ڕۆژی جیهانی مزگەوت",
+      "kmr": "ڕۆژی جیهانی مزگەوت",
+      "type": "international"
+    },
+    {
+      "month": 4,
+      "day": 22,
+      "ckb": "کۆچی دوایی سۆهراب محەممەدی، ژەنیار و گۆرانیبێژ",
+      "kmr": "کۆچی دوایی سۆهراب محەممەدی، ژەنیار و گۆرانیبێژ",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 22,
+      "ckb": "کۆچی دوایی مامۆستا حوسێن عارف (١٣ی ئاگۆست)",
+      "kmr": "کۆچی دوایی مامۆستا حوسێن عارف (١٣ی ئاگۆست)",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 22,
+      "ckb": "ڕۆژی جیهانی چەپ‌دەستەکان",
+      "kmr": "Roja Cîhanî ya çepdestan",
+      "type": "international"
+    },
+    {
+      "month": 4,
+      "day": 22,
+      "ckb": "ڕۆژی ڕێکخراوەکان و بەشدارییە کۆمەڵایەتییەکان",
+      "kmr": "ڕۆژی ڕێکخراوەکان و بەشدارییە کۆمەڵایەتییەکان",
+      "type": "international"
+    },
+    {
+      "month": 4,
+      "day": 25,
+      "ckb": "ساڵڕۆژی کۆچی دوایی بەهائەددین ئەدەب",
+      "kmr": "ساڵڕۆژی کۆچی دوایی بەهائەددین ئەدەب",
+      "type": "anniversary"
+    },
+    {
+      "month": 4,
+      "day": 27,
+      "ckb": "کۆچی دوایی فواد ئەحمەد، گۆرانیبێژ",
+      "kmr": "کۆچی دوایی فواد ئەحمەد، گۆرانیبێژ",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 27,
+      "ckb": "کۆچی دوایی هونەرمەند شکور خەیات، مەقام‌زان",
+      "kmr": "کۆچی دوایی هونەرمەند شکور خەیات، مەقام‌زان",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 28,
+      "ckb": "ڕۆژی جیهانی وێنەگری",
+      "kmr": "Roja Cîhanî ya wênekêşiyê",
+      "type": "international"
+    },
+    {
+      "month": 4,
+      "day": 29,
+      "ckb": "وەستانی شەڕی ئێران و عێراق",
+      "kmr": "Rawestandina şerê Îran û Iraqê",
+      "type": "historical"
+    },
+    {
+      "month": 4,
+      "day": 29,
+      "ckb": "کۆچی دوایی محەممەدڕەزا کەڵهۆڕ، خۆشنووس",
+      "kmr": "کۆچی دوایی محەممەدڕەزا کەڵهۆڕ، خۆشنووس",
+      "type": "historical"
+    },
+    {
+      "month": 5,
+      "day": 1,
+      "ckb": "ڕۆژی پزیشک",
+      "kmr": "ڕۆژی پزیشک",
+      "type": "international"
+    },
+    {
+      "month": 5,
+      "day": 3,
+      "ckb": "ساڵوەگەڕی کۆچی دوایی ژینگەپارێزان، لەوانە باجوەر و هاوڕێیانی",
+      "kmr": "ساڵوەگەڕی کۆچی دوایی ژینگەپارێزان، لەوانە باجوەر و هاوڕێیانی",
+      "type": "anniversary"
+    },
+    {
+      "month": 5,
+      "day": 3,
+      "ckb": "یادی کۆچی دوایی مامۆستا بێخود",
+      "kmr": "Salvegera koça dawî ya Mamoste Bêxod",
+      "type": "historical"
+    },
+    {
+      "month": 5,
+      "day": 4,
+      "ckb": "ڕۆژی فەرمانبەر",
+      "kmr": "ڕۆژی فەرمانبەر",
+      "type": "international"
+    },
+    {
+      "month": 5,
+      "day": 5,
+      "ckb": "ساڵوەگەڕی کۆچی دوایی سەید کامیل ئیمامی، ناسراو بە ئاوات",
+      "kmr": "ساڵوەگەڕی کۆچی دوایی سەید کامیل ئیمامی، ناسراو بە ئاوات",
+      "type": "anniversary"
+    },
+    {
+      "month": 5,
+      "day": 5,
+      "ckb": "هێرشی فڕۆکەکانی سۆڤیەت بۆ سەر مەهاباد لە ١٣٢٠",
+      "kmr": "Êrîşa balafirên Sovyetê li ser Mehabadê di 1320an de",
+      "type": "historical"
+    },
+    {
+      "month": 5,
+      "day": 5,
+      "ckb": "ڕۆژی دەرمانساز",
+      "kmr": "ڕۆژی دەرمانساز",
+      "type": "international"
+    },
+    {
+      "month": 5,
+      "day": 6,
+      "ckb": "ساڵوەگەڕی کۆچی دوایی عوبەیدوڵڵا ئەیوبیانی مەرکەزی",
+      "kmr": "ساڵوەگەڕی کۆچی دوایی عوبەیدوڵڵا ئەیوبیانی مەرکەزی",
+      "type": "anniversary"
+    },
+    {
+      "month": 5,
+      "day": 6,
+      "ckb": "ساڵوەگەڕی کۆچی دوایی مەلا مارف کۆکەیی، شاعیر",
+      "kmr": "ساڵوەگەڕی کۆچی دوایی مەلا مارف کۆکەیی، شاعیر",
+      "type": "anniversary"
+    },
+    {
+      "month": 5,
+      "day": 6,
+      "ckb": "داگیرکردنی مەهاباد لەلایەن هێزەکانی سۆڤییەت لە ١٣٢٠ی هەتاوی",
+      "kmr": "داگیرکردنی مەهاباد لەلایەن هێزەکانی سۆڤییەت لە ١٣٢٠ی هەتاوی",
+      "type": "historical"
+    },
+    {
+      "month": 5,
+      "day": 6,
+      "ckb": "کۆچی دوایی مامۆستا مەلا محەممەد ئیمامی، ناسراو بە مەلا محەممەدی سوورێن",
+      "kmr": "کۆچی دوایی مامۆستا مەلا محەممەد ئیمامی، ناسراو بە مەلا محەممەدی سوورێن",
+      "type": "historical"
+    },
+    {
+      "month": 5,
+      "day": 7,
+      "ckb": "بڵاوکردنەوەی یەکەم ژمارەی ڕۆژنامەی هەولێر",
+      "kmr": "بڵاوکردنەوەی یەکەم ژمارەی ڕۆژنامەی هەولێر",
+      "type": "historical"
+    },
+    {
+      "month": 5,
+      "day": 7,
+      "ckb": "دامەزراندنی کۆڕی زانیاری کورد",
+      "kmr": "دامەزراندنی کۆڕی زانیاری کورد",
+      "type": "historical"
+    },
+    {
+      "month": 5,
+      "day": 8,
+      "ckb": "ساڵوەگەڕی کۆچی دوایی ساڵح قەفتان، مێژوونووس",
+      "kmr": "ساڵوەگەڕی کۆچی دوایی ساڵح قەفتان، مێژوونووس",
+      "type": "anniversary"
+    },
+    {
+      "month": 5,
+      "day": 8,
+      "ckb": "حاجی ئیسماعیل حەسەنپوور، ناسراو بە کاکەلاو؛ بەیت‌بێژ",
+      "kmr": "حاجی ئیسماعیل حەسەنپوور، ناسراو بە کاکەلاو؛ بەیت‌بێژ",
+      "type": "historical"
+    },
+    {
+      "month": 5,
+      "day": 8,
+      "ckb": "کۆچی دوایی مەلا عەبدولکەریم مودەڕیس",
+      "kmr": "Koça dawî ya Mela Ebdulkerîm Muderrîs",
+      "type": "historical"
+    },
+    {
+      "month": 5,
+      "day": 8,
+      "ckb": "کۆچی دوایی مەلای جزیری",
+      "kmr": "Koça dawî ya Melayê Cizîrî",
+      "type": "historical"
+    },
+    {
+      "month": 5,
+      "day": 11,
+      "ckb": "ساڵوەگەڕی کۆچی دوایی کامڕان مەتەری، هونەرمەند",
+      "kmr": "ساڵوەگەڕی کۆچی دوایی کامڕان مەتەری، هونەرمەند",
+      "type": "anniversary"
+    },
+    {
+      "month": 5,
+      "day": 11,
+      "ckb": "ڕۆژی پیشەی چاپ",
+      "kmr": "ڕۆژی پیشەی چاپ",
+      "type": "international"
+    },
+    {
+      "month": 5,
+      "day": 13,
+      "ckb": "ڕۆژی هەرەوەز",
+      "kmr": "ڕۆژی هەرەوەز",
+      "type": "international"
+    },
+    {
+      "month": 5,
+      "day": 14,
+      "ckb": "کۆچی دوایی سیاوەش بەهاردۆست، وەرزشوان؛ ١٤ی شەهریوەر",
+      "kmr": "کۆچی دوایی سیاوەش بەهاردۆست، وەرزشوان؛ ١٤ی شەهریوەر",
+      "type": "historical"
+    },
+    {
+      "month": 5,
+      "day": 16,
+      "ckb": "ساڵوەگەڕی کۆچی دوایی محەممەد ئەوراز، شاخەوان",
+      "kmr": "ساڵوەگەڕی کۆچی دوایی محەممەد ئەوراز، شاخەوان",
+      "type": "anniversary"
+    },
+    {
+      "month": 5,
+      "day": 17,
+      "ckb": "لەدایکبوونی هونەرمەند عەزیز شارووخ",
+      "kmr": "لەدایکبوونی هونەرمەند عەزیز شارووخ",
+      "type": "historical"
+    },
+    {
+      "month": 5,
+      "day": 17,
+      "ckb": "کۆچی دوایی جەماڵ بابان (٨ی سێپتامبەر)",
+      "kmr": "کۆچی دوایی جەماڵ بابان (٨ی سێپتامبەر)",
+      "type": "historical"
+    },
+    {
+      "month": 5,
+      "day": 17,
+      "ckb": "ڕۆژی جیهانی نەمانی نەخوێندەواری",
+      "kmr": "Roja Cîhanî ya tinekirina nexwendewariyê",
+      "type": "international"
+    },
+    {
+      "month": 5,
+      "day": 18,
+      "ckb": "ساڵوەگەڕی کۆچی دوایی یەڵماز گۆنەی",
+      "kmr": "ساڵوەگەڕی کۆچی دوایی یەڵماز گۆنەی",
+      "type": "anniversary"
+    },
+    {
+      "month": 5,
+      "day": 18,
+      "ckb": "کۆچی دوایی عەبدولقادر مەحموودزادە، ناسراو بە دوکتور ئاسۆ",
+      "kmr": "کۆچی دوایی عەبدولقادر مەحموودزادە، ناسراو بە دوکتور ئاسۆ",
+      "type": "historical"
+    },
+    {
+      "month": 5,
+      "day": 19,
+      "ckb": "کۆچی دوایی خالەق قوبادی",
+      "kmr": "کۆچی دوایی خالەق قوبادی",
+      "type": "historical"
+    },
+    {
+      "month": 5,
+      "day": 21,
+      "ckb": "بڵاوکردنەوەی یەکەم ژمارەی ڕۆژنامەی ژیان لەلایەن شارەوانی سلێمانییەوە",
+      "kmr": "بڵاوکردنەوەی یەکەم ژمارەی ڕۆژنامەی ژیان لەلایەن شارەوانی سلێمانییەوە",
+      "type": "historical"
+    },
+    {
+      "month": 5,
+      "day": 21,
+      "ckb": "کۆچی دوایی محەممەدخەلیل مەولوودپوور، ناسراو بە خەلیل شا؛ بەیت‌بێژ",
+      "kmr": "کۆچی دوایی محەممەدخەلیل مەولوودپوور، ناسراو بە خەلیل شا؛ بەیت‌بێژ",
+      "type": "historical"
+    },
+    {
+      "month": 5,
+      "day": 21,
+      "ckb": "کۆچی دوایی هونەرمەند بەیتوڵڵا گونەری، ناسراو بە بەیتۆ جان",
+      "kmr": "کۆچی دوایی هونەرمەند بەیتوڵڵا گونەری، ناسراو بە بەیتۆ جان",
+      "type": "historical"
+    },
+    {
+      "month": 5,
+      "day": 21,
+      "ckb": "ڕۆژی سینەما",
+      "kmr": "ڕۆژی سینەما",
+      "type": "international"
+    },
+    {
+      "month": 5,
+      "day": 22,
+      "ckb": "کۆچی دوایی هونەرمەند محەممەد دانیش",
+      "kmr": "کۆچی دوایی هونەرمەند محەممەد دانیش",
+      "type": "historical"
+    },
+    {
+      "month": 5,
+      "day": 22,
+      "ckb": "ڕۆژی جیهانی ئاشتی",
+      "kmr": "Roja Cîhanî ya aştiyê",
+      "type": "international"
+    },
+    {
+      "month": 5,
+      "day": 23,
+      "ckb": "ساڵوەگەڕی کۆچی دوایی عەلامە مەلا محەممەد قزڵجی",
+      "kmr": "ساڵوەگەڕی کۆچی دوایی عەلامە مەلا محەممەد قزڵجی",
+      "type": "anniversary"
+    },
+    {
+      "month": 5,
+      "day": 24,
+      "ckb": "ڕۆژی جیهانی دێموکراسی",
+      "kmr": "Roja Cîhanî ya demokrasiyê",
+      "type": "international"
+    },
+    {
+      "month": 5,
+      "day": 25,
+      "ckb": "ساڵوەگەڕی کۆچی دوایی حیشمەتوڵڵا لوڕنیژاد",
+      "kmr": "ساڵوەگەڕی کۆچی دوایی حیشمەتوڵڵا لوڕنیژاد",
+      "type": "anniversary"
+    },
+    {
+      "month": 5,
+      "day": 25,
+      "ckb": "ڕۆژی جیهانی پاراستنی چینە ئۆزۆن",
+      "kmr": "ڕۆژی جیهانی پاراستنی چینە ئۆزۆن",
+      "type": "international"
+    },
+    {
+      "month": 5,
+      "day": 26,
+      "ckb": "ساڵوەگەڕی کۆچی دوایی ڕەسووڵ نادری",
+      "kmr": "ساڵوەگەڕی کۆچی دوایی ڕەسووڵ نادری",
+      "type": "anniversary"
+    },
+    {
+      "month": 5,
+      "day": 27,
+      "ckb": "ساڵوەگەڕی کۆچی دوایی مەرزییە فەریقی",
+      "kmr": "ساڵوەگەڕی کۆچی دوایی مەرزییە فەریقی",
+      "type": "anniversary"
+    },
+    {
+      "month": 5,
+      "day": 29,
+      "ckb": "ساڵوەگەڕی کۆچی دوایی حوسێن حوزنی موکریانی، مێژوونووس (٢٠ی سێپتامبەر)",
+      "kmr": "ساڵوەگەڕی کۆچی دوایی حوسێن حوزنی موکریانی، مێژوونووس (٢٠ی سێپتامبەر)",
+      "type": "anniversary"
+    },
+    {
+      "month": 5,
+      "day": 29,
+      "ckb": "ساڵوەگەڕی کۆچی دوایی مووسا عەنتەر، ڕۆژنامەڤان و نووسەر (٢٠ی سێپتامبەر)",
+      "kmr": "ساڵوەگەڕی کۆچی دوایی مووسا عەنتەر، ڕۆژنامەڤان و نووسەر (٢٠ی سێپتامبەر)",
+      "type": "anniversary"
+    },
+    {
+      "month": 5,
+      "day": 30,
+      "ckb": "ڕۆژی جیهانی ئەلزهایمەر",
+      "kmr": "Roja Cîhanî ya Alzheimerê",
+      "type": "international"
+    },
+    {
+      "month": 6,
+      "day": 1,
+      "ckb": "کۆچی دوایی حەمەی نێرگز",
+      "kmr": "Koça dawî ya Heme Nêrgiz",
+      "type": "historical"
+    },
+    {
       "month": 6,
       "day": 3,
       "ckb": "کۆچی دوایی خاتوو فەتانە وەلیدی",
@@ -1284,8 +1599,36 @@
     {
       "month": 6,
       "day": 5,
+      "ckb": "کۆچی دوایی ئاوات حەکیم‌زادە",
+      "kmr": "کۆچی دوایی ئاوات حەکیم‌زادە",
+      "type": "historical"
+    },
+    {
+      "month": 6,
+      "day": 5,
       "ckb": "کۆچی دوایی مامۆستا مەحوی، شاعیر",
       "kmr": "Koça dawî ya Mamoste Meh wî, helbestvan",
+      "type": "historical"
+    },
+    {
+      "month": 6,
+      "day": 5,
+      "ckb": "چلەمەی حوسێنی؛ ٢٠ی سەفەر",
+      "kmr": "چلەمەی حوسێنی؛ ٢٠ی سەفەر",
+      "type": "international"
+    },
+    {
+      "month": 6,
+      "day": 5,
+      "ckb": "ڕۆژی جیهانی گەشتیاری (٢٧ی سێپتامبەر)",
+      "kmr": "ڕۆژی جیهانی گەشتیاری (٢٧ی سێپتامبەر)",
+      "type": "international"
+    },
+    {
+      "month": 6,
+      "day": 6,
+      "ckb": "کۆچی دوایی حەسەن قزڵجی، چیرۆکنووس و وەرگێڕ",
+      "kmr": "Koça dawî ya Hesen Qizilcî, çîrokvan û werger",
       "type": "historical"
     },
     {
@@ -1297,9 +1640,51 @@
     },
     {
       "month": 6,
+      "day": 7,
+      "ckb": "ڕۆژی ئاگرکوژاندنەوە و هێمنایەتی",
+      "kmr": "ڕۆژی ئاگرکوژاندنەوە و هێمنایەتی",
+      "type": "international"
+    },
+    {
+      "month": 6,
+      "day": 8,
+      "ckb": "ڕۆژی جیهانیی وەرگێڕ و وەرگێڕان",
+      "kmr": "ڕۆژی جیهانیی وەرگێڕ و وەرگێڕان",
+      "type": "international"
+    },
+    {
+      "month": 6,
+      "day": 8,
+      "ckb": "ڕۆژی جیهانیی کەڕ و نەبیستان",
+      "kmr": "ڕۆژی جیهانیی کەڕ و نەبیستان",
+      "type": "international"
+    },
+    {
+      "month": 6,
       "day": 9,
       "ckb": "کۆچی دوایی محەممەد جەزا، گۆرانیبێژ",
       "kmr": "Koça dawî ya Mihemed Ceza, stranbêj",
+      "type": "historical"
+    },
+    {
+      "month": 6,
+      "day": 9,
+      "ckb": "ڕۆژی جیهانیی بەساڵاچووان (١ی ئۆکتۆبەر)",
+      "kmr": "ڕۆژی جیهانیی بەساڵاچووان (١ی ئۆکتۆبەر)",
+      "type": "international"
+    },
+    {
+      "month": 6,
+      "day": 11,
+      "ckb": "کۆچی دوایی پڕۆفیسۆر عێزەددین مستەفا ڕەسووڵ لە ٢٠١٩",
+      "kmr": "Koça dawî ya Profesor Îzzeddîn Mistefa Resûl di 2019an de",
+      "type": "historical"
+    },
+    {
+      "month": 6,
+      "day": 12,
+      "ckb": "کۆچی دوایی سوڵتان سەلاحەددین ئەیوبی لە ساڵی ٥٨٩ی کۆچی",
+      "kmr": "کۆچی دوایی سوڵتان سەلاحەددین ئەیوبی لە ساڵی ٥٨٩ی کۆچی",
       "type": "historical"
     },
     {
@@ -1311,9 +1696,72 @@
     },
     {
       "month": 6,
+      "day": 12,
+      "ckb": "کۆچی دوایی کامڕان بەردخان، نووسەر و ڕۆژنامەڤان",
+      "kmr": "Koça dawî ya Kamiran Berdexan, nivîskar û rojnamevan",
+      "type": "historical"
+    },
+    {
+      "month": 6,
+      "day": 13,
+      "ckb": "کۆچی دوایی پێغەمبەری ئیسلام حەزرەتی محەممەد و شەهیدبوونی ئیمام حەسەنی موجتەبا",
+      "kmr": "کۆچی دوایی پێغەمبەری ئیسلام حەزرەتی محەممەد و شەهیدبوونی ئیمام حەسەنی موجتەبا",
+      "type": "historical"
+    },
+    {
+      "month": 6,
+      "day": 13,
+      "ckb": "ڕۆژی جیهانیی مامۆستا (٥ی ئۆکتۆبەر)",
+      "kmr": "ڕۆژی جیهانیی مامۆستا (٥ی ئۆکتۆبەر)",
+      "type": "international"
+    },
+    {
+      "month": 6,
+      "day": 13,
+      "ckb": "ڕۆژی هێزی ئینتیزامی",
+      "kmr": "ڕۆژی هێزی ئینتیزامی",
+      "type": "international"
+    },
+    {
+      "month": 6,
+      "day": 14,
+      "ckb": "ڕۆژی بەیتاڵی و پزیشکی ئاژەڵان",
+      "kmr": "ڕۆژی بەیتاڵی و پزیشکی ئاژەڵان",
+      "type": "international"
+    },
+    {
+      "month": 6,
+      "day": 15,
+      "ckb": "شەهادەتی ئیمام ڕەزا",
+      "kmr": "شەهادەتی ئیمام ڕەزا",
+      "type": "historical"
+    },
+    {
+      "month": 6,
       "day": 15,
       "ckb": "کۆچی دوایی مستەفا شێرزاد و تاهیر بەگی جاف",
       "kmr": "Koça dawî ya Mistefa Şêrzad û Tahir Begê Caf",
+      "type": "historical"
+    },
+    {
+      "month": 6,
+      "day": 16,
+      "ckb": "ڕۆژی نەتەوەیی منداڵ لە ئێران (٨ی ئۆکتۆبەر)",
+      "kmr": "ڕۆژی نەتەوەیی منداڵ لە ئێران (٨ی ئۆکتۆبەر)",
+      "type": "international"
+    },
+    {
+      "month": 6,
+      "day": 17,
+      "ckb": "کۆچی دوایی مەهاباد قەرەداغی، شاعیر و نووسەر لە ٢٠٢٠",
+      "kmr": "Koça dawî ya Mehabad Qeredaxî, helbestvan û nivîskar di 2020an de",
+      "type": "historical"
+    },
+    {
+      "month": 6,
+      "day": 17,
+      "ckb": "کۆچی دوایی هونەرمەند حەمید حەمیدی",
+      "kmr": "کۆچی دوایی هونەرمەند حەمید حەمیدی",
       "type": "historical"
     },
     {
@@ -1325,10 +1773,87 @@
     },
     {
       "month": 6,
+      "day": 17,
+      "ckb": "ڕۆژی جیهانیی پۆست (٩ی ئۆکتۆبەر)",
+      "kmr": "ڕۆژی جیهانیی پۆست (٩ی ئۆکتۆبەر)",
+      "type": "international"
+    },
+    {
+      "month": 6,
       "day": 18,
       "ckb": "کۆچی دوایی کەریم زەند و ئەردەڵان بەکر",
       "kmr": "Koça dawî ya Kerîm Zend û Erdelan Bekir",
       "type": "historical"
+    },
+    {
+      "month": 6,
+      "day": 19,
+      "ckb": "کۆچی دوایی عەلی عەبدوڵڵا سۆفی، ناسراو بە ع. ع. شەونم؛ شاعیری نەتەوەیی کورد",
+      "kmr": "کۆچی دوایی عەلی عەبدوڵڵا سۆفی، ناسراو بە ع. ع. شەونم؛ شاعیری نەتەوەیی کورد",
+      "type": "historical"
+    },
+    {
+      "month": 6,
+      "day": 19,
+      "ckb": "ڕۆژی جیهانیی کچان (١١ی ئۆکتۆبەر)",
+      "kmr": "ڕۆژی جیهانیی کچان (١١ی ئۆکتۆبەر)",
+      "type": "international"
+    },
+    {
+      "month": 6,
+      "day": 20,
+      "ckb": "ساڵیادی حافز شیرازی",
+      "kmr": "ساڵیادی حافز شیرازی",
+      "type": "anniversary"
+    },
+    {
+      "month": 6,
+      "day": 22,
+      "ckb": "ڕۆژی جیهانیی ئیستاندارد (١٤ی ئۆکتۆبەر)",
+      "kmr": "ڕۆژی جیهانیی ئیستاندارد (١٤ی ئۆکتۆبەر)",
+      "type": "international"
+    },
+    {
+      "month": 6,
+      "day": 23,
+      "ckb": "شەهادەتی ئیمام حەسەن عەسکەری",
+      "kmr": "شەهادەتی ئیمام حەسەن عەسکەری",
+      "type": "historical"
+    },
+    {
+      "month": 6,
+      "day": 23,
+      "ckb": "ڕۆژی جیهانیی گۆچانی سپی بۆ نابینایان",
+      "kmr": "ڕۆژی جیهانیی گۆچانی سپی بۆ نابینایان",
+      "type": "international"
+    },
+    {
+      "month": 6,
+      "day": 24,
+      "ckb": "ڕۆژی جیهانی خواردەمەنی",
+      "kmr": "Roja Cîhanî ya xwarinê",
+      "type": "international"
+    },
+    {
+      "month": 6,
+      "day": 25,
+      "ckb": "ڕۆژی جیهانی بڕینەوەی هەژاری",
+      "kmr": "Roja Cîhanî ya tinekirina xizanî",
+      "type": "international"
+    },
+    {
+      "month": 6,
+      "day": 26,
+      "ckb": "ڕۆژی پەروەردەکردنی لەش و وەرزش",
+      "kmr": "ڕۆژی پەروەردەکردنی لەش و وەرزش",
+      "type": "international"
+    },
+    {
+      "month": 6,
+      "day": 27,
+      "ckb": "ساڵیادی لەدایکبوونی حەزرەتی محەممەد، بە ڕەوایەتی ئەهلی سوننەت؛ جێژنی مەولوود",
+      "kmr": "ساڵیادی لەدایکبوونی حەزرەتی محەممەد، بە ڕەوایەتی ئەهلی سوننەت؛ جێژنی مەولوود",
+      "type": "anniversary"
     },
     {
       "month": 6,
@@ -1346,9 +1871,352 @@
     },
     {
       "month": 6,
+      "day": 29,
+      "ckb": "ڕۆژی نەتەوەیی شاخەوان",
+      "kmr": "Roja neteweyî ya çiyageran",
+      "type": "international"
+    },
+    {
+      "month": 6,
+      "day": 30,
+      "ckb": "کۆچی دوایی قالەشین",
+      "kmr": "کۆچی دوایی قالەشین",
+      "type": "historical"
+    },
+    {
+      "month": 6,
       "day": 30,
       "ckb": "کۆچی دوایی مامۆستا جگەرخوێن و محەممەد عومەر عوسمان",
       "kmr": "Koça dawî ya Mamoste Cigerxwîn û Mihemed Omer Osman",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 1,
+      "ckb": "دامەزراندنی زانکۆی سلێمانی لە ١٩٦٨",
+      "kmr": "Damezrandina Zanîngeha Silêmaniyê di 1968an de",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 1,
+      "ckb": "ڕۆژی ئامار و پلان دانان",
+      "kmr": "Roja statîstîk û plansaziyê",
+      "type": "international"
+    },
+    {
+      "month": 7,
+      "day": 2,
+      "ckb": "لەدایکبوونی حەزرەتی محەممەد و ئیمام جەعفەری سادق بە ڕەوایەتی شیعە (١٧ی ڕەبیعی یەکەم)",
+      "kmr": "لەدایکبوونی حەزرەتی محەممەد و ئیمام جەعفەری سادق بە ڕەوایەتی شیعە (١٧ی ڕەبیعی یەکەم)",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 3,
+      "ckb": "کۆچی دوایی دوکتور مارف خەزنەدار",
+      "kmr": "Koça dawî ya Dr. Marif Xeznedar",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 4,
+      "ckb": "بڵاوکردنەوەی یەکەم ژمارەی گۆڤاری «ژین» (٢٦ی ئۆکتۆبەر)",
+      "kmr": "بڵاوکردنەوەی یەکەم ژمارەی گۆڤاری «ژین» (٢٦ی ئۆکتۆبەر)",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 4,
+      "ckb": "کۆچی دوایی عەلی ئەشرەف دەروێشیان، نووسەر",
+      "kmr": "Koça dawî ya Elî Eşref Derweşiyan, nivîskar",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 5,
+      "ckb": "کۆچی دوایی ئەبووبەکر حەسەنزادە، نووسەر و وەرگێڕ",
+      "kmr": "Koça dawî ya Ebûbekir Hesen zade, nivîskar û werger",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 6,
+      "ckb": "کۆچی دوایی حەمەساڵح دیلان (٢٨ی ئۆکتۆبەر ١٩٩٠)",
+      "kmr": "کۆچی دوایی حەمەساڵح دیلان (٢٨ی ئۆکتۆبەر ١٩٩٠)",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 6,
+      "ckb": "کۆچی دوایی خالیدئاغای حیسامی، هێدی",
+      "kmr": "Koça dawî ya Xalidaxa Hisamî, Hêdî",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 7,
+      "ckb": "کۆچی دوایی ئەحمەد هەردی، شاعیر",
+      "kmr": "Koça dawî ya Ehmed Herdî, helbestvan",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 7,
+      "ckb": "کۆچی دوایی شاعیر ویسالی؛ بە پێی دەقی نێردراو و ڕێکەوتی نادڵنیا",
+      "kmr": "کۆچی دوایی شاعیر ویسالی؛ بە پێی دەقی نێردراو و ڕێکەوتی نادڵنیا",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 7,
+      "ckb": "ڕۆژی جیهانیی ئینتەرنێت (٢٩ی ئۆکتۆبەر)",
+      "kmr": "ڕۆژی جیهانیی ئینتەرنێت (٢٩ی ئۆکتۆبەر)",
+      "type": "international"
+    },
+    {
+      "month": 7,
+      "day": 7,
+      "ckb": "ڕۆژی جیهانیی ئەنیمەیشێن",
+      "kmr": "ڕۆژی جیهانیی ئەنیمەیشێن",
+      "type": "international"
+    },
+    {
+      "month": 7,
+      "day": 7,
+      "ckb": "ڕۆژی جیهانیی جۆدۆ",
+      "kmr": "ڕۆژی جیهانیی جۆدۆ",
+      "type": "international"
+    },
+    {
+      "month": 7,
+      "day": 8,
+      "ckb": "ڕۆژی تازەلاوان",
+      "kmr": "ڕۆژی تازەلاوان",
+      "type": "international"
+    },
+    {
+      "month": 7,
+      "day": 8,
+      "ckb": "ڕۆژی جیهانیی ئینتەرنێت",
+      "kmr": "ڕۆژی جیهانیی ئینتەرنێت",
+      "type": "international"
+    },
+    {
+      "month": 7,
+      "day": 8,
+      "ckb": "ڕۆژی جیهانیی ڕاهێنەر",
+      "kmr": "ڕۆژی جیهانیی ڕاهێنەر",
+      "type": "international"
+    },
+    {
+      "month": 7,
+      "day": 8,
+      "ckb": "ڕۆژی نیشتمانی تازەلاوان",
+      "kmr": "Roja neteweyî ya ciwanên nû",
+      "type": "international"
+    },
+    {
+      "month": 7,
+      "day": 9,
+      "ckb": "کۆچی دوایی قەناتی کۆردۆ، زانا و زمانناس",
+      "kmr": "Koça dawî ya Qenatî Kordo, zanayê ziman",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 10,
+      "ckb": "کۆچی دوایی جەلال مەلەکشا",
+      "kmr": "کۆچی دوایی جەلال مەلەکشا",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 10,
+      "ckb": "ڕۆژی جیهانی کۆبانی",
+      "kmr": "Roja Cîhanî ya Kobanê",
+      "type": "international"
+    },
+    {
+      "month": 7,
+      "day": 11,
+      "ckb": "ڕۆژی جیهانی نووسەر",
+      "kmr": "Roja Cîhanî ya nivîskaran",
+      "type": "international"
+    },
+    {
+      "month": 7,
+      "day": 13,
+      "ckb": "دروستکردنی یەکەم ئۆتۆمبێل بە سیستەمی هەوای گەرم و سارد لە شیکاگۆ (٤ی نۆڤەمبەر)",
+      "kmr": "دروستکردنی یەکەم ئۆتۆمبێل بە سیستەمی هەوای گەرم و سارد لە شیکاگۆ (٤ی نۆڤەمبەر)",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 13,
+      "ckb": "ڕۆژی قوتابی",
+      "kmr": "Roja xwendekaran",
+      "type": "international"
+    },
+    {
+      "month": 7,
+      "day": 14,
+      "ckb": "کۆچی دوایی مریەم قازی، چیرۆک‌نووس و شاعیر",
+      "kmr": "Koça dawî ya Meryem Qazî, çîrokvan û helbestvan",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 14,
+      "ckb": "ڕۆژی فەرهەنگی گشتی لە ئێران",
+      "kmr": "ڕۆژی فەرهەنگی گشتی لە ئێران",
+      "type": "international"
+    },
+    {
+      "month": 7,
+      "day": 15,
+      "ckb": "کۆچی دوایی هونەرمەند عەلی جافری",
+      "kmr": "Koça dawî ya hunermend Elî Cafirî",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 18,
+      "ckb": "کۆچی دوایی خدر ڕەش ئەحمەدی، شانۆکار",
+      "kmr": "Koça dawî ya Xidr Reş Ehmedî, şanoger",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 18,
+      "ckb": "ڕۆژی جیهانیی ڕادیۆلۆژی",
+      "kmr": "ڕۆژی جیهانیی ڕادیۆلۆژی",
+      "type": "international"
+    },
+    {
+      "month": 7,
+      "day": 18,
+      "ckb": "ڕۆژی کوالێتی لە ئێران",
+      "kmr": "ڕۆژی کوالێتی لە ئێران",
+      "type": "international"
+    },
+    {
+      "month": 7,
+      "day": 19,
+      "ckb": "کۆچی دوایی زیوەر، شاعیر",
+      "kmr": "Koça dawî ya Zîwer, helbestvan",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 21,
+      "ckb": "ساڵیادی کارەساتی بوومەلەرزەی کرماشان",
+      "kmr": "ساڵیادی کارەساتی بوومەلەرزەی کرماشان",
+      "type": "anniversary"
+    },
+    {
+      "month": 7,
+      "day": 21,
+      "ckb": "کۆچی دوایی ئەحمەدبەگی کوڕی فەتاح بەگ، ناسراو بە حەمدی؛ شاعیر",
+      "kmr": "کۆچی دوایی ئەحمەدبەگی کوڕی فەتاح بەگ، ناسراو بە حەمدی؛ شاعیر",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 21,
+      "ckb": "کۆچی دوایی دڵدار، شاعیر",
+      "kmr": "Koça dawî ya Dildar, helbestvan",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 23,
+      "ckb": "دامەزراندنی شاری سلێمانی لە ١٧٨٤",
+      "kmr": "Damezrandina bajarê Silêmaniyê di 1784an de",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 23,
+      "ckb": "ڕۆژی جیهانیی دیابێت (١٤ی نۆڤەمبەر)",
+      "kmr": "ڕۆژی جیهانیی دیابێت (١٤ی نۆڤەمبەر)",
+      "type": "international"
+    },
+    {
+      "month": 7,
+      "day": 24,
+      "ckb": "کۆچی دوایی موقبیل هونەرپەژوو",
+      "kmr": "کۆچی دوایی موقبیل هونەرپەژوو",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 24,
+      "ckb": "ڕۆژی کتێب و خوێندنەوە",
+      "kmr": "Roja pirtûk û xwendinê",
+      "type": "international"
+    },
+    {
+      "month": 7,
+      "day": 25,
+      "ckb": "کۆچی دوایی ئەحمەد کایا",
+      "kmr": "Koça dawî ya Ehmed Kaya",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 27,
+      "ckb": "کۆچی دوایی شوکروڵڵای بابان",
+      "kmr": "کۆچی دوایی شوکروڵڵای بابان",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 27,
+      "ckb": "کۆچی دوایی هونەرمەند ئیبراهیم قادری",
+      "kmr": "Koça dawî ya hunermend Îbrahîm Qadirî",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 27,
+      "ckb": "کۆچی دوایی گۆران، شاعیر",
+      "kmr": "Koça dawî ya Goran, helbestvan",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 28,
+      "ckb": "ڕۆژی جیهانی فەلسەفە",
+      "kmr": "Roja Cîhanî ya felsefeyê",
+      "type": "international"
+    },
+    {
+      "month": 7,
+      "day": 28,
+      "ckb": "ڕۆژی جیهانیی پیاوان",
+      "kmr": "ڕۆژی جیهانیی پیاوان",
+      "type": "international"
+    },
+    {
+      "month": 7,
+      "day": 29,
+      "ckb": "کۆچی دوایی هونەرمەند ئیبراهیم قادری",
+      "kmr": "Koça dawî ya hunermend Îbrahîm Qadirî",
+      "type": "historical"
+    },
+    {
+      "month": 7,
+      "day": 29,
+      "ckb": "ڕۆژی جیهانی منداڵ",
+      "kmr": "Roja Cîhanî ya zarokan",
+      "type": "international"
+    },
+    {
+      "month": 8,
+      "day": 2,
+      "ckb": "کۆچی دوایی شامی کرماشانی",
+      "kmr": "Koça dawî ya Şamî Kirmanşanî",
       "type": "historical"
     },
     {
@@ -1367,6 +2235,34 @@
     },
     {
       "month": 8,
+      "day": 5,
+      "ckb": "کۆچی دوایی مەلا حوسێن عەبدوڵڵازادە",
+      "kmr": "Koça dawî ya Mela Huseyn Ebdullahzade",
+      "type": "historical"
+    },
+    {
+      "month": 8,
+      "day": 8,
+      "ckb": "لەدایکبوونی حەسەن زیرەک",
+      "kmr": "Jidayikbûna Hesen Zîrek",
+      "type": "historical"
+    },
+    {
+      "month": 8,
+      "day": 9,
+      "ckb": "سەباح هەورامی",
+      "kmr": "سەباح هەورامی",
+      "type": "historical"
+    },
+    {
+      "month": 8,
+      "day": 9,
+      "ckb": "کۆچی دوایی خەیاڵ عەبدوڵڵازادە",
+      "kmr": "کۆچی دوایی خەیاڵ عەبدوڵڵازادە",
+      "type": "historical"
+    },
+    {
+      "month": 8,
       "day": 9,
       "ckb": "کۆچی دوایی سەید محەممەد سەفایی، گۆرانیبێژ",
       "kmr": "Koça dawî ya Seyid Mihemed Seffayî, stranbêj",
@@ -1381,10 +2277,45 @@
     },
     {
       "month": 8,
+      "day": 14,
+      "ckb": "کۆچی دوایی نێلسۆن ماندێلا",
+      "kmr": "Koça dawî ya Nelson Mandela",
+      "type": "historical"
+    },
+    {
+      "month": 8,
+      "day": 15,
+      "ckb": "ئاگرکەوتنەوە لە قوتابخانەی کچانی شیناوێ",
+      "kmr": "ئاگرکەوتنەوە لە قوتابخانەی کچانی شیناوێ",
+      "type": "historical"
+    },
+    {
+      "month": 8,
+      "day": 15,
+      "ckb": "دەرچوونی یەکەم ژمارەی گۆڤاری ستێر لە ١٩٤٣",
+      "kmr": "Derketina hejmareya yekem a kovara Stêr di 1943an de",
+      "type": "historical"
+    },
+    {
+      "month": 8,
       "day": 16,
       "ckb": "کۆچی دوایی کامەران موکری و ڕەحیم زەبیحی",
       "kmr": "Koça dawî ya Kamiran Mukrî û Rehîm Zebîhî",
       "type": "historical"
+    },
+    {
+      "month": 8,
+      "day": 16,
+      "ckb": "ڕۆژی جیهانیی فڕۆکە (٧ی دێسامبەر)",
+      "kmr": "ڕۆژی جیهانیی فڕۆکە (٧ی دێسامبەر)",
+      "type": "international"
+    },
+    {
+      "month": 8,
+      "day": 16,
+      "ckb": "ڕۆژی پێشمەرگەی کوردستان",
+      "kmr": "ڕۆژی پێشمەرگەی کوردستان",
+      "type": "international"
     },
     {
       "month": 8,
@@ -1402,9 +2333,30 @@
     },
     {
       "month": 8,
+      "day": 19,
+      "ckb": "ڕۆژی جیهانی مافی مرۆڤ",
+      "kmr": "Roja Cîhanî ya mafên mirovan",
+      "type": "international"
+    },
+    {
+      "month": 8,
+      "day": 20,
+      "ckb": "دامەزراندنی ڕێکخراوی یونیسێف لە ١٩٤٧",
+      "kmr": "Damezrandina rêxistina UNICEF di 1947an de",
+      "type": "historical"
+    },
+    {
+      "month": 8,
       "day": 22,
-      "ckb": "کۆچی دوایی ساڵح بەگی ساحیبقڕان و مامۆستا عەلائەددین سەجادی",
-      "kmr": "Koça dawî ya Salih Beg Sahîbqiran û Mamoste Elaeddîn Secadî",
+      "ckb": "کۆچی دوایی ساڵح بەگی ساحیبقڕان (١٩٤٤)",
+      "kmr": "Koça dawî ya Salih Beg Sahibqiran (1944)",
+      "type": "historical"
+    },
+    {
+      "month": 8,
+      "day": 22,
+      "ckb": "کۆچی دوایی مامۆستا عەلائەددین سەجادی",
+      "kmr": "Koça dawî ya Mamoste Elaeddîn Secadî",
       "type": "historical"
     },
     {
@@ -1419,6 +2371,13 @@
       "day": 26,
       "ckb": "یادی مام قودرەت",
       "kmr": "Bîranîna Mam Qudret",
+      "type": "historical"
+    },
+    {
+      "month": 8,
+      "day": 27,
+      "ckb": "کۆچی دوایی فایەق بێکەس، شاعیر",
+      "kmr": "Koça dawî ya Fayiq Bêkes, helbestvan",
       "type": "historical"
     },
     {
@@ -1458,9 +2417,23 @@
     },
     {
       "month": 9,
+      "day": 14,
+      "ckb": "دەستپێکی مانگی زایینی ٢٠٢٢، بە پێی دەقی نێردراو",
+      "kmr": "دەستپێکی مانگی زایینی ٢٠٢٢، بە پێی دەقی نێردراو",
+      "type": "historical"
+    },
+    {
+      "month": 9,
       "day": 15,
       "ckb": "کۆچی دوایی تەوفیق وەهبی و حەسیب قەرەداغی",
       "kmr": "Koça dawî ya Tewfîq Wehbî û Hesîb Qeredaxî",
+      "type": "historical"
+    },
+    {
+      "month": 9,
+      "day": 15,
+      "ckb": "کۆچی دوایی مامۆستا خادیم، شاعیر (٥ی ژانویە ١٩٧١)",
+      "kmr": "کۆچی دوایی مامۆستا خادیم، شاعیر (٥ی ژانویە ١٩٧١)",
       "type": "historical"
     },
     {
@@ -1515,8 +2488,204 @@
     {
       "month": 9,
       "day": 29,
-      "ckb": "کوشتاری خەڵکی مەهاباد لە شەڕی یەکەمی جیهانیدا",
-      "kmr": "Komkujiya xelkê Mehabadê di Şerê Cîhanê yê Yekem de",
+      "ckb": "کوشتاری خەڵکی مەهاباد لە شەڕی یەکەمی جیهانیدا لەلایەن سوپای ڕووسی تزارییەوە؛ بەپێی دەقی نێردراو ١٠ هەزار کەس کوژران، ٢٢٠ کەس شەهید بوون و زیاتر لە ١٢٣ کەس ئەندامی لەشیان لەدەست دا",
+      "kmr": "Komkujiya gelê Mehabad di Şerê Cîhanê yê Yekem de ji aliyê artêşa Rûsiya Tsarî ve; li gorî nivîsa şandî 10 hezar kes hatin kuştin, 220 kes şehîd bûn û zêdetirî 123 kes endamên laşê xwe winda kirin",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 1,
+      "ckb": "کۆچی دوایی شێخ ڕەزای تاڵەبانی",
+      "kmr": "Koça dawî ya Şêx Reza Talebanî",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 2,
+      "ckb": "ساڵڕۆژی دامەزراندنی کۆماری کوردستان لە ساڵی ١٩٤٥",
+      "kmr": "ساڵڕۆژی دامەزراندنی کۆماری کوردستان لە ساڵی ١٩٤٥",
+      "type": "anniversary"
+    },
+    {
+      "month": 10,
+      "day": 2,
+      "ckb": "کۆچی دوایی بورهان جاهید، شاعیر",
+      "kmr": "کۆچی دوایی بورهان جاهید، شاعیر",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 2,
+      "ckb": "کۆچی دوایی عەلامە مامۆستا مەلا سەعید ڕەسووڵی، ناسراو بە مەلا سەعیدی کامەم",
+      "kmr": "کۆچی دوایی عەلامە مامۆستا مەلا سەعید ڕەسووڵی، ناسراو بە مەلا سەعیدی کامەم",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 3,
+      "ckb": "کۆچی دوایی محەممەد ماملێ، گۆرانیبێژ",
+      "kmr": "Koça dawî ya Mihemed Mamle, stranbêj",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 4,
+      "ckb": "کۆچی دوایی خەلیل سەدیقی",
+      "kmr": "کۆچی دوایی خەلیل سەدیقی",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 5,
+      "ckb": "پەرتەو کرماشانی",
+      "kmr": "پەرتەو کرماشانی",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 5,
+      "ckb": "کۆچی دوایی ئیسماعیل شەڕافەتی، وەرزشوان",
+      "kmr": "کۆچی دوایی ئیسماعیل شەڕافەتی، وەرزشوان",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 5,
+      "ckb": "کۆچی دوایی ئەمیر زەرگە، وەرزشوان",
+      "kmr": "کۆچی دوایی ئەمیر زەرگە، وەرزشوان",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 6,
+      "ckb": "ئازادکردنی کۆبانێ لە دەستی داعش لە ٢٠١٥",
+      "kmr": "Rizgarkirina Kobanê ji destê DAIŞê di 2015an de",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 7,
+      "ckb": "کۆچی دوایی سەیفولقوزات",
+      "kmr": "کۆچی دوایی سەیفولقوزات",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 9,
+      "ckb": "کردنەوەی یەکەم ئێستگەی کوردی لە بەغدا لە ١٩٣٩",
+      "kmr": "Vekirina yekemîn radyoya kurdî li Bexdayê di 1939an de",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 17,
+      "ckb": "کۆچی دوایی ئەحمەد موختار جاف، شاعیر",
+      "kmr": "Koça dawî ya Ehmed Muxtar Caf, helbestvan",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 19,
+      "ckb": "کۆچی دوایی ئیبراهیم یونسی، نووسەر و وەرگێڕ",
+      "kmr": "Koça dawî ya Îbrahîm Yûnsî, nivîskar û werger",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 20,
+      "ckb": "کۆچی دوایی هونەرمەند قادر مامەندی",
+      "kmr": "کۆچی دوایی هونەرمەند قادر مامەندی",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 23,
+      "ckb": "بۆردومانی مەهاباد لە ١٣٦٥ی هەتاوی",
+      "kmr": "Bombebarana Mehabadê di 1365ê Hicrî-Şemsî de",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 25,
+      "ckb": "کۆچی دوایی پرۆفیسۆر دوکتور موزەفەر پەرتۆماه (١٣٨٥ی هەتاوی)",
+      "kmr": "کۆچی دوایی پرۆفیسۆر دوکتور موزەفەر پەرتۆماه (١٣٨٥ی هەتاوی)",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 25,
+      "ckb": "کۆچی دوایی ڕەسووڵ ڕەش‌ئەحمەدی، ناسراو بە هەڵوەدا؛ شاعیر",
+      "kmr": "کۆچی دوایی ڕەسووڵ ڕەش‌ئەحمەدی، ناسراو بە هەڵوەدا؛ شاعیر",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 28,
+      "ckb": "کۆچی دوایی جەعفەر ماملێ",
+      "kmr": "کۆچی دوایی جەعفەر ماملێ",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 30,
+      "ckb": "کۆچی دوایی جەعفەر قازی",
+      "kmr": "کۆچی دوایی جەعفەر قازی",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 30,
+      "ckb": "کۆچی دوایی خوداداد عەلی، مەقام‌بێژ (١٩٨٧، خانەقین)",
+      "kmr": "کۆچی دوایی خوداداد عەلی، مەقام‌بێژ (١٩٨٧، خانەقین)",
+      "type": "historical"
+    },
+    {
+      "month": 10,
+      "day": 30,
+      "ckb": "کۆچی دوایی مارف ئاغایی",
+      "kmr": "کۆچی دوایی مارف ئاغایی",
+      "type": "historical"
+    },
+    {
+      "month": 11,
+      "day": 2,
+      "ckb": "کۆچی دوایی مامۆستا هەژار",
+      "kmr": "Koça dawî ya Mamoste Hejar",
+      "type": "historical"
+    },
+    {
+      "month": 11,
+      "day": 2,
+      "ckb": "ڕۆژی جیهانی زمانی دایکی",
+      "kmr": "Roja Cîhanî ya zimanê dayikê",
+      "type": "international"
+    },
+    {
+      "month": 11,
+      "day": 5,
+      "ckb": "ساڵڕۆژی یەکەمین هێرشی ئاسمانی ڕژێمی بەعس بۆ سەر شاری مەهاباد",
+      "kmr": "ساڵڕۆژی یەکەمین هێرشی ئاسمانی ڕژێمی بەعس بۆ سەر شاری مەهاباد",
+      "type": "anniversary"
+    },
+    {
+      "month": 11,
+      "day": 5,
+      "ckb": "ڕۆژی ئەندازیار",
+      "kmr": "Roja endezyaran",
+      "type": "international"
+    },
+    {
+      "month": 11,
+      "day": 7,
+      "ckb": "ڕۆژی پارێزەر",
+      "kmr": "Roja parêzeran",
+      "type": "international"
+    },
+    {
+      "month": 11,
+      "day": 11,
+      "ckb": "کۆچی دوایی سیامەند ڕەحمان",
+      "kmr": "Koça dawî ya Sîamend Rehman",
       "type": "historical"
     },
     {
@@ -1528,10 +2697,24 @@
     },
     {
       "month": 11,
+      "day": 15,
+      "ckb": "ڕۆژی نەمام‌چاندن",
+      "kmr": "Roja çandina daran",
+      "type": "international"
+    },
+    {
+      "month": 11,
       "day": 17,
       "ckb": "یادی بۆمبارانی پیرانشار",
       "kmr": "Salvegera bombebarana Pîranşarê",
       "type": "historical"
+    },
+    {
+      "month": 11,
+      "day": 17,
+      "ckb": "ڕۆژی جیهانی ژنان؛ ٨ی مارس",
+      "kmr": "Roja Cîhanî ya jinan; 8ê Adarê",
+      "type": "international"
     },
     {
       "month": 11,
@@ -1543,47 +2726,41 @@
     {
       "month": 11,
       "day": 25,
-      "ckb": "کۆچی دوایی قاسم ئەڵڵاوەیسی و کیمیابارانی هەڵەبجە",
-      "kmr": "Koça dawî ya Qasim Ellaweysî û êrîşa kîmyayî ya Helebceyê",
+      "ckb": "کۆچی دوایی قاسم ئەڵڵاوەیسی، وەرزشوان",
+      "kmr": "Koça dawî ya Qasim Ellaweysî, werzîşvan",
       "type": "historical"
     },
     {
-      "month": 4,
-      "day": 4,
-      "ckb": "کۆچی دوایی ئەحمەد هەردی، شاعیر",
-      "kmr": "Koça dawî ya Ehmed Herdî, helbestvan",
+      "month": 11,
+      "day": 25,
+      "ckb": "کیمیابارانی هەڵەبجە",
+      "kmr": "Êrîşa kîmyayî ya Helebceyê",
       "type": "historical"
     },
     {
-      "month": 4,
-      "day": 5,
-      "ckb": "کۆچی دوایی ئەبووبەکر حەسەنزادە، نووسەر و وەرگێڕ",
-      "kmr": "Koça dawî ya Ebûbekir Hesen zade, nivîskar û werger",
-      "type": "historical"
-    },
-    {
-      "month": 4,
-      "day": 14,
-      "ckb": "کۆچی دوایی مریەم قازی، چیرۆک‌نووس و شاعیر",
-      "kmr": "Koça dawî ya Meryem Qazî, çîrokvan û helbestvan",
-      "type": "historical"
-    },
-    {
-      "month": 4,
-      "day": 15,
-      "ckb": "کۆچی دوایی هونەرمەند عەلی جافری",
-      "kmr": "Koça dawî ya hunermend Elî Cafirî",
-      "type": "historical"
-    },
-    {
-      "month": 4,
-      "day": 18,
-      "ckb": "کۆچی دوایی خدر ڕەش ئەحمەدی، شانۆکار",
-      "kmr": "Koça dawî ya Xidr Reş Ehmedî, şanoger",
-      "type": "historical"
+      "month": 11,
+      "day": 27,
+      "ckb": "ڕۆژی جیهانی چەوساوەکان",
+      "kmr": "Roja Cîhanî ya bindestan",
+      "type": "international"
     }
   ],
   "gregorian": [
+    [
+      "02-02",
+      "کۆچی دوایی سەعید ناکام",
+      "Koça dawî ya Seîd Nakan"
+    ],
+    [
+      "04-02",
+      "ڕۆژی جیهانی بەرەنگاربوونەوە لەگەڵ ئۆتیزم",
+      "Roja Cîhanî ya hişyariyê li ser otîzmê"
+    ],
+    [
+      "04-09",
+      "کۆچی دوایی سولێمان چیڕە، ناسراو بە هێرش؛ ئەدیب و ڕۆژنامەڤان",
+      "Koça dawî ya Suleyman Çîre, Hêriş"
+    ],
     [
       "04-15",
       "ڕۆژی جیهانی هونەر",
@@ -1690,7 +2867,7 @@
       "Roja Cîhanî ya şekirê xwînê"
     ],
     [
-      "11-16",
+      "11-19",
       "ڕۆژی جیهانی پیاوان",
       "Roja Cîhanî ya mêran"
     ],

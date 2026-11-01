@@ -421,6 +421,11 @@
 
 /* Fixed, touch-friendly mobile navigation with safe-area spacing. */
 @media (max-width: 680px) {
+  /* Use the fixed bottom navigation for Notes on phones. */
+  .topbar #notes-button {
+    display: none;
+  }
+
   .workspace {
     padding-bottom: calc(94px + env(safe-area-inset-bottom, 0px));
   }
@@ -483,9 +488,6 @@
     outline-offset: 2px;
   }
 
-  .topbar #notes-button {
-    display: none;
-  }
 
   .app-update-toast {
     right: 10px;
@@ -618,5 +620,92 @@
 
   .saved-note-actions {
     flex-wrap: wrap;
+  }
+}
+
+/* Desktop header buttons share the mobile navigation tile design. */
+@media (min-width: 681px) {
+  .topbar-actions {
+    gap: 4px;
+  }
+
+  .topbar-actions #notes-button,
+  .topbar-actions #theme-toggle,
+  .topbar-actions #print-button {
+    display: inline-flex;
+    width: 58px;
+    min-width: 58px;
+    height: 54px;
+    min-height: 54px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 5px 2px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    font-size: 0.7rem;
+    font-weight: 600;
+    line-height: 1.15;
+    text-align: center;
+    white-space: normal;
+    box-shadow: none;
+  }
+
+  .topbar-actions #notes-button svg {
+    display: block;
+    width: 21px;
+    height: 21px;
+    flex: 0 0 21px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .topbar-actions #theme-toggle .theme-label {
+    display: inline;
+  }
+
+  .topbar-actions #theme-toggle .theme-icon,
+  .topbar-actions #print-button > span:first-child {
+    display: grid;
+    width: 21px;
+    height: 21px;
+    flex: 0 0 21px;
+    place-items: center;
+    font-size: 1.05rem;
+    line-height: 1;
+  }
+
+  .topbar-actions #notes-button:hover,
+  .topbar-actions #notes-button:focus-visible,
+  .topbar-actions #theme-toggle:hover,
+  .topbar-actions #theme-toggle:focus-visible,
+  .topbar-actions #print-button:hover,
+  .topbar-actions #print-button:focus-visible {
+    background: var(--accent-soft, #e2f1ee);
+    color: var(--navy);
+  }
+
+  .topbar-actions #notes-button:focus-visible,
+  .topbar-actions #theme-toggle:focus-visible,
+  .topbar-actions #print-button:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  :root[data-theme="dark"] .topbar-actions #notes-button:hover,
+  :root[data-theme="dark"] .topbar-actions #notes-button:focus-visible,
+  :root[data-theme="dark"] .topbar-actions #theme-toggle:hover,
+  :root[data-theme="dark"] .topbar-actions #theme-toggle:focus-visible,
+  :root[data-theme="dark"] .topbar-actions #print-button:hover,
+  :root[data-theme="dark"] .topbar-actions #print-button:focus-visible {
+    background: #24383e;
+    color: #f3ffff;
   }
 }

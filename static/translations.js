@@ -209,6 +209,11 @@
 
 
   // Solar Hijri display is localized here with the language dictionaries.
+function localizeDigits(value, language) {
+    const digits = language === "ckb" ? "۰۱۲۳۴۵۶۷۸۹" : "0123456789";
+    return String(value).replace(/\d/g, digit => digits[Number(digit)]);
+  }
+
 function getSolarHijriParts(date) {
     const formatter = new Intl.DateTimeFormat("en-u-ca-persian-nu-latn", {
       day: "2-digit",
@@ -235,7 +240,11 @@ function getSolarHijriParts(date) {
     ];
     const monthNumber = Number(parts.month);
     const monthName = months[monthNumber - 1] || "";
-    const dateParts = [parts.day.padStart(2, "0"), monthName, parts.year];
+    const dateParts = [
+      `${localizeDigits(parts.day, "ckb")}ی`,
+      `${monthName}ی`,
+      `${localizeDigits(parts.year, "ckb")}ی هەتاوی`
+    ];
     const fragment = document.createDocumentFragment();
 
     for (let i = 0; i < dateParts.length; i++) {

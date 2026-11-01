@@ -230,15 +230,59 @@
     return refreshMovements();
   }
 
+  function normalizeMovementTitle(value) {
+    return String(value || "")
+      .normalize("NFC")
+      .toLocaleLowerCase()
+      .replace(/ي/g, "ی")
+      .replace(/ك/g, "ک")
+      .replace(/یی/g, "ی")
+      .replace(/[0-9٠-٩۰-۹]/g, "")
+      .replace(/[^\p{L}\p{N}]/gu, "");
+  }
+
   function getForDate(date, language) {
     const parts = window.CalendarCore.kurdishDateParts(date);
     const result = movements.filter(item => item.month === parts.month && item.day === parts.day);
     const key = String(date.getMonth() + 1).padStart(2, "0") + "-" + String(date.getDate()).padStart(2, "0");
+
     for (const item of gregorian) {
-      if (item[0] === key) result.push({ ckb: item[1], kmr: item[2], type: "international" });
+      if (item[0] === key) {
+        result.push({ ckb: item[1], kmr: item[2], type: "international" });
+      }
     }
-    return result.map(item => ({ title: language === "ckb" ? item.ckb : item.kmr, type: item.type || "historical" }));
+
+    const visible = [];
+    const seen = [];
+
+    for (const item of result) {
+      const title = language === "ckb"
+        ? item.ckb
+        : language === "kmr"
+          ? (item.kmr || item.ckb)
+          : (item.en || item.kmr || item.ckb);
+      const normalized = normalizeMovementTitle(title);
+      if (!normalized) continue;
+
+      // Some dates exist in both the Kurdish and Gregorian lists.
+      // Suppress only matching titles, not other events on the same day.
+      const duplicate = seen.some(previous =>
+        normalized === previous ||
+        (Math.min(normalized.length, previous.length) >= 12 &&
+          (normalized.includes(previous) || previous.includes(normalized)))
+      );
+
+      if (duplicate) continue;
+      seen.push(normalized);
+      visible.push({
+        title,
+        type: item.type || "historical"
+      });
+    }
+
+    return visible;
   }
+
   window.CalendarMovements = Object.freeze({
     getForDate,
     load: loadMovements,
@@ -422,8 +466,12 @@
       if (remindersPanel) remindersPanel.hidden = showNotes;
       noteTab?.setAttribute("aria-selected", showNotes ? "true" : "false");
       remindersTab?.setAttribute("aria-selected", showNotes ? "false" : "true");
-      if (showNotes) noteText?.focus();
-      else reminderTitle?.focus();
+
+      // Do not focus a control while its dialog is still hidden.
+      if (!notesOverlay?.hidden) {
+        if (showNotes) noteText?.focus({ preventScroll: true });
+        else reminderTitle?.focus({ preventScroll: true });
+      }
     }
 
     function resetReminderForm() {
@@ -519,38 +567,47 @@
     noteTab?.addEventListener("click", () => selectNotesTab("notes"));
     remindersTab?.addEventListener("click", () => selectNotesTab("reminders"));
 
-    document.querySelectorAll('[data-nav-action="notes"]').forEach(button => {
-      button.addEventListener("click", async () => {
-        const now = new Date();
-        if (dateInput) dateInput.value = window.CalendarCore.dateKey(state.selectedDate || now);
-        if (calendarReminderDate) calendarReminderDate.value = window.CalendarCore.dateKey(state.selectedDate || now);
-        if (timeInput) timeInput.value = "";
-        resetNoteForm();
-        resetReminderForm();
-        selectNotesTab("notes");
-        if (noteStatus) noteStatus.textContent = "";
-        renderNotes();
-        renderReminders();
-        openDialog(notesOverlay, notesDialog);
-        noteText?.focus();
-        await window.HewtujmerData?.refresh();
-        renderNotes();
-        renderReminders();
-      });
-    });
-
-    document.querySelector("#notes-button")?.addEventListener("click", async () => {
+    function openNotesDialog() {
       const now = new Date();
-      if (dateInput) dateInput.value = window.CalendarCore.dateKey(state.selectedDate || now);
-      if (calendarReminderDate) calendarReminderDate.value = window.CalendarCore.dateKey(state.selectedDate || now);
+      const selectedDate = state.selectedDate || now;
+      const selectedDateKey = window.CalendarCore.dateKey(selectedDate);
+
+      if (dateInput) dateInput.value = selectedDateKey;
+      if (calendarReminderDate) calendarReminderDate.value = selectedDateKey;
+      if (timeInput) timeInput.value = "";
+
       resetNoteForm();
       resetReminderForm();
+      selectNotesTab("notes");
       if (noteStatus) noteStatus.textContent = "";
       renderNotes();
+      renderReminders();
+
+      // Show the dialog and focus the editable field before starting any
+      // network refresh. Typing must not depend on the database being ready.
       openDialog(notesOverlay, notesDialog);
-      noteText?.focus();
-      await window.HewtujmerData?.refresh();
-      renderNotes();
+      noteText?.focus({ preventScroll: true });
+
+      const refresh = window.HewtujmerData?.refresh;
+      if (typeof refresh === "function") {
+        Promise.resolve(refresh.call(window.HewtujmerData))
+          .then(() => {
+            if (!notesOverlay?.hidden) {
+              renderNotes();
+              renderReminders();
+            }
+          })
+          .catch(error => {
+            if (noteStatus) noteStatus.textContent = error.message || translations().noteSaveFailed;
+          });
+      }
+    }
+
+    document.querySelectorAll('[data-nav-action="notes"], #notes-button').forEach(button => {
+      button.addEventListener("click", event => {
+        event.preventDefault();
+        openNotesDialog();
+      });
     });
 
     document.querySelector("#movement-close")?.addEventListener("click", () => closeDialog(movementOverlay));
@@ -734,7 +791,7 @@
     selectNotesTab("notes");
     window.CalendarExtras = Object.freeze({
       showMovements: showDateEvents,
-      openNotes: () => document.querySelector("#notes-button")?.click()
+      openNotes: openNotesDialog
     });
   }
   window.CalendarExtras = Object.freeze({ bind: bindExtras });

@@ -29,7 +29,7 @@ build/
 # Temporary files
 *.tmp
 *.bak
-
+.env.development.local
 # Generated deployment/mobile asset copies
 public/
 www/

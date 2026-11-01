@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "hewtujmer-app-v10";
+const CACHE_VERSION = "hewtujmer-app-v13";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const PAGE_CACHE = `${CACHE_VERSION}-pages`;
 const CORE_ASSETS = [
@@ -33,6 +33,12 @@ self.addEventListener("install", event => {
       try {
         const response = await fetch(asset, { cache: "reload" });
         if (response.ok) await cache.put(asset, response);
+      } catch (error) {
+        // A single optional asset must not cancel the complete installation.
+      }
+    }
+    const clients = await self.clients.matchAll({ type: "window", includeUncontrolled: true });
+    for (const client of clients) client.postMessage({ type: "APP_UPDATE_INSTALLED" });
   })());
 });
 
